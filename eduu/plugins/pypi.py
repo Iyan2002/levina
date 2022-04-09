@@ -1,8 +1,5 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import html
 import re
+import html
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -48,7 +45,6 @@ async def pypi(c: Client, m: Message, strings):
             license=pypi_info["license"] or strings("not_specified"),
             summary=pypi_info["summary"],
         )
-
         if pypi_info["home_page"] and pypi_info["home_page"] != "UNKNOWN":
             kb = InlineKeyboardMarkup(
                 inline_keyboard=[
