@@ -47,7 +47,10 @@ async def search_yt(query):
 
 
 @Client.on_message(filters.command(["yt", "search"], prefix))
-async def yt_search_cmd(c: Client, m: Message):
+async def yt_search_cmd(c: Client, m: Message, strings):
+    if len(m.command) == 1:
+        await m.reply_text(strings("youtube_search_usage"))
+        return
     vids = [
         '{}: <a href="{}">{}</a>'.format(num + 1, i["url"], i["title"])
         for num, i in enumerate(await search_yt(m.text.split(None, 1)[1]))
@@ -61,7 +64,9 @@ async def yt_search_cmd(c: Client, m: Message):
 @use_chat_lang()
 async def ytdlcmd(c: Client, m: Message, strings):
     user = m.from_user.id
-
+    if len(m.command) == 1:
+        await m.reply_text(strings("youtube_download_usage"))
+        return
     if m.reply_to_message and m.reply_to_message.text:
         url = m.reply_to_message.text
     elif len(m.command) > 1:
@@ -137,7 +142,6 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
         )
     vid = re.sub(r"^\_(vid|aud)\.", "", data)
     url = "https://www.youtube.com/watch?v=" + vid
-
     await cq.message.edit(strings("ytdl_downloading"))
     with tempfile.TemporaryDirectory() as tempdir:
         path = os.path.join(tempdir, "ytdl")
