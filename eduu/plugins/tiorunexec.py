@@ -1,8 +1,5 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import asyncio
 import html
+import asyncio
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -15,6 +12,7 @@ from pytio import Tio, TioRequest
 
 from eduu.config import prefix
 from eduu.utils.localization import use_chat_lang
+
 
 tio = Tio()
 
