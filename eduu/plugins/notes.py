@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import re
 
 from pyrogram import Client, filters
@@ -62,14 +59,18 @@ def check_for_notes(chat_id, trigger):
     return False
 
 
-@Client.on_message(filters.command(["note", "savenote"], prefix))
+@Client.on_message(filters.command(["note", "savenote", "save"], prefix))
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def save_note(c: Client, m: Message, strings):
     args = m.text.html.split(maxsplit=1)
     split_text = split_quotes(args[1])
     trigger = split_text[0].lower()
-
+    
+    if len(m.command) == 1:
+        await m.reply_text(strings("saving_note_usage"))
+        return
+    
     if m.reply_to_message is None and len(split_text) < 2:
         await m.reply_text(strings("add_note_empty"), quote=True)
         return
@@ -132,7 +133,7 @@ async def save_note(c: Client, m: Message, strings):
     await m.reply_text(strings("add_note_success").format(trigger=trigger), quote=True)
 
 
-@Client.on_message(filters.command(["delnote", "rmnote"], prefix))
+@Client.on_message(filters.command(["delnote", "rmnote", "clear"], prefix))
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def delete_note(c: Client, m: Message, strings):
@@ -272,6 +273,6 @@ async def note_by_get_command(c: Client, m: Message):
     await serve_note(c, targeted_message, txt=note_data)
 
 
-commands.add_command("delnote", "admin")
-commands.add_command("note", "admin")
+commands.add_command("clear", "admin")
+commands.add_command("save", "admin")
 commands.add_command("notes", "general")
