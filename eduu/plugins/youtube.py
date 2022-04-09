@@ -1,22 +1,19 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import datetime
 import io
 import os
 import re
 import shutil
-import tempfile
-
 import yt_dlp
+import tempfile
+import datetime
+
+from pyrogram.helpers import ikb
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
-from pyrogram.helpers import ikb
 from pyrogram.types import CallbackQuery, Message
 
 from eduu.config import prefix
-from eduu.utils import aiowrap, http, pretty_size
 from eduu.utils.localization import use_chat_lang
+from eduu.utils import aiowrap, http, pretty_size, commands
 
 
 @aiowrap
@@ -49,7 +46,7 @@ async def search_yt(query):
     return list_videos
 
 
-@Client.on_message(filters.command("yt", prefix))
+@Client.on_message(filters.command(["yt", "search"], prefix))
 async def yt_search_cmd(c: Client, m: Message):
     vids = [
         '{}: <a href="{}">{}</a>'.format(num + 1, i["url"], i["title"])
@@ -60,7 +57,7 @@ async def yt_search_cmd(c: Client, m: Message):
     )
 
 
-@Client.on_message(filters.command("ytdl", prefix))
+@Client.on_message(filters.command(["ytdl", "download", "dl"], prefix))
 @use_chat_lang()
 async def ytdlcmd(c: Client, m: Message, strings):
     user = m.from_user.id
@@ -120,7 +117,7 @@ async def ytdlcmd(c: Client, m: Message, strings):
         title = yt["title"]
 
     text = f"🎧 <b>{performer}</b> - <i>{title}</i>\n"
-    text += f"💾 <code>{pretty_size(afsize)}</code> (audio) / <code>{pretty_size(int(vfsize))}</code> (video)\n"
+    text += f"🗂 <code>{pretty_size(afsize)}</code> (audio) / <code>{pretty_size(int(vfsize))}</code> (video)\n"
     text += f"⏳ <code>{datetime.timedelta(seconds=yt.get('duration'))}</code>"
 
     await m.reply_text(text, reply_markup=ikb(keyboard))
@@ -140,6 +137,7 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
         )
     vid = re.sub(r"^\_(vid|aud)\.", "", data)
     url = "https://www.youtube.com/watch?v=" + vid
+
     await cq.message.edit(strings("ytdl_downloading"))
     with tempfile.TemporaryDirectory() as tempdir:
         path = os.path.join(tempdir, "ytdl")
@@ -218,3 +216,7 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
     await cq.message.delete()
 
     shutil.rmtree(tempdir, ignore_errors=True)
+
+
+commands.add_command("search", "general")
+commands.add_command("download", "general")
