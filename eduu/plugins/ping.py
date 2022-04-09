@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from datetime import datetime
 
 from pyrogram import Client, filters
@@ -16,7 +13,7 @@ async def ping(c: Client, m: Message):
     sent = await m.reply_text("<b>Pong!</b>")
     second = datetime.now()
     await sent.edit_text(
-        f"<b>Pong!</b> <code>{(second - first).microseconds / 1000}</code>ms"
+       f"🏓 <b>PONG !</b>\n⏱ <code>{(second - first).microseconds / 1000}</code> ms"
     )
 
 
