@@ -1,8 +1,5 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-from functools import partial
 from typing import Union
+from functools import partial
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -49,7 +46,7 @@ def gen_langs_kb():
 
 
 @Client.on_callback_query(filters.regex("^chlang$"))
-@Client.on_message(filters.command(["setchatlang", "setlang"], prefix) & filters.group)
+@Client.on_message(filters.command(["setlang", "lang", "language"], prefix) & filters.group)
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
@@ -86,7 +83,6 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
 async def set_chat_lang(c: Client, m: CallbackQuery, strings):
     lang = m.data.split()[1]
     set_db_lang(m.message.chat.id, m.message.chat.type, lang)
-
     strings = partial(
         get_locale_string,
         langdict[lang].get("langs", langdict[default_language]["langs"]),
