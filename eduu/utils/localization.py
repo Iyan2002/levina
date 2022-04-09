@@ -13,27 +13,19 @@ from eduu.utils.consts import group_types
 
 
 enabled_locales: List[str] = [
+    "en-GB",  # English
+    "id-ID",  # Indonesian
+    "it-IT",  # Italian
     "ar-SA",  # Arabic
     "ckb-IR", # Sorani (Kurdish)
     "de-DE",  # German
-    "en-GB",  # English
-    "en-US",  # English (United States)
     "es-ES",  # Spanish
-    "fi-FI",  # Finnish
     "fr-FR",  # French
     "he-IL",  # Hebrew
-    "id-ID",  # Indonesian
-    "it-IT",  # Italian
     "ja-JP",  # Japanese
-    "nl-NL",  # Dutch
-    "no-NO",  # Norwegian
-    "pl-PL",  # Polish
     "pt-BR",  # Portuguese (Brazil)
-    "pt-BRe", # Portuguese (Brazil, extended version)
-    "pt-BR2", # Portuguese (Brazil, informal version)
     "ro-RO",  # Romanian
     "ru-RU",  # Russian
-    "sv-SE",  # Swedish
     "tr-TR",  # Turkish
     "uk-UA",  # Ukranian
     "zh-CN",  # Chinese (Simplified)
