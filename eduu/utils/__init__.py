@@ -1,6 +1,5 @@
-"""EduuRobot utilities."""
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
+"""GuardBot utilities"""
+
 
 from typing import List
 
