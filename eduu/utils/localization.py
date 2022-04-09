@@ -1,21 +1,20 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import inspect
 import json
+import inspect
 import os.path
-from functools import partial, wraps
+
 from glob import glob
 from typing import Dict, List
+from functools import partial, wraps
 
 from pyrogram.types import CallbackQuery, InlineQuery, Message
 
 from eduu.database import db, dbc
 from eduu.utils.consts import group_types
 
+
 enabled_locales: List[str] = [
     "ar-SA",  # Arabic
-    "ckb-IR",  # Sorani (Kurdish)
+    "ckb-IR", # Sorani (Kurdish)
     "de-DE",  # German
     "en-GB",  # English
     "en-US",  # English (United States)
@@ -30,8 +29,8 @@ enabled_locales: List[str] = [
     "no-NO",  # Norwegian
     "pl-PL",  # Polish
     "pt-BR",  # Portuguese (Brazil)
-    "pt-BRe",  # Portuguese (Brazil, extended version)
-    "pt-BR2",  # Portuguese (Brazil, informal version)
+    "pt-BRe", # Portuguese (Brazil, extended version)
+    "pt-BR2", # Portuguese (Brazil, informal version)
     "ro-RO",  # Romanian
     "ru-RU",  # Russian
     "sv-SE",  # Swedish
