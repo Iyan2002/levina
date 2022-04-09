@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import re
 
 from pyrogram import Client, filters
@@ -255,4 +252,4 @@ async def serve_filter(c: Client, m: Message):
 
 commands.add_command("delfilter", "admin")
 commands.add_command("filter", "admin")
-commands.add_command("filters", "general")
+commands.add_command("filters", "admin")
