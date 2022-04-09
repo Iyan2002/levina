@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -19,7 +16,7 @@ headers = {
 }
 
 
-@Client.on_message(filters.command(["clima", "weather"], prefix))
+@Client.on_message(filters.command("weather", prefix))
 @use_chat_lang()
 async def weather(c: Client, m: Message, strings):
     if len(m.command) == 1:
@@ -36,6 +33,7 @@ async def weather(c: Client, m: Message, strings):
         ),
     )
     loc_json = r.json()
+
     if not loc_json.get("location"):
         await m.reply_text(strings("location_not_found"))
     else:
