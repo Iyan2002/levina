@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -20,7 +17,6 @@ async def nekobin(c: Client, m: Message, strings):
                 mean = fd.read().decode("UTF-8")
         if m.reply_to_message.text:
             mean = m.reply_to_message.text
-
         url = "https://nekobin.com/api/documents"
         r = await http.post(url, json={"content": mean})
         url = f"https://nekobin.com/{r.json()['result']['key']}"
