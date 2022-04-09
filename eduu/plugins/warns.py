@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from typing import Optional, Tuple
 
 from pyrogram import Client, filters
@@ -145,7 +142,7 @@ async def warn_user(c: Client, m: Message, strings):
         await m.reply_text(strings("warn_cant_admin"))
 
 
-@Client.on_message(filters.command("setwarnslimit", prefix) & filters.group)
+@Client.on_message(filters.command(["setwarnslimit", "setwarns"], prefix) & filters.group)
 @require_admin(permissions=["can_restrict_members", "can_change_info"])
 @use_chat_lang()
 async def on_set_warns_limit(c: Client, m: Message, strings):
@@ -183,7 +180,7 @@ async def get_user_warns_cmd(c: Client, m: Message, strings):
 
 
 @Client.on_message(
-    filters.command(["setwarnsaction", "warnsaction"], prefix) & filters.group
+    filters.command(["setwarnaction", "warnaction"], prefix) & filters.group
 )
 @require_admin(permissions=["can_restrict_members"])
 @use_chat_lang()
@@ -205,7 +202,7 @@ async def set_warns_action_cmd(c: Client, m: Message, strings):
 
 
 commands.add_command("warn", "admin")
-commands.add_command("setwarnslimit", "admin")
+commands.add_command("setwarns", "admin")
 commands.add_command("resetwarns", "admin")
 commands.add_command("warns", "admin")
-commands.add_command("setwarnsaction", "admin")
+commands.add_command("setwarnaction", "admin")
