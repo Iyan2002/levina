@@ -1,13 +1,10 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 from eduu.config import prefix
 from eduu.database import db, dbc
-from eduu.utils import button_parser, commands, require_admin
 from eduu.utils.localization import use_chat_lang
+from eduu.utils import button_parser, commands, require_admin
 
 
 def get_rules(chat_id):
@@ -73,7 +70,6 @@ async def show_rules_pvt(c: Client, m: Message, strings):
         )
     else:
         await m.reply_text(strings("rules_empty"))
-
     await m.stop_propagation()
 
 
