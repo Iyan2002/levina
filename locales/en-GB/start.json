@@ -1,11 +1,11 @@
 {
   "commands_btn": "📚 Commands",
   "infos_btn": "ℹ️ About",
-  "language_btn": "🌐 Language",
-  "add_chat_btn": "➕ Add to a chat",
-  "private": "Hello! I'm EduuRobot. To discover more about my functions, click on the buttons below.",
-  "start_chat": "🤖 Start a chat",
-  "group": "Hello! I'm EduuRobot. To discover my functions start a conversation with me.",
-  "info_page": "• EduuRobot\n\nVersion: {version} ({version_code})\n\n<a href=\"https://github.com/AmanoTeam/EduuRobot\">Source Code</a>\nDevelopers: <a href=\"https://github.com/AmanoTeam\">Amano Team</a>\n\nPartnerships:\n » <a href=\"https://t.me/hpxlist\">HPXList - by usernein</a>\n\n©2022 - <a href=\"https://amanoteam.com\">AmanoTeam™</a>",
-  "start_description": "Start the bot."
+  "language_btn": "🏳️‍🌈 Languages",
+  "add_chat_btn": "➕ Add me to a Group ➕",
+  "private": "👋🏻 Hi {}!\n\n💭 Groups Guard Bot is **the most complete** bot to help you manage your Groups **easily** and **safely**.\n\n❓ Just press the **📚 Commands** button below to see all the commands of the bot or hit /help",
+  "start_chat": "🤖 Contact Bot",
+  "group": "Hello, i'm Guards Bot!\n\nTo discover my functions, please start a conversation with me.",
+  "info_page": "• Groups Guard Bot\n\n🔖 Bot version: {version} ({version_code})\n🧑🏼‍💻 Developer: @dlwrml\n\n**Groups Guard** is a bot developed in **Python3** and using Pyrogram as the framework with sql as the database.",
+  "start_description": "start the bot !"
 }
