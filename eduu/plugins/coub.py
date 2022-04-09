@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import random
 
 from pyrogram import Client, filters
@@ -25,6 +22,5 @@ async def coub(c: Client, m: Message, strings):
         await m.reply_text(strings("no_results", context="general"))
     else:
         await m.reply_text(f'<b><a href="https://coub.com/v/{links}">{title}</a></b>')
-
 
 commands.add_command("coub", "general")
