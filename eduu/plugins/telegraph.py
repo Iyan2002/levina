@@ -1,15 +1,12 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-from pyrogram import Client, filters
 from pyrogram.types import Message
+from pyrogram import Client, filters
 
 from eduu.config import prefix
-from eduu.utils import http
+from eduu.utils import commands, http
 from eduu.utils.localization import use_chat_lang
 
 
-@Client.on_message(filters.command("telegraph", prefix))
+@Client.on_message(filters.command(["telegraph", "tgm"], prefix))
 @use_chat_lang()
 async def telegraph(c: Client, m: Message, strings):
     if m.reply_to_message:
@@ -26,3 +23,6 @@ async def telegraph(c: Client, m: Message, strings):
             await m.reply_text(tele_link)
     else:
         await m.reply_text(strings("telegraph_err_no_reply"))
+
+
+commands.add_command("telegraph", "tools")
