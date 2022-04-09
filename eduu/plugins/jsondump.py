@@ -1,8 +1,5 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import html
 import io
+import html
 import json
 
 from pyrogram import Client, filters
