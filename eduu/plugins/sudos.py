@@ -1,24 +1,22 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import asyncio
-import html
 import io
 import os
 import re
 import sys
 import time
+import html
+import asyncio
 import traceback
+import speedtest
+import humanfriendly
+
+from typing import Union
 from contextlib import redirect_stdout
 from sqlite3 import IntegrityError, OperationalError
-from typing import Union
 
-import humanfriendly
-import speedtest
 from meval import meval
+from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.errors import RPCError
-from pyrogram.types import Message
 
 from eduu.database import db, dbc
 from eduu.utils import set_restarted, sudofilter
@@ -29,7 +27,7 @@ prefix: Union[list, str] = "!"
 
 @Client.on_message(filters.command("sudos", prefix) & sudofilter)
 async def sudos(c: Client, m: Message):
-    await m.reply_text("Test")
+    await m.reply_text("unavailable !")
 
 
 @Client.on_message(filters.command("cmd", prefix) & sudofilter)
@@ -260,7 +258,7 @@ async def uploadfile(c: Client, m: Message):
     file_path = await m.reply_to_message.download(
         m.command[1] if len(m.command) > 1 else ""
     )
-    await sent.edit_text(f"File successfully saved to {file_path}.")
+    await sent.edit_text(f"The file successfully saved to {file_path}.")
 
 
 @Client.on_message(filters.command("doc", prefix) & sudofilter)
@@ -280,6 +278,6 @@ async def getchatcmd(c: Client, m: Message):
                 f"<b>Title:</b> {targetchat.title}\n<b>Username:</b> {targetchat.username}\n<b>Members:</b> {targetchat.members_count}"
             )
         else:
-            await m.reply_text("This is a private Chat.")
+            await m.reply_text("This is a private chat.")
     else:
-        await m.reply_text("You must specify the Chat.")
+        await m.reply_text("You must specify the chat.")
