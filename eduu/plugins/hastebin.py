@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -20,7 +17,6 @@ async def hastebin(c: Client, m: Message, strings):
                 mean = fd.read().decode("UTF-8")
         if m.reply_to_message.text:
             mean = m.reply_to_message.text
-
         url = "https://hastebin.com/documents"
         r = await http.post(url, data=mean.encode("UTF-8"))
         url = f"https://hastebin.com/{r.json()['key']}"
