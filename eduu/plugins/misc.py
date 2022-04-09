@@ -1,7 +1,5 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import re
+
 from html import escape
 from urllib.parse import quote, unquote
 
@@ -103,6 +101,7 @@ async def getbotinfo(c: Client, m: Message, strings):
 @Client.on_message(filters.reply & filters.group & filters.regex(r"(?i)^rt$"))
 async def rtcommand(c: Client, m: Message):
     rt_text = None
+
     if m.reply_to_message.media:
         rt_text = m.reply_to_message.caption
     else:
