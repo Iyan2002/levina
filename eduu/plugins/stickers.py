@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import os
 import shutil
 import tempfile
@@ -20,16 +17,16 @@ from pyrogram.raw.types import (
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from eduu.config import log_chat, prefix
-from eduu.utils import EMOJI_PATTERN, http
+from eduu.utils import EMOJI_PATTERN, http, commands
 from eduu.utils.localization import use_chat_lang
 
 
-@Client.on_message(filters.command(["kang", "kibe", "steal"], prefix))
+@Client.on_message(filters.command(["kang", "sticker", "steal"], prefix))
 @use_chat_lang()
 async def kang_sticker(c: Client, m: Message, strings):
     prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
     bot_username = c.me.username
-    sticker_emoji = "🤔"
+    sticker_emoji = "🐹"
     packnum = 0
     packname_found = False
     resize = False
@@ -138,7 +135,7 @@ async def kang_sticker(c: Client, m: Message, strings):
                     mime_type=c.guess_mime_type(filename),
                     attributes=[DocumentAttributeFilename(file_name=filename)],
                 ),
-                message=f"#Sticker kang by UserID -> {m.from_user.id}",
+                message=f"Kanged by UserID -> {m.from_user.id}",
                 random_id=c.rnd_id(),
             )
         )
@@ -245,6 +242,9 @@ def resize_image(filename: str) -> str:
 @Client.on_message(filters.command("stickerid", prefix) & filters.reply)
 @use_chat_lang()
 async def getstickerid(c: Client, m: Message, strings):
+    if len(m.command) == 1:
+        await m.reply_text(strings("fetch_sticker_id"))
+        return
     if m.reply_to_message.sticker:
         await m.reply_text(
             strings("get_sticker_id_string").format(
@@ -257,6 +257,11 @@ async def getstickerid(c: Client, m: Message, strings):
 @use_chat_lang()
 async def getstickeraspng(c: Client, m: Message, strings):
     sticker = m.reply_to_message.sticker
+    
+    if len(m.command) == 1:
+        await m.reply_text(strings("fetch_sticker_data"))
+        return
+    
     if sticker:
         if sticker.is_animated:
             await m.reply_text(strings("animated_not_supported"))
@@ -276,3 +281,8 @@ async def getstickeraspng(c: Client, m: Message, strings):
             shutil.rmtree(tempdir, ignore_errors=True)
     else:
         await m.reply_text(strings("not_sticker"))
+
+
+commands.add_command("kang", "general")
+commands.add_command("stickerid", "tools")
+commands.add_command("getsticker", "tools")
