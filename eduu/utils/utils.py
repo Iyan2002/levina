@@ -1,18 +1,16 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
-import asyncio
-import atexit
-import inspect
-import math
-import os.path
 import re
 import time
-from functools import partial, wraps
+import math
+import httpx
+import atexit
+import os.path
+import asyncio
+import inspect
+
 from string import Formatter
+from functools import partial, wraps
 from typing import Callable, List, Optional, Tuple, Union
 
-import httpx
 from pyrogram import Client, emoji, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, Message, User
 
@@ -208,7 +206,7 @@ async def time_extract(m: Message, t: str) -> int:
         unit = t[-1]
         num = t[:-1]
         if not num.isdigit():
-            return await m.reply_text("Invalid Amount specified")
+            return await m.reply_text("Invalid amount specified")
 
         if unit == "m":
             t_time = int(num) * 60
@@ -405,7 +403,6 @@ async def get_reason_text(c: Client, m: Message) -> Message:
 EMOJI_PATTERN = get_emoji_regex()
 
 
-# Thank github.com/usernein for shell_exec
 async def shell_exec(code, treat=True):
     process = await asyncio.create_subprocess_shell(
         code, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT
