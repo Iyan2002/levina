@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from typing import Union
 
 from pyrogram import Client, filters
@@ -17,7 +14,6 @@ from eduu.utils import commands
 from eduu.utils.localization import use_chat_lang
 
 
-# Using a low priority group so deeplinks will run before this and stop the propagation.
 @Client.on_message(filters.command("start", prefix), group=2)
 @Client.on_callback_query(filters.regex("^start_back$"))
 @use_chat_lang()
@@ -34,18 +30,22 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
             inline_keyboard=[
                 [
                     InlineKeyboardButton(
-                        strings("commands_btn"), callback_data="commands"
+                        strings("add_chat_btn"),
+                        url=f"https://t.me/{c.me.username}?startgroup=new",
                     ),
-                    InlineKeyboardButton(strings("infos_btn"), callback_data="infos"),
                 ],
                 [
                     InlineKeyboardButton(
                         strings("language_btn"), callback_data="chlang"
                     ),
                     InlineKeyboardButton(
-                        strings("add_chat_btn"),
-                        url=f"https://t.me/{c.me.username}?startgroup=new",
+                        strings("infos_btn"), callback_data="infos"
                     ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        strings("commands_btn"), callback_data="commands"
+                    )
                 ],
             ]
         )
