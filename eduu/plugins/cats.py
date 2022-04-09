@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -19,6 +16,5 @@ async def cat(c: Client, m: Message, strings):
         await m.reply_animation(rj[0]["url"], caption=strings("meow"))
     else:
         await m.reply_photo(rj[0]["url"], caption=strings("meow"))
-
 
 commands.add_command("cat", "general")
