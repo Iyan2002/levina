@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 import html
 
 from gpytranslate import Translator
@@ -59,7 +56,7 @@ def get_tr_lang(text):
     return lang
 
 
-@Client.on_message(filters.command("tr", prefix))
+@Client.on_message(filters.command(["tr", "translate"], prefix))
 @use_chat_lang()
 async def translate(c: Client, m: Message, strings):
     text = m.text[4:]
