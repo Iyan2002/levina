@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from pyrogram import Client, filters
 from pyrogram.types import (
     CallbackQuery,
@@ -8,14 +5,13 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     Message,
 )
-
 from eduu.utils import commands
 from eduu.utils.localization import use_chat_lang
 
 
 def gen_categories_kb(strings_manager):
-    categories = list(commands.commands)
     kb = []
+    categories = list(commands.commands)
     while categories:
         name = strings_manager(categories[0], context="cmds_list")
         a = [InlineKeyboardButton(name, callback_data="view_category " + categories[0])]
@@ -48,7 +44,7 @@ async def cmds_list(c: Client, m: CallbackQuery, strings):
     await m.message.edit_text(strings("select_command_category"), reply_markup=keyboard)
 
 
-@Client.on_message(filters.command(["help", "start help"]))
+@Client.on_message(filters.command(["help", "config"]))
 @use_chat_lang()
 async def show_help(c: Client, m: Message, strings):
     if m.chat.type == "private":
