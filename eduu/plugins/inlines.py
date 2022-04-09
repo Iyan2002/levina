@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from typing import Iterable, List
 
 from pyrogram import Client, filters
@@ -16,10 +13,10 @@ from eduu.utils import button_parser
 from eduu.utils.localization import use_chat_lang
 
 faces_list: Iterable[str] = (
-    "¯\\_(ツ)_/¯",
+    "¯\_(ツ)_/¯",
     "( ͡° ͜ʖ ͡°)",
     "( ͡~ ͜ʖ ͡°)",
-    "( ͡◐ ͜ʖ ͡◑))",
+    "( ͡◐ ͜ʖ ͡◑)",
     "( ͡◔ ͜ʖ ͡◔)",
     "( ͡⚆ ͜ʖ ͡⚆)",
     "( ͡ʘ ͜ʖ ͡ʘ)",
@@ -40,7 +37,7 @@ faces_list: Iterable[str] = (
     "ᕦ(ò_óˇ)ᕤ",
     "╚(ಠ_ಠ)=┐",
     "ლ(ಠ益ಠლ)",
-    "\\_(ʘ_ʘ)_/",
+    "\_(ʘ_ʘ)_/",
     "( ⚆ _ ⚆ )",
     "(ಥ﹏ಥ)",
     "﴾͡๏̯͡๏﴿",
@@ -49,7 +46,7 @@ faces_list: Iterable[str] = (
     "(ಠ‿ಠ)",
     "(¬_¬)",
     "(¬‿¬)",
-    "\\ (•◡•) /",
+    "\(•◡•)/",
     "(◕‿◕✿)",
     "( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)",
 )
