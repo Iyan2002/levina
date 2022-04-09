@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2018-2022 Amano Team
-
 from urllib.parse import quote_plus
 
 from pyrogram import Client, filters
@@ -11,7 +8,7 @@ from eduu.utils import commands, http
 from eduu.utils.localization import use_chat_lang
 
 
-@Client.on_message(filters.command("git", prefix))
+@Client.on_message(filters.command(["git", "github"], prefix))
 @use_chat_lang()
 async def git(c: Client, m: Message, strings):
     if len(m.command) == 1:
