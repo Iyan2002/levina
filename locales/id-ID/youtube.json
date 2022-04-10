@@ -1,1 +1,10 @@
-{}
+{
+  "ytdl_sending": "Mengirim...",
+  "ytdl_missing_argument": "Harap berikan link youtube atau judul !",
+  "ytdl_audio_button": "💿 Audio",
+  "ytdl_video_button": "🎬 Video",
+  "ytdl_file_too_big": "Maaf! Saya tidak dapat mengunduh media ini karena melebihi batas upload 200MB saya.",
+  "ytdl_send_error": "Maaf! Saya tidak bisa mengirim video karena error.\n<b>Error:</b> <code>{errmsg}</code>",
+  "ytdl_downloading": "Mengunduh...",
+  "ytdl_button_denied": "Tombol ini bukan untukmu."
+}
