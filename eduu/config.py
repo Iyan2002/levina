@@ -1,10 +1,10 @@
 from typing import List, Optional
 
 
-API_ID: int = 123123
-API_HASH: str = ""
+API_ID: int = 3487995
+API_HASH: str = "7b9f1868c1e90b7408d48445f1e89603"
 
-TOKEN: str = "YOUR_TOKEN_HERE"
+TOKEN: str = "5200427414:AAHo-4LnDtqC6rzAv2lCuwqWTGBkilxIKFU"
 
 log_chat: int = -1001306851903
 
