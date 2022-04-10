@@ -6,7 +6,7 @@
     "telegram",
     "pyrogram",
     "python",
-    "sql",
+    "sql"
   ],
   "stack": "heroku-20",
   "repository": "https://github.com/levina-lab/guard-bot",
