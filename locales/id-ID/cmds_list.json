@@ -1,6 +1,8 @@
 {
-  "admin": "👮‍♂️ Administrasi",
-  "command_category_title": "Perintah dalam <b>{category}</b> kategori:",
+  "admin": "👮🏻♂️ Administrasi",
+  "command_category_title": "Daftar perintah di <b>{category}</b>:",
+  "select_command_category": "Silahkan pilih salah satu kategori di bawah ini untuk melihat perintah yang tersedia.",
   "general": "✨ Umum",
-  "tools": "🔧 Peralatan"
+  "tools": "🔧 Peralatan",
+  "group_help": "Hai, silahkan gunakan perintah di obrolan pribadi bot atau klik tombol di bawah ini untuk melihat perintah yang tersedia."
 }
