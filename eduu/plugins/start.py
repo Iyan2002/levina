@@ -68,7 +68,7 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
 @use_chat_lang()
 async def infos(c: Client, m: CallbackQuery, strings):
     res = strings("info_page").format(
-        version=eduu.__version__, version_code=c.version_code
+        version=eduu.__version__
     )
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
