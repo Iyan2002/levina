@@ -10,5 +10,7 @@
   "view_sticker_pack_btn": "View",
   "create_new_pack_string": "Creating a new sticker pack...",
   "invalid_media_string": "<b>Error:</b> <code>Invalid media<code>",
-  "cant_create_sticker_pack_string": "Oops, looks like I don't have enough permissions to create sticker pack for you!\n<b>Please start the bot first.</b>"
+  "cant_create_sticker_pack_string": "Oops, looks like I don't have enough permissions to create sticker pack for you!\n<b>Please start the bot first.</b>",
+  "fetch_sticker_id": "Reply to a sticker !",
+  "fetch_sticker_data": "Reply to a sticker !"
 }
