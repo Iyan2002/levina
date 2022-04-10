@@ -38,5 +38,6 @@
   "reason_string": "Reason: {reason_text}",
   "i_cant_ban_admins": "I can't ban admins.",
   "i_cant_mute_admins": "I can't mute admins.",
-  "i_cant_kick_admins": "I can't kick admins."
+  "i_cant_kick_admins": "I can't kick admins.",
+  "saving_note_usage": "Give notes to save!"
 }
