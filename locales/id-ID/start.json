@@ -6,6 +6,6 @@
   "private": "👋🏻 Hai yang di sana!\n\n💭 <a href=\"https://t.me/GroupsGuardRobot\">Groups Guard</a> Bot adalah **bot terlengkap** untuk membantu anda mengelola Grup **dengan mudah** dan **aman**.\n\n❓ Cukup tekan tombol **📚 Commands** di bawah ini untuk melihat semua perintah bot atau tekan /help",
   "start_chat": "🤖 Hubungi Bot",
   "group": "Halo, saya Guards Bot!\n\nUntuk menemukan fungsi saya, silakan mulai percakapan dengan saya.",
-  "info_page": "• Groups Guard Bot\n\n🔖 Versi bot: {version} ({version_code})\n🧑🏼💻 Developer: @dlwrml\n\n**Groups Guard** adalah bot yang dikembangkan di **Python3** dan menggunakan Pyrogram sebagai framework dengan sql sebagai database.",
+  "info_page": "• Groups Guard Bot\n\n🔖 Versi bot: {version} (736)\n🧑🏼💻 Developer: @dlwrml\n\n**Groups Guard** adalah bot yang dikembangkan di **Python3** dan menggunakan Pyrogram sebagai framework dengan sql sebagai database.",
   "start_description": "mulai bot !"
 }
