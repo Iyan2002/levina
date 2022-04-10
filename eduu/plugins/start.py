@@ -49,7 +49,7 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
                 ],
             ]
         )
-        await method(strings("private"), reply_markup=keyboard)
+        await method(strings("private"), reply_markup=keyboard, disable_web_page_preview=True)
     else:
         keyboard = InlineKeyboardMarkup(
             inline_keyboard=[
@@ -61,7 +61,7 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
                 ]
             ]
         )
-        await method(strings("group"), reply_markup=keyboard)
+        await method(strings("group"), reply_markup=keyboard, disable_web_page_preview=True)
 
 
 @Client.on_callback_query(filters.regex("^infos$"))
