@@ -7,5 +7,6 @@
   "ytdl_send_error": "Maaf! Saya tidak bisa mengirim video karena error.\n<b>Error:</b> <code>{errmsg}</code>",
   "ytdl_downloading": "Mengunduh...",
   "ytdl_button_denied": "Tombol ini bukan untukmu.",
-  "download_description": "Unduh sebuah video/audio dari youtube."
+  "download_description": "Unduh sebuah video/audio dari youtube.",
+  "search_description": "Cari tautan video/musik dari youtube."
 }
