@@ -1,11 +1,9 @@
-# Using AmanoTeam Pyrogram's
 git+https://github.com/AmanoTeam/pyrogram.git#egg=Pyrogram
-tgcrypto  # To increase Pyrogram speed
+tgcrypto
 
-# To increase general speed and stability. Ignored under Windows
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
-# Plugins Deps
+python-ffmpeg==1.0.13
 gpytranslate==1.4.0
 meval==2.5
 speedtest-cli
