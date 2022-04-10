@@ -7,5 +7,6 @@
   "ytdl_send_error": "Sorry! I couldn't send the video because of an error.\n<b>Error:</b> <code>{errmsg}</code>",
   "ytdl_downloading": "Downloading...",
   "ytdl_button_denied": "This button is not for you.",
-  "download_description": "Download a video/audio via youtube."
+  "download_description": "Download a video/audio via youtube.",
+  "search_description": "Search a video/music link from youtube."
 }
