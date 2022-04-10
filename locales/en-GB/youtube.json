@@ -6,5 +6,6 @@
   "ytdl_file_too_big": "Sorry! I can't download this media because it exceeds my 200MB upload limit.",
   "ytdl_send_error": "Sorry! I couldn't send the video because of an error.\n<b>Error:</b> <code>{errmsg}</code>",
   "ytdl_downloading": "Downloading...",
-  "ytdl_button_denied": "This button is not for you."
+  "ytdl_button_denied": "This button is not for you.",
+  "download_description": "Download a video/audio via youtube."
 }
