@@ -76,7 +76,15 @@ async def ytdlcmd(c: Client, m: Message, strings):
         return
 
     ydl = yt_dlp.YoutubeDL(
-        {"outtmpl": "dls/%(title)s-%(id)s.%(ext)s", "format": "mp4", "noplaylist": True}
+        {
+            "geo-bypass": True,
+            "noprogress": True,
+            "outtmpl": "dls/%(title)s-%(id)s.%(ext)s",
+            "format": "mp4",
+            "noplaylist": True,
+            "nocheckcertificate": True,
+            "quite": True,
+        }
     )
     rege = re.match(
         r"http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?",
@@ -156,6 +164,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
                 "format": vformat,
                 "noplaylist": True,
+                "geo-bypass": True,
+                "noprogress": True,
+                "nocheckcertificate": True,
+                "quite": True,
             }
         )
     else:
@@ -165,6 +177,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 "format": "140",
                 "extractaudio": True,
                 "noplaylist": True,
+                "geo-bypass": True,
+                "noprogress": True,
+                "nocheckcertificate": True,
+                "quite": True,
             }
         )
     try:
