@@ -8,6 +8,7 @@
     "python",
     "sql",
   ],
+  "stack": "heroku-20",
   "repository": "https://github.com/levina-lab/guard-bot",
   "env": {
     "API_ID": {
