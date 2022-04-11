@@ -77,10 +77,12 @@ async def ytdlcmd(c: Client, m: Message, strings):
 
     ydl = yt_dlp.YoutubeDL(
         {
+            "format": "best",
+            "outtmpl": "dls/%(title)s-%(id)s.%(ext)s",
+            "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
+            "extractor-args": "youtube:player_client=all",
             "geo-bypass": True,
             "noprogress": True,
-            "outtmpl": "dls/%(title)s-%(id)s.%(ext)s",
-            "format": "mp4",
             "noplaylist": True,
             "nocheckcertificate": True,
             "quite": True,
@@ -161,8 +163,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
     if "vid" in data:
         ydl = yt_dlp.YoutubeDL(
             {
-                "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
                 "format": vformat,
+                "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
+                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
+                "extractor-args": "youtube:player_client=all",
                 "noplaylist": True,
                 "geo-bypass": True,
                 "noprogress": True,
@@ -173,12 +177,14 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
     else:
         ydl = yt_dlp.YoutubeDL(
             {
+                "format": "best",
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
-                "format": "140",
-                "extractaudio": True,
+                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
+                "extractor-args": "youtube:player_client=all",
                 "noplaylist": True,
                 "geo-bypass": True,
                 "noprogress": True,
+                "extractaudio": True,
                 "nocheckcertificate": True,
                 "quite": True,
             }
