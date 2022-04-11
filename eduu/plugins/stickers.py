@@ -33,6 +33,9 @@ async def kang_sticker(c: Client, m: Message, strings):
     animated = False
     reply = m.reply_to_message
     user = await c.resolve_peer(m.from_user.username or m.from_user.id)
+    if not reply and reply.media:
+        await m.reply_text(strings("give_sticker_to_kang"))
+        return
     if reply and reply.media:
         if reply.photo:
             resize = True
@@ -217,7 +220,6 @@ async def kang_sticker(c: Client, m: Message, strings):
         await prog_msg.edit_text(
             kanged_success_msg.format(sticker_emoji=sticker_emoji), reply_markup=markup
         )
-        # Cleanup
         try:
             os.remove(filename)
         except OSError:
@@ -242,7 +244,7 @@ def resize_image(filename: str) -> str:
 @Client.on_message(filters.command("stickerid", prefix) & filters.reply)
 @use_chat_lang()
 async def getstickerid(c: Client, m: Message, strings):
-    if len(m.command) == 1:
+    if not m.reply_to_message.sticker:
         await m.reply_text(strings("fetch_sticker_id"))
         return
     if m.reply_to_message.sticker:
@@ -257,11 +259,9 @@ async def getstickerid(c: Client, m: Message, strings):
 @use_chat_lang()
 async def getstickeraspng(c: Client, m: Message, strings):
     sticker = m.reply_to_message.sticker
-    
-    if len(m.command) == 1:
+    if not sticker:
         await m.reply_text(strings("fetch_sticker_data"))
         return
-    
     if sticker:
         if sticker.is_animated:
             await m.reply_text(strings("animated_not_supported"))
