@@ -3,7 +3,7 @@
   "animated_not_supported": "Animated stickers are not supported.",
   "sticker_info": "<b>Emoji:</b> {emoji}\n<b>Sticker ID:</b> <code>{id}</code>",
   "not_sticker": "That's not a sticker.",
-  "kanging_sticker_msg": "<code>Kanging sticker...</code>",
+  "kanging_sticker_msg": "<code>Creating sticker...</code>",
   "sticker_kanged_string": "Sticker <b>successfully</b> added to pack\nEmoji: {sticker_emoji}",
   "use_existing_pack": "<code>Using existing sticker pack...</code>",
   "err_sticker_no_file_name": "<b>Error</b>: <code>This sticker doesn't a have filename!</code>",
@@ -13,7 +13,7 @@
   "cant_create_sticker_pack_string": "Oops, looks like I don't have enough permissions to create sticker pack for you!\n<b>You need to start this bot first.</b>",
   "fetch_sticker_id": "Reply to a sticker !",
   "fetch_sticker_data": "Reply to a sticker !",
-  "kang_description": "Steal people's stickers and add them to your sticker pack.",
+  "kang_description": "Steal people's sticker/create new sticker and add it to your sticker pack.",
   "getsticker_description": "Reply to a sticker to get the sticker info.",
   "stickerid_description": "Reply to a sticker to get the sticker id.",
   "give_sticker_to_kang": "Reply to sticker you want to kang."
