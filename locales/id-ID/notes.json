@@ -5,5 +5,8 @@
   "note_description": "Catatan dibuat untuk obrolan ini.",
   "notes_list": "Catatan dalam obrolan ini:\n\n",
   "notes_list_empty": "Saat ini tidak ada catatan dalam obrolan ini.",
-  "remove_note_success": "<b>{trigger}</b> dihapus dari catatan."
+  "remove_note_success": "<b>{trigger}</b> dihapus dari catatan.",
+  "saving_note_usage": "Berikan catatan untuk disimpan!",
+  "clear_description": "Hapus sebuah catatan.",
+  "save_description": "Simpan sebuah catatan.",
 }
