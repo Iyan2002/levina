@@ -6,12 +6,17 @@
   "mark_description": "Format teks yang disediakan dengan sintaksis Markdown.",
   "mark_usage": "<b>Penggunaan:</b> <code>/mark **teks** dalam __markdown__</code> - Format teks yang disediakan dengan sintaksis Markdown.",
   "token_description": "Dapatkan informasi dari yang di sediakan token bot.",
+  "no_bot_token": "Anda harus memberikan token bot.",
   "bot_token_invalid": "Token bot tidak valid.",
+  "bot_token_info": "<b>Nama</b>: <code>{botname}</code>\n<b>Username</b>: <code>{botusername}</code>\n<b>ID</b>: <code>{botid}</code>",
   "urldecode_description": "Enkode teks yang disediakan dengan pengkodean URL yang aman.",
   "urlencode_description": "Dekode teks yang disediakan dari pengkodean URL yang aman.",
+  "parsebtn_err": "Anda harus menentukan url dan teks untuk tombol, E.g.: <code>/parsebutton https://google.com text</code>.",
   "parsebutton_description": "Membantu anda untuk menguraikan tombol.",
   "bug_reported_success_to_bot_admins": "Bug telah berhasil dilaporkan.",
   "err_cant_send_bug_report_to_bot_admins": "Galat, saya tidak bisa mengirim laporan bug ke admin bot.",
-  "donatecmdstring": "Jika anda menyukai proyek dan ingin melanjutkan secara gratis dan tetap bertahan daring nya, silakan tunjukkan dukungan anda dengan melakukan berdonasi dengan mengklik tautan dibawah ini. Berapapun nilainya sangat dihargai. Terima kasih!\n\nhttps://amanoteam.com/donate",
-  "report_admns": "{admins_list}{reported_user} Melaporkan kepada admin."
+  "err_no_bug_to_report": "Anda harus menentukan bug untuk dilaporkan, E.g.: <code>/bug deskripsi bug</code>.",
+  "donate_description": "Dapatkan informasi mengenai cara berdonasi.",
+  "donatecmdstring": "Jika anda menyukai proyek ini dan ingin bot tetap berjalan dengan semestinya, silakan tunjukkan dukungan anda dengan melakukan donasi kepada developer bot ini dengan mengklik tautan dibawah ini. Berapapun nilainya sangat dihargai. Terima kasih!\n\nhttps://trakteer.id/levina-crqid/tip",
+  "report_admns": "{admins_list}{reported_user} Dilaporkan kepada admin."
 }
