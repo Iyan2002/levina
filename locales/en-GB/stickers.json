@@ -15,5 +15,6 @@
   "fetch_sticker_data": "Reply to a sticker !",
   "kang_description": "Steal people's stickers and add them to your sticker pack.",
   "getsticker_description": "Reply to a sticker to get the sticker info.",
-  "stickerid_description": "Reply to a sticker to get the sticker id."
+  "stickerid_description": "Reply to a sticker to get the sticker id.",
+  "give_sticker_to_kang": "Reply to sticker you want to kang."
 }
