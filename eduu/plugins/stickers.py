@@ -250,8 +250,7 @@ async def getstickerid(c: Client, m: Message, strings):
     sticker = m.reply_to_message.sticker
     if not sticker:
         await m.reply_text(strings("fetch_sticker_id"))
-        return
-    if sticker:
+    else:
         await m.reply_text(
             strings("get_sticker_id_string").format(
                 stickerid=m.reply_to_message.sticker.file_id
@@ -265,8 +264,7 @@ async def getstickeraspng(c: Client, m: Message, strings):
     sticker = m.reply_to_message.sticker
     if not sticker:
         await m.reply_text(strings("fetch_sticker_data"))
-        return
-    if sticker:
+    else:
         if sticker.is_animated:
             await m.reply_text(strings("animated_not_supported"))
         elif not sticker.is_animated:
