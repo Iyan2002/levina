@@ -24,23 +24,21 @@ from eduu.utils.localization import use_chat_lang
 @Client.on_message(filters.command(["kang", "sticker", "steal"], prefix))
 @use_chat_lang()
 async def kang_sticker(c: Client, m: Message, strings):
-    prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
+    if not m.reply_to_message:
+        await m.reply_text(strings("give_sticker_to_kang"))
+        return
+
     packnum = 0
     sticker_emoji = "🐹"
     bot_username = c.me.username
+    reply = m.reply_to_message
+    user = await c.resolve_peer(m.from_user.username or m.from_user.id)
+    
     resize = False
     animated = False
     packname_found = False
-    reply = m.reply_to_message
-    user = await c.resolve_peer(m.from_user.username or m.from_user.id)
-    if not (
-        reply,
-        reply.photo,
-        reply.sticker,
-        reply.document,
-    ):
-        await prog_msg.edit_text(strings("give_sticker_to_kang"))
-        return
+    prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
+    
     if reply and reply.media:
         if reply.photo:
             resize = True
@@ -60,7 +58,8 @@ async def kang_sticker(c: Client, m: Message, strings):
             if not reply.sticker.file_name.endswith(".tgs"):
                 resize = True
         else:
-            return await prog_msg.edit_text(strings("invalid_media_string"))
+            await prog_msg.edit_text(strings("invalid_media_string"))
+            return
         pack_prefix = "anim" if animated else "a"
         packname = f"{pack_prefix}_{m.from_user.id}_by_{bot_username}"
 
