@@ -1,3 +1,4 @@
 {
-  "telegraph_err_no_reply": "Please reply to a photo or video."
+  "telegraph_err_no_reply": "Reply to a photo or video.",
+  "telegraph_description": "Upload a photo or video to telegra.ph"
 }
