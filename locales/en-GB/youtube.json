@@ -8,5 +8,7 @@
   "ytdl_downloading": "Downloading...",
   "ytdl_button_denied": "This button is not for you.",
   "download_description": "Download a video/audio via youtube.",
-  "search_description": "Search a video/music link from youtube."
+  "search_description": "Search a video/music link from youtube.",
+  "youtube_search_usage": "Give a music/video title to search !",
+  "youtube_download_usage": "Give a music/video title to download !"
 }
