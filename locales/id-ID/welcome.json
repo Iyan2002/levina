@@ -1,1 +1,15 @@
-{}
+{
+  "resetwelcome_description": "Atur ulang pesan selamat datang ke pesan selamat datang bawaan bot.",
+  "setwelcome_description": "Atur pesan selamat datang ke pesan yang ditentukan. Untuk bantuan pemformatan, lihat /welcomeformat.",
+  "welcome_default": "Hai {first_name}, selamat datang di {chat_title}!",
+  "welcome_description": "Atur pesan selamat datang ke on atau off.",
+  "welcome_mode_disable": "Notifikasi selamat datang untuk {chat_title} telah dimatikan.",
+  "welcome_mode_enable": "Notifikasi selamat datang untuk {chat_title} telah dihidupkan.",
+  "welcome_mode_invalid": "Argumen tidak valid. Gunakan <code>/welcome off/on</code>.",
+  "welcome_reset": "Notifikasi selamat datang untuk {chat_title} telah diatur ke pesan selamat datang bawaan bot.",
+  "welcome_set_empty": "Anda harus menentukan pesan untuk selamat datang, Cth: <code>/setwelcome pesan selamat datang</code>. Untuk bantuan pemformatan, <a href=\"https://t.me/{bot_username}?start=welcome_format_help\">klik disini</a>.",
+  "welcome_set_error": "Ada kesalahan dan pesan selamat datang tidak dapat diatur. Error: {error}",
+  "welcome_set_success": "Notifikasi selamat datang untuk {chat_title} berhasil diatur.",
+  "welcome_format_help_msg": "Pesan dapat diformat dalam format html atau dengan formatter teks bawaan Telegram. Anda dapat menggunakan perintah /html untuk memverifikasi bahwa html anda benar.\n\nAnda dapat menggunakan argumen ini untuk pesan selamat datang:\n - <code>{id}</code> Untuk menampilkan ID pengguna di pesan selamat datang.\n - <code>{username}</code> Untuk menampilkan username pengguna dalam pesan selamat datang. Jika pengguna tidak memiliki username, bot akan menunjukkan penyebutan.\n - <code>{first_name}</code> Untuk menampilkan nama pengguna di pesan selamat datang.\n - <code>{full_name}</code> atau <code>{name}</code> Untuk menampilkan nama lengkap pengguna dalam pesan selamat datang.\n - <code>{mention}</code> Untuk menyebutkan pengguna dalam pesan selamat datang.\n - <code>{chat_title}</code> atau <code>{title}</code> Untuk menampilkan judul obrolan di pesan selamat datang.\n - <code>{count}</code> Untuk menampilkan jumlah anggota obrolan dalam pesan selamat datang.\n\nUntuk menambahkan tombol, anda dapat menggunakan <code>[button text](buttonurl:button link)</code>. Untuk menambahkan lebih banyak tombol pada baris yang sama, anda dapat menambahkan :same setelah tautan, seperti ini: <code>[teks tombol](buttonurl:link tombol:same)</code>.",
+  "welcomeformat_description": "Help you format the welcome message."
+}
