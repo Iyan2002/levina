@@ -10,7 +10,7 @@ from pyrogram.types import (
 )
 
 from eduu.config import prefix
-from eduu.utils import require_admin
+from eduu.utils import commands, require_admin
 from eduu.utils.localization import (
     default_language,
     get_locale_string,
@@ -73,7 +73,6 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
         if msg.chat.type == "private"
         else strings("language_changer_chat")
     )
-
     await sender(res, reply_markup=keyboard)
 
 
@@ -106,3 +105,6 @@ async def set_chat_lang(c: Client, m: CallbackQuery, strings):
     await m.message.edit_text(
         strings("language_changed_successfully"), reply_markup=keyboard
     )
+
+
+commands.add_command("language", "tools")
