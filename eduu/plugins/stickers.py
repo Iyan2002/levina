@@ -32,7 +32,7 @@ async def kang_sticker(c: Client, m: Message, strings):
     animated = False
     reply = m.reply_to_message
     user = await c.resolve_peer(m.from_user.username or m.from_user.id)
-    if not reply and reply.media:
+    if not reply and not reply.media:
         await m.reply_text(strings("give_sticker_to_kang"))
         return
     if reply and reply.media:
@@ -72,7 +72,6 @@ async def kang_sticker(c: Client, m: Message, strings):
                 )
         filename = await c.download_media(m.reply_to_message)
         if not filename:
-            # Failed to download
             await prog_msg.delete()
             return
     elif m.entities and len(m.entities) > 1:
@@ -138,7 +137,7 @@ async def kang_sticker(c: Client, m: Message, strings):
                     mime_type=c.guess_mime_type(filename),
                     attributes=[DocumentAttributeFilename(file_name=filename)],
                 ),
-                message=f"Kanged by UserID -> {m.from_user.id}",
+                message=f"Kanged by -> {m.from_user.id}",
                 random_id=c.rnd_id(),
             )
         )
@@ -168,7 +167,7 @@ async def kang_sticker(c: Client, m: Message, strings):
             stkr_title = f"{u_name}'s "
             if animated:
                 stkr_title += "Anim. "
-            stkr_title += "EduuPack"
+            stkr_title += "GuardPack"
             if packnum != 0:
                 stkr_title += f" v{packnum}"
             try:
@@ -244,7 +243,7 @@ def resize_image(filename: str) -> str:
 @Client.on_message(filters.command("stickerid", prefix) & filters.reply)
 @use_chat_lang()
 async def getstickerid(c: Client, m: Message, strings):
-    if not m.reply_to_message.sticker:
+    if not m.reply_to_message.sticker and not m.reply_to_message:
         await m.reply_text(strings("fetch_sticker_id"))
         return
     if m.reply_to_message.sticker:
@@ -259,7 +258,8 @@ async def getstickerid(c: Client, m: Message, strings):
 @use_chat_lang()
 async def getstickeraspng(c: Client, m: Message, strings):
     sticker = m.reply_to_message.sticker
-    if not sticker:
+    message = m.reply_to_message
+    if not sticker and not message:
         await m.reply_text(strings("fetch_sticker_data"))
         return
     if sticker:
