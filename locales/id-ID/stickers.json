@@ -13,5 +13,7 @@
   "cant_create_sticker_pack_string": "Oops, sepertinya saya tidak memiliki cukup izin untuk membuat paket stiker untuk anda!\n<b>Anda harus memulai bot ini terlebih dulu.</b>",
   "fetch_sticker_id": "Balas ke sebuah stiker !",
   "fetch_sticker_data": "Balas ke sebuah stiker !",
-  "kang_description": "Curi stiker orang dan tambahkan ke paket stiker mu."
+  "kang_description": "Curi stiker orang dan tambahkan ke paket stiker mu.",
+  "getsticker_description": "Balas ke stiker untuk mendapatkan info stiker.",
+  "stickerid_description": "Balas ke stiker untuk mendapatkan id stiker."
 }
