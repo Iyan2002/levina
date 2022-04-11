@@ -217,10 +217,10 @@ async def getbotstats(c: Client, m: Message):
 
     await m.reply_text(
         "📊 <b>GroupsGuard Graph:</b>\n\n"
-        f"• <b>Users:</b> <code>{users_count}</code>\n"
-        f"• <b>Groups:</b> <code>{groups_count}</code>\n"
-        f"• <b>Filters:</b> <code>{filters_count}</code>\n"
-        f"• <b>Notes:</b> <code>{notes_count}</code>\n\n"
+        f"• Users: <code>{users_count}</code>\n"
+        f"• Groups: <code>{groups_count}</code>\n"
+        f"• Chat Notes: <code>{notes_count}</code>\n"
+        f"• Chat Filters: <code>{filters_count}</code>\n\n"
         f"<b>Uptime:</b> <code>{bot_uptime}</code>"
     )
 
