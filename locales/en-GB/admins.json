@@ -7,13 +7,13 @@
   "antichannelpin_status_enabled": "Anti channel pin is currently enabled in this chat.",
   "ban_description": "Bans a user from chat.",
   "ban_success": "{user} has been banned by {admin}.",
-  "cleanservice_description": "Clean service messages (E.g.: When a user joins the chat) from the chat.",
+  "cleanservice_description": "Clean service messages (E.g: When a user joins the chat) from the chat.",
   "cleanservice_disabled": "Delete service messages for this chat is now disabled.",
   "cleanservice_enabled": "Delete service messages for this chat is now enabled.",
   "cleanservice_invalid_arg": "Invalid argument. Use <code>/cleanservice off/on</code>.",
   "cleanservice_status_disabled": "Delete service messages is currently disabled in this chat.",
   "cleanservice_status_enabled": "Delete service messages is currently enabled in this chat.",
-  "error_must_specify_time": "You must specify a time after the command. E.g.: <code>/{command} 7d</code>.",
+  "error_must_specify_time": "You must specify a time after the command. E.g: <code>/{command} 7d</code>.",
   "kick_description": "Kicks a user from chat.",
   "kick_success": "{user} has been kicked by {admin}.",
   "mute_description": "Mutes a user in the chat.",
@@ -39,5 +39,9 @@
   "i_cant_ban_admins": "I can't ban admins.",
   "i_cant_mute_admins": "I can't mute admins.",
   "i_cant_kick_admins": "I can't kick admins.",
-  "saving_note_usage": "Give notes to save!"
+  "saving_note_usage": "Give notes to save!",
+  "clear_description": "Remove a note from the list.",
+  "Save_description": "Save a note.",
+  "setwarnaction_description": "Specify penalties for users who are alerted.",
+  "setwarns_description": "Specify the number of alerts for the user."
 }
