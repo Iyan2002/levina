@@ -17,5 +17,6 @@
   "warns_action_set_string": "Hukuman untuk peringatan telah diatur ke: {action}.",
   "warns_action_set_invlaid": "Argumen tidak valid. Gunakan <code>/setwarnsaction ban/mute/kick</code>.",
   "warn_action_status": "Hukuman untuk peringatan obrolan ini adalah: {action}.",
-  "setwarnsaction_description": "Atur hukuman untuk peringatan. Kamu dapat menggunakan opsi: <code>ban/mute/kick</code>."
+  "setwarnaction_description": "Tentukan hukuman untuk peringatan. Kamu dapat menggunakan opsi: <code>ban/mute/kick</code>.",
+  "setwarns_description": "Tentukan jumlah peringatan untuk pengguna."
 }
