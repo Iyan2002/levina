@@ -7,7 +7,7 @@
   "antichannelpin_status_enabled": "Anti penyematan dari channel saat ini aktif untuk obrolan ini.",
   "ban_description": "Blokir pengguna dari obrolan.",
   "ban_success": "{user} telah diblokir oleh {admin}.",
-  "cleanservice_description": "Pembersihan pesan layanan (Cth.: Ketika pengguna gabung ke obrolan) dari obrolan.",
+  "cleanservice_description": "Pembersihan pesan layanan (Cth: Ketika pengguna gabung ke obrolan) dari obrolan.",
   "cleanservice_disabled": "Hapus pesan layanan untuk obrolan ini sekarang nonaktif.",
   "cleanservice_enabled": "Hapus pesan layanan untuk obrolan ini sekarang aktif.",
   "cleanservice_invalid_arg": "Argumen tidak valid. Gunakan <code>/cleanservice off/on</code>.",
@@ -39,5 +39,9 @@
   "i_cant_ban_admins": "Saya tidak bisa memblokir admin.",
   "i_cant_mute_admins": "Saya tidak bisa membisukan admin.",
   "i_cant_kick_admins": "Saya tidak bisa menendang admin.",
-  "saving_note_usage": "Berikan catatan untuk disimpan!"
+  "saving_note_usage": "Berikan catatan untuk disimpan!",
+  "clear_description": "Hapus sebuah catatan dari daftar.",
+  "Save_description": "Simpan sebuah catatan.",
+  "setwarnaction_description": "Tentukan hukuman untuk pengguna yang mendapat peringatan.",
+  "setwarns_description": "Tentukan jumlah peringatan untuk pengguna."
 }
