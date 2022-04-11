@@ -47,6 +47,7 @@ async def search_yt(query):
 
 
 @Client.on_message(filters.command(["yt", "search"], prefix))
+@use_chat_lang()
 async def yt_search_cmd(c: Client, m: Message, strings):
     if len(m.command) < 2:
         await m.reply_text(strings("youtube_search_usage"))
@@ -65,7 +66,6 @@ async def yt_search_cmd(c: Client, m: Message, strings):
 async def ytdlcmd(c: Client, m: Message, strings):
     if len(m.command) < 2:
         return await m.reply_text(strings("youtube_download_usage"))
-    
     if m.reply_to_message and m.reply_to_message.text:
         url = m.reply_to_message.text
     elif len(m.command) > 1:
