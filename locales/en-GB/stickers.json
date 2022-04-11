@@ -13,5 +13,7 @@
   "cant_create_sticker_pack_string": "Oops, looks like I don't have enough permissions to create sticker pack for you!\n<b>You need to start this bot first.</b>",
   "fetch_sticker_id": "Reply to a sticker !",
   "fetch_sticker_data": "Reply to a sticker !",
-  "kang_description": "Steal people's stickers and add them to your sticker pack."
+  "kang_description": "Steal people's stickers and add them to your sticker pack.",
+  "getsticker_description": "Reply to a sticker to get the sticker info.",
+  "stickerid_description": "Reply to a sticker to get the sticker id."
 }
