@@ -8,5 +8,7 @@
   "ytdl_downloading": "Mengunduh...",
   "ytdl_button_denied": "Tombol ini bukan untukmu.",
   "download_description": "Unduh sebuah video/audio dari youtube.",
-  "search_description": "Cari tautan video/musik dari youtube."
+  "search_description": "Cari tautan video/musik dari youtube.",
+  "youtube_search_usage": "Berikan judul musik/video untuk dicari !",
+  "youtube_download_usage": "Berikan judul musik/video untuk di unduh !"
 }
