@@ -1,14 +1,15 @@
 {
-  "add_note_success": "Catatan ditambahkan <b>{trigger}</b>.",
+  "add_note_success": "Catatan <b>{trigger}</b> disimpan.\nDapatkan dengan <code>/get {trigger}</code> atau <code>#{trigger}</code>",
   "add_note_empty": "Silakan menentukan isi konten untuk catatan.",
   "delnote_description": "Catatan dihapus dari obrolan ini.",
   "note_description": "Catatan dibuat untuk obrolan ini.",
-  "notes_description": "Lihat daftar catatan tersimpan di obrolan ini.",
+  "notes_description": "Lihat daftar catatan tersimpan di obrolan.",
   "notes_list": "Catatan dalam obrolan ini:\n\n",
-  "notes_list_empty": "Saat ini tidak ada catatan dalam obrolan ini.",
+  "notes_list_empty": "Tidak ada catatan di obrolan ini.",
   "no_note_with_name": "Tidak ada catatan dengan nama <b>{trigger}</b>.",
   "remove_note_success": "<b>{trigger}</b> dihapus dari catatan.",
+  "clear_note_usage": "Tentukan nama catatan untuk dihapus.",
   "saving_note_usage": "Berikan catatan untuk disimpan!",
   "clear_description": "Hapus sebuah catatan.",
-  "save_description": "Simpan sebuah catatan."
+  "save_description": "Simpan sebuah catatan dalam obrolan."
 }
