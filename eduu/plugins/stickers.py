@@ -24,7 +24,6 @@ from eduu.utils.localization import use_chat_lang
 @Client.on_message(filters.command(["kang", "sticker", "steal"], prefix))
 @use_chat_lang()
 async def kang_sticker(c: Client, m: Message, strings):
-    prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
     bot_username = c.me.username
     sticker_emoji = "🐹"
     packnum = 0
@@ -37,6 +36,7 @@ async def kang_sticker(c: Client, m: Message, strings):
         await m.reply_text(strings("give_sticker_to_kang"))
         return
     if reply and reply.media:
+        prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
         if reply.photo:
             resize = True
         elif reply.document:
