@@ -33,7 +33,12 @@ async def kang_sticker(c: Client, m: Message, strings):
     packname_found = False
     reply = m.reply_to_message
     user = await c.resolve_peer(m.from_user.username or m.from_user.id)
-    if not reply and not reply.media:
+    if not (
+        reply,
+        reply.photo,
+        reply.sticker,
+        reply.document,
+    ):
         await prog_msg.edit_text(strings("give_sticker_to_kang"))
         return
     if reply and reply.media:
@@ -166,7 +171,7 @@ async def kang_sticker(c: Client, m: Message, strings):
                 u_name = str(m.from_user.id)
             stkr_title = f"{u_name}'s "
             if animated:
-                stkr_title += "Anim. "
+                stkr_title += "anim. "
             stkr_title += "GuardPack"
             if packnum != 0:
                 stkr_title += f" v{packnum}"
