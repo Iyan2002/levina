@@ -247,10 +247,11 @@ def resize_image(filename: str) -> str:
 @Client.on_message(filters.command("stickerid", prefix) & filters.reply)
 @use_chat_lang()
 async def getstickerid(c: Client, m: Message, strings):
+    message = m.reply_to_message
     sticker = m.reply_to_message.sticker
-    if not sticker:
-        await m.reply_text(strings("fetch_sticker_id"))
-    else:
+    if not message:
+        return await m.reply_text(strings("fetch_sticker_id"))
+    if sticker:
         await m.reply_text(
             strings("get_sticker_id_string").format(
                 stickerid=m.reply_to_message.sticker.file_id
@@ -261,8 +262,9 @@ async def getstickerid(c: Client, m: Message, strings):
 @Client.on_message(filters.command("getsticker", prefix) & filters.reply)
 @use_chat_lang()
 async def getstickeraspng(c: Client, m: Message, strings):
+    message = m.reply_to_message
     sticker = m.reply_to_message.sticker
-    if not sticker:
+    if not message:
         return await m.reply_text(strings("fetch_sticker_data"))
     if sticker:
         if sticker.is_animated:
