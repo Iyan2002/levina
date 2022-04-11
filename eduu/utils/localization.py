@@ -15,21 +15,6 @@ from eduu.utils.consts import group_types
 enabled_locales: List[str] = [
     "en-GB",  # English
     "id-ID",  # Indonesian
-    "it-IT",  # Italian
-    "ar-SA",  # Arabic
-    "ckb-IR", # Sorani (Kurdish)
-    "de-DE",  # German
-    "es-ES",  # Spanish
-    "fr-FR",  # French
-    "he-IL",  # Hebrew
-    "ja-JP",  # Japanese
-    "pt-BR",  # Portuguese (Brazil)
-    "ro-RO",  # Romanian
-    "ru-RU",  # Russian
-    "tr-TR",  # Turkish
-    "uk-UA",  # Ukranian
-    "zh-CN",  # Chinese (Simplified)
-    "zh-TW",  # Chinese (Traditional)
 ]
 
 default_language: str = "en-GB"
