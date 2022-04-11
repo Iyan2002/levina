@@ -67,7 +67,7 @@ async def save_note(c: Client, m: Message, strings):
     split_text = split_quotes(args[1])
     trigger = split_text[0].lower()
     
-    if len(m.command) == 1:
+    if len(m.command) < 2:
         await m.reply_text(strings("saving_note_usage"))
         return
     
@@ -141,6 +141,9 @@ async def delete_note(c: Client, m: Message, strings):
     trigger = args[1].lower()
     chat_id = m.chat.id
     check_note = check_for_notes(chat_id, trigger)
+    if len(m.command) < 2:
+        await m.reply_text(strings("clear_note_usage"))
+        return
     if check_note:
         rm_note(chat_id, trigger)
         await m.reply_text(
@@ -161,7 +164,6 @@ async def get_all_chat_note(c: Client, m: Message, strings):
     for note_s in all_notes:
         keyword = note_s[1]
         reply_text += f" - {keyword} \n"
-
     if not all_notes:
         await m.reply_text(strings("notes_list_empty"), quote=True)
     else:
