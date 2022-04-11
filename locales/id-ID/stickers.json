@@ -15,5 +15,6 @@
   "fetch_sticker_data": "Balas ke sebuah stiker !",
   "kang_description": "Curi stiker orang dan tambahkan ke paket stiker mu.",
   "getsticker_description": "Balas ke stiker untuk mendapatkan info stiker.",
-  "stickerid_description": "Balas ke stiker untuk mendapatkan id stiker."
+  "stickerid_description": "Balas ke stiker untuk mendapatkan id stiker.",
+  "give_sticker_to_kang": "Balas ke stiker yang mau kamu curi."
 }
