@@ -248,10 +248,9 @@ def resize_image(filename: str) -> str:
 @use_chat_lang()
 async def fetch_sticker_id(c: Client, m: Message, strings):
     message = m.reply_to_message
-    sticker = m.reply_to_message.sticker
     if not message:
         return await m.reply_text(strings("fetch_sticker_id"))
-    if sticker:
+    if message.sticker:
         await m.reply_text(
             strings("get_sticker_id_string").format(
                 stickerid=m.reply_to_message.sticker.file_id
@@ -263,22 +262,21 @@ async def fetch_sticker_id(c: Client, m: Message, strings):
 @use_chat_lang()
 async def fetch_sticker_data(c: Client, m: Message, strings):
     message = m.reply_to_message
-    sticker = m.reply_to_message.sticker
     if not message:
         return await m.reply_text(strings("fetch_sticker_data"))
-    if sticker:
-        if sticker.is_animated:
+    if message.sticker:
+        if message.sticker.is_animated:
             await m.reply_text(strings("animated_not_supported"))
-        elif not sticker.is_animated:
+        elif not message.sticker.is_animated:
             with tempfile.TemporaryDirectory() as tempdir:
                 path = os.path.join(tempdir, "getsticker")
             sticker_file = await c.download_media(
-                message=m.reply_to_message,
-                file_name=f"{path}/{sticker.set_name}.png",
+                text_resp = m.reply_to_message,
+                file_name = f"{path}/{sticker.set_name}.png",
             )
             await m.reply_to_message.reply_document(
-                document=sticker_file,
-                caption=strings("sticker_info").format(
+                document = sticker_file,
+                caption = strings("sticker_info").format(
                     emoji=sticker.emoji, id=sticker.file_id
                 ),
             )
