@@ -77,13 +77,11 @@ async def ytdlcmd(c: Client, m: Message, strings):
     user = m.from_user.id
     ydl = yt_dlp.YoutubeDL(
         {
-            "format": "best",
+            "format": "mp4",
             "outtmpl": "dls/%(title)s-%(id)s.%(ext)s",
-            "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-            "extractor-args": "youtube:player_client=all",
+            "noplaylist": True,
             "geo-bypass": True,
             "noprogress": True,
-            "noplaylist": True,
             "nocheckcertificate": True,
             "quite": True,
         }
@@ -165,8 +163,6 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
             {
                 "format": vformat,
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
-                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-                "extractor-args": "youtube:player_client=all",
                 "noplaylist": True,
                 "geo-bypass": True,
                 "noprogress": True,
@@ -177,10 +173,8 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
     else:
         ydl = yt_dlp.YoutubeDL(
             {
-                "format": "best",
+                "format": "140",
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
-                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-                "extractor-args": "youtube:player_client=all",
                 "noplaylist": True,
                 "geo-bypass": True,
                 "noprogress": True,
@@ -191,7 +185,7 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
         )
     try:
         yt = await extract_info(ydl, url, download=True)
-    except BaseException as e:
+    except Exception as e:
         await cq.message.edit(strings("ytdl_send_error").format(errmsg=e))
         return
     await cq.message.edit(strings("ytdl_sending"))
@@ -203,11 +197,9 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
             await c.send_video(
                 int(cid),
                 filename,
-                width=1920,
-                height=1080,
+                thumb=thumb,
                 caption=ttemp + yt["title"],
                 duration=yt["duration"],
-                thumb=thumb,
                 reply_to_message_id=int(mid),
             )
         except BadRequest as e:
@@ -227,10 +219,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 int(cid),
                 filename,
                 title=title,
+                thumb=thumb,
                 performer=performer,
                 caption=ttemp[:-2],
                 duration=yt["duration"],
-                thumb=thumb,
                 reply_to_message_id=int(mid),
             )
         except BadRequest as e:
