@@ -1,5 +1,9 @@
-from pyrogram.types import Message
 from pyrogram import Client, filters
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 
 from eduu.utils import add_chat, chat_exists
 from eduu.utils.localization import use_chat_lang
@@ -19,12 +23,40 @@ async def check_chat(c: Client, m: Message):
 @use_chat_lang()
 async def new_chat(c: Client, m: Message, strings):
     chat_id = m.chat.id
+
     for new in m.new_chat_members:
+        keyboard_1 = InlineKeyboardMarkup(
+            inline_keyboard = [
+                [
+                    InlineKeyboardButton(
+                        strings("channel_button_txt"), url="https://t.me/levinachannel",
+                    ),
+                    InlineKeyboardButton(
+                        strings("support_button_txt"), url="https://t.me/VeezSupportGroup",
+                    )
+                ],
+            ]
+        )
+        keyboard_2 = InlineKeyboardMarkup(
+            inline_keyboard = [
+                [
+                    InlineKeyboardButton(
+                        strings("language_button_txt"), callback_data="chlang",
+                    ),
+                    InlineKeyboardButton(
+                        strings("commands_button_txt"), url="https://t.me/GroupsGuardRobot?start=help",
+                    )
+                ],
+            ]
+        )
+        
         try:
             if new.id == c.id:
                 return await m.reply_text(
-                    strings("greetings_add_chat"), reply_markup=keyboard
+                    strings("greetings_add_chat"), reply_markup=keyboard_1
                 )
-            return
+            return await m.reply_text(
+                strings("introducing_usages"), reply_markup=keyboard_2
+            )
         except Exception:
             return
