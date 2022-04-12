@@ -1,4 +1,8 @@
 {
+  "weather_language": "id-ID",
+  "measurement_unit": "m",
   "location_not_found": "Lokasi tidak ditemukan.",
-  "weather_language": "id-ID"
+  "weather_description": "Dapatkan informasi cuaca untuk lokasi atau kota tertentu.",
+  "weather_usage": "<b>Contoh:</b> <code>/weather nama kota atau daerah</code> - Dapatkan informasi tentang cuaca di <i>kota atau daerah</i>.",
+  "details": "<b>{location}</b>:\n\nTemperature: <code>{temperature} °C</code>\nTemperature rasanya seperti: <code>{feels_like} °C</code>\nKelembaban udara: <code>{air_humidity}%</code>\nKecepatan angin: <code>{wind_speed} km/h</code>\n\n- <i>{overview}</i>" 
 }
