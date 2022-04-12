@@ -1,4 +1,7 @@
 {
   "translating": "Menerjemahkan...",
-  "translation": "<b>Bahasa:</b> {from_lang} -> {to_lang}\n<b>Terjemahan:</b> <code>{translation}</code>"
+  "translation": "<b>Bahasa:</b> {from_lang} -> {to_lang}\n<b>Terjemahan:</b> <code>{translation}</code>",
+  "tr_description": "Terjemahkan teks ke dalam bahasa yang diberikan (default ke bahasa default obrolan).",
+  "translate_usage": "<b>Contoh:</b> <code>/tr &lt;language&gt; teks untuk diterjemahkan</code> (Dapat juga digunakan sebagai balasan atas pesan).",
+  "translate_inline_send": "Diterjemahkan dari {srclangformat} ke {tolangformat}"
 }
