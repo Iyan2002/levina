@@ -2,7 +2,7 @@ from typing import Optional, Tuple
 
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
-from pyrogram.types import InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from eduu.config import prefix
 from eduu.database import db, dbc
@@ -132,6 +132,7 @@ async def reset_welcome_message(c: Client, m: Message, strings):
 @Client.on_message(filters.new_chat_members & filters.group)
 @use_chat_lang()
 async def greet_new_members(c: Client, m: Message, strings):
+    chat_id = m.chat.id
     members = m.new_chat_members
     chat_title = m.chat.title
     first_name = ", ".join(map(lambda a: a.first_name, members))
@@ -143,40 +144,78 @@ async def greet_new_members(c: Client, m: Message, strings):
         map(lambda a: "@" + a.username if a.username else a.mention, members)
     )
     mention = ", ".join(map(lambda a: a.mention, members))
-    if not m.from_user.is_bot:
-        welcome, welcome_enabled = get_welcome(m.chat.id)
-        if welcome_enabled:
-            if welcome is None:
-                welcome = strings("welcome_default")
 
-            if "count" in get_format_keys(welcome):
-                count = await c.get_chat_members_count(m.chat.id)
-            else:
-                count = 0
+    for new in m.new_chat_members:
+        keyboard_1 = InlineKeyboardMarkup(
+            inline_keyboard = [
+                [
+                    InlineKeyboardButton(
+                        strings("channel_button_txt"), url="https://t.me/levinachannel",
+                    ),
+                    InlineKeyboardButton(
+                        strings("support_button_txt"), url="https://t.me/VeezSupportGroup",
+                    )
+                ],
+            ]
+        )
+        keyboard_2 = InlineKeyboardMarkup(
+            inline_keyboard = [
+                [
+                    InlineKeyboardButton(
+                        strings("language_button_txt"), callback_data="chlang",
+                    ),
+                    InlineKeyboardButton(
+                        strings("commands_button_txt"), url="https://t.me/GroupsGuardRobot?start=help",
+                    )
+                ],
+            ]
+        )
+        
+        try:
+            if m.from_user.is_bot:
+                return await m.reply_text(
+                    strings("greetings_add_chat"), reply_markup=keyboard_1
+                )
+            return await m.reply_text(
+                strings("introducing_usages"), reply_markup=keyboard_2
+            )
+        except Exception:
+            return
+        
+        if not m.from_user.is_bot:
+            welcome, welcome_enabled = get_welcome(m.chat.id)
+            if welcome_enabled:
+                if welcome is None:
+                    welcome = strings("welcome_default")
 
-            welcome = welcome.format(
-                id=user_id,
-                username=username,
-                mention=mention,
-                first_name=first_name,
-                # full_name and name are the same
-                full_name=full_name,
-                name=full_name,
-                # title and chat_title are the same
-                title=chat_title,
-                chat_title=chat_title,
-                count=count,
-            )
-            welcome, welcome_buttons = button_parser(welcome)
-            await m.reply_text(
-                welcome,
-                disable_web_page_preview=True,
-                reply_markup=(
-                    InlineKeyboardMarkup(welcome_buttons)
-                    if len(welcome_buttons) != 0
-                    else None
-                ),
-            )
+                if "count" in get_format_keys(welcome):
+                    count = await c.get_chat_members_count(m.chat.id)
+                else:
+                    count = 0
+
+                welcome = welcome.format(
+                    id=user_id,
+                    username=username,
+                    mention=mention,
+                    first_name=first_name,
+                    # full_name and name are the same
+                    full_name=full_name,
+                    name=full_name,
+                    # title and chat_title are the same
+                    title=chat_title,
+                    chat_title=chat_title,
+                    count=count,
+                )
+                welcome, welcome_buttons = button_parser(welcome)
+                await m.reply_text(
+                    welcome,
+                    disable_web_page_preview=True,
+                    reply_markup = (
+                        InlineKeyboardMarkup(welcome_buttons)
+                        if len(welcome_buttons) != 0
+                        else None
+                    ),
+                )
 
 
 commands.add_command("resetwelcome", "admin")
