@@ -272,12 +272,12 @@ async def fetch_sticker_data(c: Client, m: Message, strings):
                 path = os.path.join(tempdir, "getsticker")
             sticker_file = await c.download_media(
                 text_resp = m.reply_to_message,
-                file_name = f"{path}/{sticker.set_name}.png",
+                file_name = f"{path}/{message.sticker.set_name}.png",
             )
             await m.reply_to_message.reply_document(
                 document = sticker_file,
                 caption = strings("sticker_info").format(
-                    emoji=sticker.emoji, id=sticker.file_id
+                    emoji=message.sticker.emoji, id=message.sticker.file_id
                 ),
             )
             shutil.rmtree(tempdir, ignore_errors=True)
