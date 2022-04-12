@@ -1,4 +1,5 @@
 from pyrogram import Client
+from pyrogram.types import Message
 
 from eduu.utils import add_chat, chat_exists
 
