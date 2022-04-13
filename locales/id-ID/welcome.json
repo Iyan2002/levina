@@ -11,5 +11,11 @@
   "welcome_set_error": "Ada kesalahan dan pesan selamat datang tidak dapat diatur. Error: {error}",
   "welcome_set_success": "Notifikasi selamat datang untuk {chat_title} berhasil diatur.",
   "welcome_format_help_msg": "Pesan dapat diformat dalam format html atau dengan formatter teks bawaan Telegram. Anda dapat menggunakan perintah /html untuk memverifikasi bahwa html anda benar.\n\nAnda dapat menggunakan argumen ini untuk pesan selamat datang:\n - <code>{id}</code> Untuk menampilkan ID pengguna di pesan selamat datang.\n - <code>{username}</code> Untuk menampilkan username pengguna dalam pesan selamat datang. Jika pengguna tidak memiliki username, bot akan menunjukkan penyebutan.\n - <code>{first_name}</code> Untuk menampilkan nama pengguna di pesan selamat datang.\n - <code>{full_name}</code> atau <code>{name}</code> Untuk menampilkan nama lengkap pengguna dalam pesan selamat datang.\n - <code>{mention}</code> Untuk menyebutkan pengguna dalam pesan selamat datang.\n - <code>{chat_title}</code> atau <code>{title}</code> Untuk menampilkan judul obrolan di pesan selamat datang.\n - <code>{count}</code> Untuk menampilkan jumlah anggota obrolan dalam pesan selamat datang.\n\nUntuk menambahkan tombol, anda dapat menggunakan <code>[button text](buttonurl:button link)</code>. Untuk menambahkan lebih banyak tombol pada baris yang sama, anda dapat menambahkan :same setelah tautan, seperti ini: <code>[teks tombol](buttonurl:link tombol:same)</code>.",
-  "welcomeformat_description": "Help you format the welcome message."
+  "welcomeformat_description": "Membantu anda memformat pesan selamat datang.",
+  "introducing_usages": "❓ Untuk menemukan fungsi saya, klik tombol <b>Perintah</b> dan untuk mengubah bahasa bot, klik tombol <b>Bahasa</b>.",
+  "greetings_add_chat": "❤️ <b>Terima kasih</b> telah menambahkan saya ke <b>Grup</b> anda!\n\nJadikan saya sebagai <b>administrator</b> di grup ini agar saya dapat berfungsi dengan baik.",
+  "channel_button_txt": "📢 Saluran",
+  "support_button_txt": "🌐 Dukungan",
+  "language_button_txt": "🏳️‍🌈 Bahasa",
+  "commands_button_txt": "📚 Perintah"
 }
