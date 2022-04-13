@@ -13,6 +13,7 @@ async def telegraph(c: Client, m: Message, strings):
         if (
             m.reply_to_message.photo
             or m.reply_to_message.video
+            or m.reply_to_message.document
             or m.reply_to_message.animation
         ):
             d_file = await m.reply_to_message.download()
@@ -20,6 +21,7 @@ async def telegraph(c: Client, m: Message, strings):
                 "https://telegra.ph/upload", files={"upload-file": open(d_file, "rb")}
             )
             tele_link = "https://telegra.ph" + response.json()[0]["src"]
+
             await m.reply_text(tele_link)
     else:
         await m.reply_text(strings("telegraph_err_no_reply"))
