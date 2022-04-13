@@ -132,7 +132,6 @@ async def reset_welcome_message(c: Client, m: Message, strings):
 @Client.on_message(filters.new_chat_members & filters.group)
 @use_chat_lang()
 async def greet_new_members(c: Client, m: Message, strings):
-    chat_id = m.chat.id
     members = m.new_chat_members
     chat_title = m.chat.title
     first_name = ", ".join(map(lambda a: a.first_name, members))
@@ -144,8 +143,43 @@ async def greet_new_members(c: Client, m: Message, strings):
         map(lambda a: "@" + a.username if a.username else a.mention, members)
     )
     mention = ", ".join(map(lambda a: a.mention, members))
+    if not m.from_user.is_bot:
+        welcome, welcome_enabled = get_welcome(m.chat.id)
+        if welcome_enabled:
+            if welcome is None:
+                welcome = strings("welcome_default")
 
-    for new in m.new_chat_members:
+            if "count" in get_format_keys(welcome):
+                count = await c.get_chat_members_count(m.chat.id)
+            else:
+                count = 0
+
+            welcome = welcome.format(
+                id=user_id,
+                username=username,
+                mention=mention,
+                first_name=first_name,
+                # full_name and name are the same
+                full_name=full_name,
+                name=full_name,
+                # title and chat_title are the same
+                title=chat_title,
+                chat_title=chat_title,
+                count=count,
+            )
+            welcome, welcome_buttons = button_parser(welcome)
+            await m.reply_text(
+                welcome,
+                disable_web_page_preview=True,
+                reply_markup=(
+                    InlineKeyboardMarkup(welcome_buttons)
+                    if len(welcome_buttons) != 0
+                    else None
+                ),
+            )
+    else:
+        chat_id = m.chat.id
+        user_ai = await c.get_me().id
         keyboard_1 = InlineKeyboardMarkup(
             inline_keyboard = [
                 [
@@ -170,52 +204,18 @@ async def greet_new_members(c: Client, m: Message, strings):
                 ],
             ]
         )
-        
-        try:
-            if m.from_user.is_bot:
-                return await m.reply_text(
-                    strings("greetings_add_chat"), reply_markup=keyboard_1
+        for new in m.new_chat_members:
+            try:
+                if new.id == user_ai:
+                    return await c.send_message(
+                        chat_id, strings("greetings_add_chat"), reply_markup=keyboard_1
+                    )
+                await asyncio.sleep(0.5) # sleep in 5 second for next message
+                return await c.send_message(
+                    chat_id, strings("introducing_usages"), reply_markup=keyboard_2
                 )
-            return await m.reply_text(
-                strings("introducing_usages"), reply_markup=keyboard_2
-            )
-        except Exception:
-            return
-        
-        if not m.from_user.is_bot:
-            welcome, welcome_enabled = get_welcome(m.chat.id)
-            if welcome_enabled:
-                if welcome is None:
-                    welcome = strings("welcome_default")
-
-                if "count" in get_format_keys(welcome):
-                    count = await c.get_chat_members_count(m.chat.id)
-                else:
-                    count = 0
-
-                welcome = welcome.format(
-                    id=user_id,
-                    username=username,
-                    mention=mention,
-                    first_name=first_name,
-                    # full_name and name are the same
-                    full_name=full_name,
-                    name=full_name,
-                    # title and chat_title are the same
-                    title=chat_title,
-                    chat_title=chat_title,
-                    count=count,
-                )
-                welcome, welcome_buttons = button_parser(welcome)
-                await m.reply_text(
-                    welcome,
-                    disable_web_page_preview=True,
-                    reply_markup = (
-                        InlineKeyboardMarkup(welcome_buttons)
-                        if len(welcome_buttons) != 0
-                        else None
-                    ),
-                )
+            except Exception:
+                return
 
 
 commands.add_command("resetwelcome", "admin")
