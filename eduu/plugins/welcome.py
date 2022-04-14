@@ -179,7 +179,7 @@ async def greet_new_members(c: Client, m: Message, strings):
                     else None
                 ),
             )
-    elif:
+    elif m.from_user.is_bot:
         chat_id = m.chat.id
         user_ai = await c.get_me().id
         keyboard_1 = InlineKeyboardMarkup(
