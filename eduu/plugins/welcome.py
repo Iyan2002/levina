@@ -37,7 +37,6 @@ def toggle_welcome(chat_id: int, mode: bool):
 @use_chat_lang()
 async def welcome_format_message_help(c: Client, m: Message, strings):
     await m.reply_text(strings("welcome_format_help_msg"))
-
     await m.stop_propagation()
 
 
@@ -145,6 +144,46 @@ async def greet_new_members(c: Client, m: Message, strings):
         map(lambda a: "@" + a.username if a.username else a.mention, members)
     )
     mention = ", ".join(map(lambda a: a.mention, members))
+    
+    chat_id = m.chat.id
+    user_ai = await c.get_me().id
+    keyboard_1 = InlineKeyboardMarkup(
+        inline_keyboard = [
+            [
+                InlineKeyboardButton(
+                    strings("channel_button_txt"), url="https://t.me/levinachannel",
+                ),
+                InlineKeyboardButton(
+                    strings("support_button_txt"), url="https://t.me/VeezSupportGroup",
+                )
+            ],
+        ]
+    )
+    keyboard_2 = InlineKeyboardMarkup(
+        inline_keyboard = [
+            [
+                InlineKeyboardButton(
+                    strings("language_button_txt"), callback_data="chlang",
+                ),
+                InlineKeyboardButton(
+                    strings("commands_button_txt"), url="https://t.me/GroupsGuardRobot?start=help",
+                )
+            ],
+        ]
+    )
+    for new in m.new_chat_members:
+        try:
+            if new.id == user_ai:
+                return await c.send_message(
+                    chat_id, strings("greetings_add_chat"), reply_markup=keyboard_1
+                )
+            await asyncio.sleep(0.5) # sleep in 5 second for next message
+            return await c.send_message(
+                chat_id, strings("introducing_usages"), reply_markup=keyboard_2
+            )
+        except Exception:
+            return
+
     if not m.from_user.is_bot:
         welcome, welcome_enabled = get_welcome(m.chat.id)
         if welcome_enabled:
@@ -170,7 +209,7 @@ async def greet_new_members(c: Client, m: Message, strings):
                 count=count,
             )
             welcome, welcome_buttons = button_parser(welcome)
-            return await m.reply_text(
+            await m.reply_text(
                 welcome,
                 disable_web_page_preview=True,
                 reply_markup=(
@@ -179,45 +218,6 @@ async def greet_new_members(c: Client, m: Message, strings):
                     else None
                 ),
             )
-    elif m.from_user.is_bot:
-        chat_id = m.chat.id
-        user_ai = await c.get_me().id
-        keyboard_1 = InlineKeyboardMarkup(
-            inline_keyboard = [
-                [
-                    InlineKeyboardButton(
-                        strings("channel_button_txt"), url="https://t.me/levinachannel",
-                    ),
-                    InlineKeyboardButton(
-                        strings("support_button_txt"), url="https://t.me/VeezSupportGroup",
-                    )
-                ],
-            ]
-        )
-        keyboard_2 = InlineKeyboardMarkup(
-            inline_keyboard = [
-                [
-                    InlineKeyboardButton(
-                        strings("language_button_txt"), callback_data="chlang",
-                    ),
-                    InlineKeyboardButton(
-                        strings("commands_button_txt"), url="https://t.me/GroupsGuardRobot?start=help",
-                    )
-                ],
-            ]
-        )
-        for new in m.new_chat_members:
-            try:
-                if new.id == user_ai:
-                    return await c.send_message(
-                        chat_id, strings("greetings_add_chat"), reply_markup=keyboard_1
-                    )
-                await asyncio.sleep(0.5) # sleep in 5 second for next message
-                return await c.send_message(
-                    chat_id, strings("introducing_usages"), reply_markup=keyboard_2
-                )
-            except Exception:
-                return
 
 
 commands.add_command("resetwelcome", "admin")
