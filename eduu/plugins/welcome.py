@@ -170,7 +170,7 @@ async def greet_new_members(c: Client, m: Message, strings):
                 count=count,
             )
             welcome, welcome_buttons = button_parser(welcome)
-            await m.reply_text(
+            return await m.reply_text(
                 welcome,
                 disable_web_page_preview=True,
                 reply_markup=(
@@ -179,8 +179,9 @@ async def greet_new_members(c: Client, m: Message, strings):
                     else None
                 ),
             )
-    else:
+    elif:
         chat_id = m.chat.id
+        user_ai = await c.get_me().id
         keyboard_1 = InlineKeyboardMarkup(
             inline_keyboard = [
                 [
@@ -207,7 +208,7 @@ async def greet_new_members(c: Client, m: Message, strings):
         )
         for new in m.new_chat_members:
             try:
-                if m.from_user.is_bot:
+                if new.id == user_ai:
                     return await c.send_message(
                         chat_id, strings("greetings_add_chat"), reply_markup=keyboard_1
                     )
