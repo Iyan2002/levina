@@ -3,7 +3,7 @@ tgcrypto
 
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
-python-ffmpeg==1.0.13
+python-ffmpeg==1.0.14
 gpytranslate==1.4.0
 meval==2.5
 speedtest-cli
