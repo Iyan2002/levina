@@ -2,10 +2,10 @@ import io
 import os
 import re
 import shutil
-import yt_dlp
 import tempfile
 import datetime
 
+from yt_dlp import YoutubeDL
 from pyrogram.helpers import ikb
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
@@ -16,8 +16,15 @@ from eduu.utils.localization import use_chat_lang
 from eduu.utils import aiowrap, http, pretty_size, commands
 
 
+YOUTUBE_REGEX = re.compile(
+    r"(?m)http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?"
+)
+
+MAX_FILESIZE = 200000000
+
+
 @aiowrap
-def extract_info(instance, url, download=True):
+def extract_info(instance: YoutubeDL, url: str, download=True):
     return instance.extract_info(url, download)
 
 
@@ -64,6 +71,10 @@ async def yt_search_cmd(c: Client, m: Message, strings):
 @use_chat_lang()
 async def ytdlcmd(c: Client, m: Message, strings):
     user = m.from_user.id
+    
+    afsize = 0
+    vfsize = 0
+    
     if len(m.command) == 1:
         await m.reply_text(strings("youtube_download_usage"))
         return
@@ -75,35 +86,20 @@ async def ytdlcmd(c: Client, m: Message, strings):
         await m.reply_text(strings("ytdl_missing_argument"))
         return
 
-    ydl = yt_dlp.YoutubeDL(
-        {
-            "format": "best",
-            "outtmpl": "dls/%(title)s-%(id)s.%(ext)s",
-            "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-            "extractor-args": "youtube:player_client=all",
-            "geo-bypass": True,
-            "noprogress": True,
-            "noplaylist": True,
-            "nocheckcertificate": True,
-            "quite": True,
-        }
-    )
-    rege = re.match(
-        r"http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?",
-        url,
-        re.M,
-    )
+    ydl = YoutubeDL({"noplaylist": True})
+
+    match = YOUTUBE_REGEX.match(url)
 
     if "t=" in url:
         temp = url.split("t=")[1].split("&")[0]
     else:
         temp = 0
 
-    if not rege:
+    if match:
+        yt = await extract_info(ydl, match.group(), download=False)
+    else:
         yt = await extract_info(ydl, "ytsearch:" + url, download=False)
         yt = yt["entries"][0]
-    else:
-        yt = await extract_info(ydl, rege.group(), download=False)
 
     for f in yt["formats"]:
         if f["format_id"] == "140":
@@ -116,11 +112,11 @@ async def ytdlcmd(c: Client, m: Message, strings):
         [
             (
                 strings("ytdl_audio_button"),
-                f'_aud.{yt["id"]}|{afsize}|{temp}|{vformat}|{m.chat.id}|{user}|{m.message_id}',
+                f'_aud.{yt["id"]}|{afsize}|{temp}|{m.chat.id}|{user}|{m.message_id}',
             ),
             (
                 strings("ytdl_video_button"),
-                f'_vid.{yt["id"]}|{vfsize}|{temp}|{vformat}|{m.chat.id}|{user}|{m.message_id}',
+                f'_vid.{yt["id"]}|{vfsize}|{temp}|{m.chat.id}|{user}|{m.message_id}',
             ),
         ]
     ]
@@ -141,10 +137,10 @@ async def ytdlcmd(c: Client, m: Message, strings):
 @Client.on_callback_query(filters.regex("^(_(vid|aud))"))
 @use_chat_lang()
 async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
-    data, fsize, temp, vformat, cid, userid, mid = cq.data.split("|")
+    data, fsize, temp, cid, userid, mid = cq.data.split("|")
     if not cq.from_user.id == int(userid):
         return await cq.answer(strings("ytdl_button_denied"), cache_time=60)
-    if int(fsize) > 200000000:
+    if int(fsize) > MAX_FILESIZE:
         return await cq.answer(
             strings("ytdl_file_too_big"),
             show_alert=True,
@@ -161,32 +157,21 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
         ttemp = f"⏰ {datetime.timedelta(seconds=int(temp))} | "
 
     if "vid" in data:
-        ydl = yt_dlp.YoutubeDL(
+        ydl = YoutubeDL(
             {
-                "format": vformat,
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
-                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-                "extractor-args": "youtube:player_client=all",
+                "format": "best[ext=mp4]",
+                "max_filesize": MAX_FILESIZE,
                 "noplaylist": True,
-                "geo-bypass": True,
-                "noprogress": True,
-                "nocheckcertificate": True,
-                "quite": True,
             }
         )
     else:
-        ydl = yt_dlp.YoutubeDL(
+        ydl = YoutubeDL(
             {
-                "format": "best",
                 "outtmpl": f"{path}/%(title)s-%(id)s.%(ext)s",
-                "user-agent": "Mozilla/5.0 (Linux; Android 7.0; k960n_mt6580_32_n) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36",
-                "extractor-args": "youtube:player_client=all",
+                "format": "bestaudio[ext=m4a]",
+                "max_filesize": MAX_FILESIZE,
                 "noplaylist": True,
-                "geo-bypass": True,
-                "noprogress": True,
-                "extractaudio": True,
-                "nocheckcertificate": True,
-                "quite": True,
             }
         )
     try:
@@ -198,8 +183,8 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
     filename = ydl.prepare_filename(yt)
     thumb = io.BytesIO((await http.get(yt["thumbnail"])).content)
     thumb.name = "thumbnail.png"
-    if "vid" in data:
-        try:
+    try:
+        if "vid" in data:
             await c.send_video(
                 int(cid),
                 filename,
@@ -210,19 +195,12 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 thumb=thumb,
                 reply_to_message_id=int(mid),
             )
-        except BadRequest as e:
-            await c.send_message(
-                chat_id=int(cid),
-                text=strings("ytdl_send_error").format(errmsg=e),
-                reply_to_message_id=int(mid),
-            )
-    else:
-        if " - " in yt["title"]:
-            performer, title = yt["title"].rsplit(" - ", 1)
         else:
-            performer = yt.get("creator") or yt.get("uploader")
-            title = yt["title"]
-        try:
+            if " - " in yt["title"]:
+                performer, title = yt["title"].rsplit(" - ", 1)
+            else:
+                performer = yt.get("creator") or yt.get("uploader")
+                title = yt["title"]
             await c.send_audio(
                 int(cid),
                 filename,
@@ -233,13 +211,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 thumb=thumb,
                 reply_to_message_id=int(mid),
             )
-        except BadRequest as e:
-            await c.send_message(
-                chat_id=int(cid),
-                text=strings("ytdl_send_error").format(errmsg=e),
-                reply_to_message_id=int(mid),
-            )
-    await cq.message.delete()
+    except BadRequest as e:
+        await cq.message.edit_text(strings("ytdl_send_error").format(errmsg=e))
+    else:
+        await cq.message.delete()
 
     shutil.rmtree(tempdir, ignore_errors=True)
 
