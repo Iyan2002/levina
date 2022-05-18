@@ -6,6 +6,7 @@ import platform
 
 import pyrogram
 from pyrogram import Client, idle
+from pyrogram.enums import ParseMode
 from pyrogram.errors import BadRequest
 
 import eduu
@@ -24,20 +25,19 @@ except ImportError:
 
 async def main() -> None:
     client = Client(
-        session_name="bot",
+        name="bot",
         app_version=f"GuardBot v{eduu.__version__}",
         api_id=API_ID,
         api_hash=API_HASH,
         bot_token=TOKEN,
         workers=24,
-        parse_mode="html",
+        parse_mode=ParseMode.HTML,
         plugins=dict(root="eduu.plugins", exclude=disabled_plugins),
     )
 
     await client.start()
 
     client.me = await client.get_me()
-
     client.start_time = time.time()
     if "test" not in sys.argv:
         wr = get_restarted()
@@ -45,7 +45,7 @@ async def main() -> None:
 
         start_message = (
             "✅ <b>GuardBot started!</b>\n\n"
-            f"🔖 <b>Version:</b> <code>v{eduu.__version__} (736)</code>\n"
+            f"🔖 <b>Version:</b> <code>v{eduu.__version__} (753)</code>\n"
             f"🔖 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
         )
 
@@ -61,6 +61,6 @@ async def main() -> None:
     await client.stop()
 
 
-event_policy = asyncio.get_event_loop_policy()
-event_loop = event_policy.new_event_loop()
-event_loop.run_until_complete(main())
+set_loop = asyncio.get_event_loop_policy()
+new_event_loop = set_loop.new_event_loop()
+new_event_loop.run_until_complete(main())
