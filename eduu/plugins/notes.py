@@ -1,6 +1,7 @@
 import re
 
 from pyrogram import Client, filters
+from pyrogram.enums import ParseMode
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 from eduu.config import prefix
@@ -182,7 +183,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_text(
                     data,
                     quote=True,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
@@ -192,7 +193,7 @@ async def serve_note(c: Client, m: Message, txt):
                     note_s[3],
                     quote=True,
                     caption=data if not None else None,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
@@ -202,7 +203,7 @@ async def serve_note(c: Client, m: Message, txt):
                     note_s[3],
                     quote=True,
                     caption=data if not None else None,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
@@ -212,7 +213,7 @@ async def serve_note(c: Client, m: Message, txt):
                     note_s[3],
                     quote=True,
                     caption=data if not None else None,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
@@ -222,7 +223,7 @@ async def serve_note(c: Client, m: Message, txt):
                     note_s[3],
                     quote=True,
                     caption=data if not None else None,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
@@ -232,7 +233,7 @@ async def serve_note(c: Client, m: Message, txt):
                     note_s[3],
                     quote=True,
                     caption=data if not None else None,
-                    parse_mode="md",
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
                     else None,
