@@ -2,6 +2,7 @@ from typing import Union
 from functools import partial
 
 from pyrogram import Client, filters
+from pyrogram.enums import ChatType
 from pyrogram.types import (
     CallbackQuery,
     InlineKeyboardButton,
@@ -70,7 +71,7 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
 
     res = (
         strings("language_changer_private")
-        if msg.chat.type == "private"
+        if msg.chat.type == ChatType.PRIVATE
         else strings("language_changer_chat")
     )
 
@@ -90,7 +91,7 @@ async def set_chat_lang(c: Client, m: CallbackQuery, strings):
         "langs",
     )
 
-    if m.message.chat.type == "private":
+    if m.message.chat.type == ChatType.PRIVATE:
         keyboard = InlineKeyboardMarkup(
             inline_keyboard=[
                 [
