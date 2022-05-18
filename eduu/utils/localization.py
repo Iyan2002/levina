@@ -6,6 +6,7 @@ from glob import glob
 from typing import Dict, List
 from functools import partial, wraps
 
+from pyrogram.enums import ChatType
 from pyrogram.types import CallbackQuery, InlineQuery, Message
 
 from eduu.database import db, dbc
@@ -36,7 +37,7 @@ default_language: str = "en-GB"
 
 
 def set_db_lang(chat_id: int, chat_type: str, lang_code: str):
-    if chat_type == "private":
+    if chat_type == ChatType.PRIVATE:
         dbc.execute(
             "UPDATE users SET chat_lang = ? WHERE user_id = ?", (lang_code, chat_id)
         )
@@ -46,7 +47,7 @@ def set_db_lang(chat_id: int, chat_type: str, lang_code: str):
             "UPDATE groups SET chat_lang = ? WHERE chat_id = ?", (lang_code, chat_id)
         )
         db.commit()
-    elif chat_type == "channel":
+    elif chat_type == ChatType.CHANNEL:
         dbc.execute(
             "UPDATE channels SET chat_lang = ? WHERE chat_id = ?", (lang_code, chat_id)
         )
@@ -56,13 +57,13 @@ def set_db_lang(chat_id: int, chat_type: str, lang_code: str):
 
 
 def get_db_lang(chat_id: int, chat_type: str) -> str:
-    if chat_type == "private":
+    if chat_type == ChatType.PRIVATE:
         dbc.execute("SELECT chat_lang FROM users WHERE user_id = ?", (chat_id,))
         ul = dbc.fetchone()
     elif chat_type in group_types:  # groups and supergroups share the same table
         dbc.execute("SELECT chat_lang FROM groups WHERE chat_id = ?", (chat_id,))
         ul = dbc.fetchone()
-    elif chat_type == "channel":
+    elif chat_type == ChatType.CHANNEL:
         dbc.execute("SELECT chat_lang FROM channels WHERE chat_id = ?", (chat_id,))
         ul = dbc.fetchone()
     else:
@@ -107,13 +108,13 @@ def get_lang(message) -> str:
     elif isinstance(message, Message):
         chat = message.chat
     elif isinstance(message, InlineQuery):
-        chat, chat.type = message.from_user, "private"
+        chat, chat.type = message.from_user, ChatType.PRIVATE
     else:
         raise TypeError(f"Update type '{message.__name__}' is not supported.")
 
     lang = get_db_lang(chat.id, chat.type)
 
-    if chat.type == "private":
+    if chat.type == ChatType.PRIVATE:
         lang = lang or message.from_user.language_code or default_language
     else:
         lang = lang or default_language
