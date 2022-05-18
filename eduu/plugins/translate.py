@@ -69,10 +69,10 @@ async def translate(c: Client, m: Message, strings):
 
     if not text:
         return await m.reply_text(
-            strings("translate_usage"), reply_to_message_id=m.message_id
+            strings("translate_usage"), reply_to_message_id=m.id
         )
 
-    sent = await m.reply_text(strings("translating"), reply_to_message_id=m.message_id)
+    sent = await m.reply_text(strings("translating"), reply_to_message_id=m.id)
     langs = {}
 
     if len(lang.split("-")) > 1:
