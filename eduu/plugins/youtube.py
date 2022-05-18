@@ -17,7 +17,7 @@ from eduu.utils import aiowrap, http, pretty_size, commands
 
 
 YOUTUBE_REGEX = re.compile(
-    r"(?m)http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?[\w\?=]*)?"
+    r"(?m)http(?:s?):\/\/(?:www\.)?(?:music\.)?youtu(?:be\.com\/(watch\?v=|shorts/)|\.be\/|)([\w\-\_]*)(&(amp;)?[\w\?=]*)?"
 )
 
 MAX_FILESIZE = 200000000
