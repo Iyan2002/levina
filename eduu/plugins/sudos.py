@@ -15,6 +15,7 @@ from sqlite3 import IntegrityError, OperationalError
 
 from meval import meval
 from pyrogram.types import Message
+from pyrogram.enums import ChatType
 from pyrogram import Client, filters
 from pyrogram.errors import RPCError
 
@@ -72,7 +73,7 @@ async def upgrade(c: Client, m: Message, strings):
             await sm.edit_text("There's nothing to upgrade.")
         else:
             await sm.edit_text(strings("restarting"))
-            set_restarted(sm.chat.id, sm.message_id)
+            set_restarted(sm.chat.id, sm.id)
             db.commit()
             args = [sys.executable, "-m", "eduu"]
             os.execv(sys.executable, args)  # skipcq: BAN-B606
@@ -181,7 +182,7 @@ async def execsql(c: Client, m: Message):
 @use_chat_lang()
 async def restart(c: Client, m: Message, strings):
     sent = await m.reply_text(strings("restarting"))
-    set_restarted(sent.chat.id, sent.message_id)
+    set_restarted(sent.chat.id, sent.id)
     db.commit()
     args = [sys.executable, "-m", "eduu"]
     os.execv(sys.executable, args)  # skipcq: BAN-B606
@@ -228,11 +229,11 @@ async def getbotstats(c: Client, m: Message):
 @Client.on_message(filters.command("del", prefix) & sudofilter)
 async def del_message(c: Client, m: Message):
     try:
-        await c.delete_messages(m.chat.id, m.reply_to_message.message_id)
+        await c.delete_messages(m.chat.id, m.reply_to_message.id)
     except RPCError as e:
         print(e)
     try:
-        await c.delete_messages(m.chat.id, m.message_id)
+        await c.delete_messages(m.chat.id, m.id)
     except RPCError as e:
         print(e)
 
@@ -242,7 +243,6 @@ async def del_message(c: Client, m: Message):
     & sudofilter
     & ~filters.forwarded
     & ~filters.group
-    & ~filters.edited
     & ~filters.via_bot
 )
 async def backupcmd(c: Client, m: Message):
@@ -273,7 +273,7 @@ async def downloadfile(c: Client, m: Message):
 async def getchatcmd(c: Client, m: Message):
     if len(m.text.split()) > 1:
         targetchat = await c.get_chat(m.command[1])
-        if targetchat.type != "private":
+        if targetchat.type != ChatType.PRIVATE:
             await m.reply_text(
                 f"<b>Title:</b> {targetchat.title}\n<b>Username:</b> {targetchat.username}\n<b>Members:</b> {targetchat.members_count}"
             )
