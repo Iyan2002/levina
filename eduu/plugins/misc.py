@@ -5,6 +5,7 @@ from urllib.parse import quote, unquote
 
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
+from pyrogram.enums import ChatMembersFilter, ParseMode
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 from eduu.config import log_chat, prefix
@@ -22,7 +23,7 @@ async def mark(c: Client, m: Message, strings):
     msgtxt, buttons = button_parser(txt)
     await m.reply(
         msgtxt,
-        parse_mode="markdown",
+        parse_mode=ParseMode.MARKDOWN,
         reply_markup=(InlineKeyboardMarkup(buttons) if len(buttons) != 0 else None),
     )
 
@@ -44,7 +45,9 @@ async def html(c: Client, m: Message, strings):
 @use_chat_lang()
 async def mentionadmins(c: Client, m: Message, strings):
     mention = ""
-    async for i in c.iter_chat_members(m.chat.id, filter="administrators"):
+    async for i in m.chat.get_members(
+        m.chat.id, filter=ChatMembersFilter.ADMINISTRATORS
+    ):
         if not (i.user.is_deleted or i.is_anonymous):
             mention += f"{i.user.mention}\n"
     await c.send_message(
@@ -80,7 +83,7 @@ async def reportadmins(c: Client, m: Message, strings):
 async def getbotinfo(c: Client, m: Message, strings):
     if len(m.command) == 1:
         return await m.reply_text(
-            strings("no_bot_token"), reply_to_message_id=m.message_id
+            strings("no_bot_token"), reply_to_message_id=m.id
         )
     text = m.text.split(maxsplit=1)[1]
     req = await http.get(f"https://api.telegram.org/bot{text}/getme")
@@ -94,7 +97,7 @@ async def getbotinfo(c: Client, m: Message, strings):
         get_bot_info_text.format(
             botname=res["first_name"], botusername=res["username"], botid=res["id"]
         ),
-        reply_to_message_id=m.message_id,
+        reply_to_message_id=m.id,
     )
 
 
@@ -186,7 +189,7 @@ async def request_cmd(c: Client, m: Message):
 async def button_parse_helper(c: Client, m: Message, strings):
     if len(m.text.split()) > 2:
         await m.reply_text(
-            f"[{m.text.split(None, 2)[2]}](buttonurl:{m.command[1]})", parse_mode=None
+            f"[{m.text.split(None, 2)[2]}](buttonurl:{m.command[1]})", parse_mode=ParseMode.DISABLED
         )
     else:
         await m.reply_text(strings("parsebtn_err"))
