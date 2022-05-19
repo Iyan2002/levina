@@ -11,7 +11,7 @@ from pyrogram.errors import BadRequest
 
 import eduu
 from eduu.utils import del_restarted, get_restarted, shell_exec
-from eduu.config import API_HASH, API_ID, TOKEN, disabled_plugins, log_chat
+from eduu.config import API_HASH, API_ID, TOKEN, disabled_plugins, log_chat, WORKERS
 
 
 try:
@@ -30,7 +30,7 @@ async def main() -> None:
         api_id=API_ID,
         api_hash=API_HASH,
         bot_token=TOKEN,
-        workers=24,
+        workers=WORKERS,
         parse_mode=ParseMode.HTML,
         plugins=dict(root="eduu.plugins", exclude=disabled_plugins),
     )
@@ -46,7 +46,7 @@ async def main() -> None:
         start_message = (
             "✅ <b>GuardBot started!</b>\n\n"
             f"🔖 <b>Version:</b> <code>v{eduu.__version__} (753)</code>\n"
-            f"🔖 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
+            f"🔥 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
         )
 
         try:
