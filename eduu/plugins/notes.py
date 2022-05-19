@@ -102,7 +102,6 @@ async def delete_note(c: Client, m: Message, strings):
     trigger = args[1].lower()
     chat_id = m.chat.id
     check_note = await check_for_notes(chat_id, trigger)
-    check_note = check_for_notes(chat_id, trigger)
     if len(m.command) < 2:
         await m.reply_text(strings("clear_note_usage"))
         return
@@ -133,9 +132,8 @@ async def get_all_chat_note(c: Client, m: Message, strings):
 
 
 async def serve_note(c: Client, m: Message, txt):
-    chat_id = m.chat.id
     text = txt
-
+    chat_id = m.chat.id
     all_notes = await get_all_notes(chat_id)
     for note_s in all_notes:
         keyword = note_s[1]
