@@ -1,3 +1,4 @@
 {
-  "coub_description": "Mengirim coub dari hasil pencarian."
+  "coub_description": "Mengirimkan coub dari hasil pencarian.",
+  "string_coub_usage": "<b>Contoh:</b> <code>/coub nama konten</code> - Mengirimkan Coub acak (video pendek) dari hasil pencarian."
 }
