@@ -17,5 +17,6 @@
   "warns_action_set_string": "The warning action has been set to {action}.",
   "warns_action_set_invlaid": "Invalid argument. Use <code>/setwarnsaction ban/mute/kick</code>.",
   "warn_action_status": "The warning action for this chat is {action}.",
-  "setwarnsaction_description": "Set the warning action for the chat. You can use the arguments <code>ban/mute/kick</code>."
+  "setwarnaction_description": "Set the warning action for the chat. You can use the arguments <code>ban/mute/kick</code>.",
+  "setwarns_description": "Specify the number of warn for the user."
 }

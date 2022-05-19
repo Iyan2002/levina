@@ -211,12 +211,12 @@ async def getbotstats(c: Client, m: Message):
     bot_uptime = humanfriendly.format_timespan(bot_uptime)
 
     await m.reply_text(
-        "<b>Bot statistics:</b>\n\n"
-        f"<b>Users:</b> {users_count[0]}\n"
-        f"<b>Groups:</b> {groups_count[0]}\n"
-        f"<b>Filters:</b> {filters_count[0]}\n"
-        f"<b>Notes:</b> {notes_count[0]}\n\n"
-        f"<b>Uptime:</b> {bot_uptime}"
+        "📊 <b>GroupsGuard Graph:</b>\n\n"
+        f"• Users: <code>{users_count[0]}</code>\n"
+        f"• Groups: <code>{groups_count[0]}</code>\n"
+        f"• Chat Notes: <code>{notes_count[0]}</code>\n"
+        f"• Chat Filters: <code>{filters_count[0]}</code>\n\n"
+        f"<b>Uptime:</b> <code>{bot_uptime}</code>"
     )
 
 

@@ -25,18 +25,21 @@ from eduu.utils.localization import use_chat_lang
 @Client.on_message(filters.command(["kang", "sticker", "steal"], prefix))
 @use_chat_lang()
 async def kang_sticker(c: Client, m: Message, strings):
-    prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
-    bot_username = c.me.username
-    sticker_emoji = "🐹"
-    packnum = 0
-    packname_found = False
-    resize = False
-    animated = False
-    reply = m.reply_to_message
-    user = await c.resolve_peer(m.from_user.username or m.from_user.id)
-    if not reply and reply.media:
+    if not m.reply_to_message:
         await m.reply_text(strings("give_sticker_to_kang"))
         return
+
+    packnum = 0
+    sticker_emoji = "🐹"
+    bot_username = c.me.username
+    reply = m.reply_to_message
+    user = await c.resolve_peer(m.from_user.username or m.from_user.id)
+    
+    resize = False
+    animated = False
+    packname_found = False
+    prog_msg = await m.reply_text(strings("kanging_sticker_msg"))
+    
     if reply and reply.media:
         if reply.photo:
             resize = True
@@ -56,7 +59,8 @@ async def kang_sticker(c: Client, m: Message, strings):
             if not reply.sticker.file_name.endswith(".tgs"):
                 resize = True
         else:
-            return await prog_msg.edit_text(strings("invalid_media_string"))
+            await prog_msg.edit_text(strings("invalid_media_string"))
+            return
         pack_prefix = "anim" if animated else "a"
         packname = f"{pack_prefix}_{m.from_user.id}_by_{bot_username}"
 
@@ -73,7 +77,6 @@ async def kang_sticker(c: Client, m: Message, strings):
                 )
         filename = await c.download_media(m.reply_to_message)
         if not filename:
-            # Failed to download
             await prog_msg.delete()
             return
     elif m.entities and len(m.entities) > 1:
@@ -139,7 +142,7 @@ async def kang_sticker(c: Client, m: Message, strings):
                     mime_type=c.guess_mime_type(filename),
                     attributes=[DocumentAttributeFilename(file_name=filename)],
                 ),
-                message=f"Kanged by UserID -> {m.from_user.id}",
+                message=f"Kanged by -> {m.from_user.id}",
                 random_id=c.rnd_id(),
             )
         )
@@ -168,8 +171,8 @@ async def kang_sticker(c: Client, m: Message, strings):
                 u_name = str(m.from_user.id)
             stkr_title = f"{u_name}'s "
             if animated:
-                stkr_title += "Anim. "
-            stkr_title += "EduuPack"
+                stkr_title += "anim. "
+            stkr_title += "GuardPack"
             if packnum != 0:
                 stkr_title += f" v{packnum}"
             try:
@@ -242,13 +245,13 @@ def resize_image(filename: str) -> str:
     return png_image
 
 
-@Client.on_message(filters.command("stickerid", prefix) & filters.reply)
+@Client.on_message(filters.command("stickerid", prefix))
 @use_chat_lang()
-async def getstickerid(c: Client, m: Message, strings):
-    if not m.reply_to_message.sticker:
-        await m.reply_text(strings("fetch_sticker_id"))
-        return
-    if m.reply_to_message.sticker:
+async def fetch_sticker_id(c: Client, m: Message, strings):
+    message = m.reply_to_message
+    if not message:
+        return await m.reply_text(strings("fetch_sticker_id"))
+    if message.sticker:
         await m.reply_text(
             strings("get_sticker_id_string").format(
                 stickerid=m.reply_to_message.sticker.file_id
@@ -256,27 +259,26 @@ async def getstickerid(c: Client, m: Message, strings):
         )
 
 
-@Client.on_message(filters.command("getsticker", prefix) & filters.reply)
+@Client.on_message(filters.command("getsticker", prefix))
 @use_chat_lang()
-async def getstickeraspng(c: Client, m: Message, strings):
-    sticker = m.reply_to_message.sticker
-    if not sticker:
-        await m.reply_text(strings("fetch_sticker_data"))
-        return
-    if sticker:
-        if sticker.is_animated:
+async def fetch_sticker_data(c: Client, m: Message, strings):
+    message = m.reply_to_message
+    if not message:
+        return await m.reply_text(strings("fetch_sticker_data"))
+    if message.sticker:
+        if message.sticker.is_animated:
             await m.reply_text(strings("animated_not_supported"))
-        elif not sticker.is_animated:
+        elif not message.sticker.is_animated:
             with tempfile.TemporaryDirectory() as tempdir:
                 path = os.path.join(tempdir, "getsticker")
             sticker_file = await c.download_media(
-                message=m.reply_to_message,
-                file_name=f"{path}/{sticker.set_name}.png",
+                message = m.reply_to_message,
+                file_name = f"{path}/{message.sticker.set_name}.png",
             )
             await m.reply_to_message.reply_document(
-                document=sticker_file,
-                caption=strings("sticker_info").format(
-                    emoji=sticker.emoji, id=sticker.file_id
+                document = sticker_file,
+                caption = strings("sticker_info").format(
+                    emoji=message.sticker.emoji, id=message.sticker.file_id
                 ),
             )
             shutil.rmtree(tempdir, ignore_errors=True)

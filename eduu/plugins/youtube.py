@@ -56,17 +56,18 @@ async def search_yt(query):
 
 
 @Client.on_message(filters.command(["yt", "search"], prefix))
+@use_chat_lang()
 async def yt_search_cmd(c: Client, m: Message, strings):
-    if len(m.command) == 1:
+    if len(m.command) < 2:
         await m.reply_text(strings("youtube_search_usage"))
-        return
-    vids = [
-        '{}: <a href="{}">{}</a>'.format(num + 1, i["url"], i["title"])
-        for num, i in enumerate(await search_yt(m.text.split(None, 1)[1]))
-    ]
-    await m.reply_text(
-        "\n".join(vids) if vids else r"¯\_(ツ)_/¯", disable_web_page_preview=True
-    )
+    else:
+        vids = [
+            '{}: <a href="{}">{}</a>'.format(num + 1, i["url"], i["title"])
+            for num, i in enumerate(await search_yt(m.text.split(None, 1)[1]))
+        ]
+        await m.reply_text(
+            "\n".join(vids) if vids else r"¯\_(ツ)_/¯", disable_web_page_preview=True
+        )
 
 
 @Client.on_message(filters.command(["ytdl", "download", "dl"], prefix))
@@ -76,10 +77,9 @@ async def ytdlcmd(c: Client, m: Message, strings):
     
     afsize = 0
     vfsize = 0
-    
-    if len(m.command) == 1:
-        await m.reply_text(strings("youtube_download_usage"))
-        return
+
+    if len(m.command) < 2:
+        return await m.reply_text(strings("youtube_download_usage"))
     if m.reply_to_message and m.reply_to_message.text:
         url = m.reply_to_message.text
     elif len(m.command) > 1:
@@ -176,7 +176,7 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
         )
     try:
         yt = await extract_info(ydl, url, download=True)
-    except BaseException as e:
+    except Exception as e:
         await cq.message.edit(strings("ytdl_send_error").format(errmsg=e))
         return
     await cq.message.edit(strings("ytdl_sending"))
@@ -188,11 +188,9 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
             await c.send_video(
                 int(cid),
                 filename,
-                width=1920,
-                height=1080,
+                thumb=thumb,
                 caption=ttemp + yt["title"],
                 duration=yt["duration"],
-                thumb=thumb,
                 reply_to_message_id=int(mid),
             )
         else:
@@ -205,10 +203,10 @@ async def cli_ytdl(c: Client, cq: CallbackQuery, strings):
                 int(cid),
                 filename,
                 title=title,
+                thumb=thumb,
                 performer=performer,
                 caption=ttemp[:-2],
                 duration=yt["duration"],
-                thumb=thumb,
                 reply_to_message_id=int(mid),
             )
     except BadRequest as e:

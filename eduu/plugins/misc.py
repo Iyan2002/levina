@@ -200,7 +200,7 @@ async def button_parse_helper(c: Client, m: Message, strings):
 @Client.on_message(filters.command("donate", prefix))
 @use_chat_lang()
 async def donatecmd(c: Client, m: Message, strings):
-    await m.reply(strings("donatecmdstring"))
+    await m.reply_text(strings("donatecmdstring"), disable_web_page_preview=True)
 
 
 commands.add_command("mark", "general")

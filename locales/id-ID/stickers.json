@@ -3,7 +3,7 @@
   "animated_not_supported": "Stiker animasi tidak didukung.",
   "sticker_info": "<b>Emoji:</b> {emoji}\n<b>Sticker ID:</b> <code>{id}</code>",
   "not_sticker": "Itu bukan stiker.",
-  "kanging_sticker_msg": "<code>Mencuri stiker...</code>",
+  "kanging_sticker_msg": "<code>Membuat stiker...</code>",
   "sticker_kanged_string": "Stiker <b>berhasil</b> ditambahkan ke paket\nEmoji: {sticker_emoji}",
   "use_existing_pack": "<code>Menggunakan paket stiker yang sudah ada...</code>",
   "err_sticker_no_file_name": "<b>Error</b>: <code>Stiker ini tidak memiliki nama file!</code>",
@@ -13,7 +13,7 @@
   "cant_create_sticker_pack_string": "Oops, sepertinya saya tidak memiliki cukup izin untuk membuat paket stiker untuk anda!\n<b>Anda harus memulai bot ini terlebih dulu.</b>",
   "fetch_sticker_id": "Balas ke sebuah stiker !",
   "fetch_sticker_data": "Balas ke sebuah stiker !",
-  "kang_description": "Curi stiker orang dan tambahkan ke paket stiker mu.",
+  "kang_description": "Curi stiker orang/buat stiker baru dan tambahkan ke paket stiker mu.",
   "getsticker_description": "Balas ke stiker untuk mendapatkan info stiker.",
   "stickerid_description": "Balas ke stiker untuk mendapatkan id stiker.",
   "give_sticker_to_kang": "Balas ke stiker yang mau kamu curi."

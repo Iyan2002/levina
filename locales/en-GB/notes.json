@@ -1,11 +1,15 @@
 {
-  "add_note_success": "Added note <b>{trigger}</b>.",
-  "add_note_empty": "Please specify a content for note.",
-  "delnote_description": "Remove a note from this chat.",
-  "note_description": "Create a note for this chat.",
-  "notes_description": "Show saved notes for this chat.",
+  "add_note_success": "Saved note <b>{trigger}</b>.\nGet it with <code>/get {trigger}</code> or <code>#{trigger}</code>",
+  "add_note_empty": "You must specify a content for note.",
+  "delnote_description": "Remove a note from the chat.",
+  "note_description": "Save a note for the chat.",
+  "notes_description": "Show saved notes in the chat.",
   "notes_list": "Notes in this chat:\n\n",
-  "notes_list_empty": "Currently there are no notes in this chat.",
+  "notes_list_empty": "No notes in this chat!",
   "no_note_with_name": "There is no note with the name <b>{trigger}</b>.",
-  "remove_note_success": "Removed <b>{trigger}</b> from notes."
+  "remove_note_success": "Removed <b>{trigger}</b> from notes.",
+  "clear_note_usage": "You must specify note name to delete.",
+  "saving_note_usage": "Give notes to save!",
+  "clear_description": "Remove a note from the list.",
+  "save_description": "Save a note for the chat."
 }
