@@ -30,7 +30,7 @@ async def delete_rules(c: Client, m: Message, strings):
 @Client.on_message(filters.command("rules", prefix) & filters.group)
 @use_chat_lang()
 async def show_rules(c: Client, m: Message, strings):
-    gettherules = get_rules(m.chat.id)
+    gettherules = await get_rules(m.chat.id)
     rulestxt, rules_buttons = button_parser(gettherules)
     if rulestxt:
         await m.reply_text(
