@@ -100,7 +100,6 @@ async def kang_sticker(c: Client, m: Message, strings):
         except Exception as r_e:
             return await prog_msg.edit_text(f"{r_e.__class__.__name__} : {r_e}")
         if len(m.command) > 2:
-            # m.command[1] is image_url
             if m.command[2].isdigit() and int(m.command[2]) > 0:
                 packnum = m.command.pop(2)
                 packname = f"a{packnum}_{m.from_user.id}_by_{bot_username}"
