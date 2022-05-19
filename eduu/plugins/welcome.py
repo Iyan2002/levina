@@ -1,32 +1,13 @@
-from typing import Optional, Tuple
-
 from pyrogram import Client, filters
+from pyrogram.enums import ParseMode
 from pyrogram.errors import BadRequest
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 from eduu.config import prefix
-from eduu.database import db, dbc
-from eduu.utils import button_parser, commands, get_format_keys, require_admin
+from eduu.database.welcome import get_welcome, set_welcome, toggle_welcome
+from eduu.utils import button_parser, commands, get_format_keys
+from eduu.utils.decorators import require_admin
 from eduu.utils.localization import use_chat_lang
-
-
-def get_welcome(chat_id: int) -> Tuple[Optional[str], bool]:
-    dbc.execute(
-        "SELECT welcome, welcome_enabled FROM groups WHERE chat_id = (?)", (chat_id,)
-    )
-    return dbc.fetchone()
-
-
-def set_welcome(chat_id: int, welcome: Optional[str]):
-    dbc.execute("UPDATE groups SET welcome = ? WHERE chat_id = ?", (welcome, chat_id))
-    db.commit()
-
-
-def toggle_welcome(chat_id: int, mode: bool):
-    dbc.execute(
-        "UPDATE groups SET welcome_enabled = ? WHERE chat_id = ?", (mode, chat_id)
-    )
-    db.commit()
 
 
 @Client.on_message(
@@ -69,7 +50,7 @@ async def set_welcome_message(c: Client, m: Message, strings):
                 )
             )
         else:
-            set_welcome(m.chat.id, message)
+            await set_welcome(m.chat.id, message)
             await sent.edit_text(
                 strings("welcome_set_success").format(chat_title=m.chat.title)
             )
@@ -86,7 +67,7 @@ async def set_welcome_message(c: Client, m: Message, strings):
 )
 @require_admin(permissions=["can_change_info"])
 @use_chat_lang()
-async def invlaid_welcome_status_arg(c: Client, m: Message, strings):
+async def invalid_welcome_status_arg(c: Client, m: Message, strings):
     await m.reply_text(strings("welcome_mode_invalid"))
 
 
@@ -94,10 +75,10 @@ async def invlaid_welcome_status_arg(c: Client, m: Message, strings):
 @require_admin(permissions=["can_change_info"])
 @use_chat_lang()
 async def getwelcomemsg(c: Client, m: Message, strings):
-    welcome, welcome_enabled = get_welcome(m.chat.id)
+    welcome, welcome_enabled = await get_welcome(m.chat.id)
     if welcome_enabled:
         await m.reply_text(
-            strings("welcome_default") if welcome is None else welcome, parse_mode=None
+            strings("welcome_default") if welcome is None else welcome, parse_mode=ParseMode.DISABLED
         )
     else:
         await m.reply_text("None")
@@ -107,7 +88,7 @@ async def getwelcomemsg(c: Client, m: Message, strings):
 @require_admin(permissions=["can_change_info"])
 @use_chat_lang()
 async def enable_welcome_message(c: Client, m: Message, strings):
-    toggle_welcome(m.chat.id, True)
+    await toggle_welcome(m.chat.id, True)
     await m.reply_text(strings("welcome_mode_enable").format(chat_title=m.chat.title))
 
 
@@ -115,7 +96,7 @@ async def enable_welcome_message(c: Client, m: Message, strings):
 @require_admin(permissions=["can_change_info"])
 @use_chat_lang()
 async def disable_welcome_message(c: Client, m: Message, strings):
-    toggle_welcome(m.chat.id, False)
+    await toggle_welcome(m.chat.id, False)
     await m.reply_text(strings("welcome_mode_disable").format(chat_title=m.chat.title))
 
 
@@ -125,7 +106,7 @@ async def disable_welcome_message(c: Client, m: Message, strings):
 @require_admin(permissions=["can_change_info"])
 @use_chat_lang()
 async def reset_welcome_message(c: Client, m: Message, strings):
-    set_welcome(m.chat.id, None)
+    await set_welcome(m.chat.id, None)
     await m.reply_text(strings("welcome_reset").format(chat_title=m.chat.title))
 
 
@@ -144,7 +125,7 @@ async def greet_new_members(c: Client, m: Message, strings):
     )
     mention = ", ".join(map(lambda a: a.mention, members))
     if not m.from_user.is_bot:
-        welcome, welcome_enabled = get_welcome(m.chat.id)
+        welcome, welcome_enabled = await get_welcome(m.chat.id)
         if welcome_enabled:
             if welcome is None:
                 welcome = strings("welcome_default")

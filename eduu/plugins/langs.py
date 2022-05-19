@@ -2,6 +2,7 @@ from typing import Union
 from functools import partial
 
 from pyrogram import Client, filters
+from pyrogram.enums import ChatType
 from pyrogram.types import (
     CallbackQuery,
     InlineKeyboardButton,
@@ -10,12 +11,13 @@ from pyrogram.types import (
 )
 
 from eduu.config import prefix
+from eduu.database.localization import set_db_lang
+from eduu.utils.decorators import require_admin
 from eduu.utils import commands, require_admin
 from eduu.utils.localization import (
     default_language,
     get_locale_string,
     langdict,
-    set_db_lang,
     use_chat_lang,
 )
 
@@ -70,7 +72,7 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
 
     res = (
         strings("language_changer_private")
-        if msg.chat.type == "private"
+        if msg.chat.type == ChatType.PRIVATE
         else strings("language_changer_chat")
     )
     await sender(res, reply_markup=keyboard)
@@ -81,7 +83,7 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
 @use_chat_lang()
 async def set_chat_lang(c: Client, m: CallbackQuery, strings):
     lang = m.data.split()[1]
-    set_db_lang(m.message.chat.id, m.message.chat.type, lang)
+    await set_db_lang(m.message.chat.id, m.message.chat.type, lang)
     strings = partial(
         get_locale_string,
         langdict[lang].get("langs", langdict[default_language]["langs"]),
@@ -89,7 +91,7 @@ async def set_chat_lang(c: Client, m: CallbackQuery, strings):
         "langs",
     )
 
-    if m.message.chat.type == "private":
+    if m.message.chat.type == ChatType.PRIVATE:
         keyboard = InlineKeyboardMarkup(
             inline_keyboard=[
                 [

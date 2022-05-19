@@ -1,9 +1,14 @@
 from typing import Iterable
 
-group_types: Iterable[str] = ("group", "supergroup")
+from pyrogram.enums import ChatMemberStatus, ChatType
 
-admin_status: Iterable[str] = ("creator", "administrator")
 
+group_types: Iterable[ChatType] = (ChatType.GROUP, ChatType.SUPERGROUP)
+
+admin_status: Iterable[ChatMemberStatus] = (
+    ChatMemberStatus.OWNER,
+    ChatMemberStatus.ADMINISTRATOR,
+)
 
 class Permissions:
     can_be_edited: str = "can_be_edited"

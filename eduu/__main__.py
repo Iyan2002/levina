@@ -1,17 +1,24 @@
 import sys
-import time
 import asyncio
 import logging
 import platform
 
-import pyrogram
-from pyrogram import Client, idle
-from pyrogram.errors import BadRequest
+from pyrogram import idle
 
-import eduu
-from eduu.utils import del_restarted, get_restarted, shell_exec
-from eduu.config import API_HASH, API_ID, TOKEN, disabled_plugins, log_chat
+from eduu.bot import Eduu
+from eduu.utils import http
+from eduu.database import database
 
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(name)s.%(funcName)s | %(levelname)s | %(message)s",
+    datefmt="[%X]",
+)
+logging.getLogger("pyrogram.syncer").setLevel(logging.WARNING)
+logging.getLogger("pyrogram.client").setLevel(logging.WARNING)
+
+logger = logging.getLogger(__name__)
 
 try:
     import uvloop
@@ -19,48 +26,38 @@ try:
     uvloop.install()
 except ImportError:
     if platform.system() != "Windows":
-        logging.warning("uvloop is not installed and therefore will be disabled.")
+        logger.warning("uvloop is not installed and therefore will be disabled.")
 
 
-async def main() -> None:
-    client = Client(
-        session_name="bot",
-        app_version=f"GuardBot v{eduu.__version__}",
-        api_id=API_ID,
-        api_hash=API_HASH,
-        bot_token=TOKEN,
-        workers=24,
-        parse_mode="html",
-        plugins=dict(root="eduu.plugins", exclude=disabled_plugins),
-    )
+async def main():
+    eduu = Eduu()
 
-    await client.start()
+    try:
+        # start the bot
+        await database.connect()
+        await eduu.start()
 
-    client.me = await client.get_me()
-
-    client.start_time = time.time()
-    if "test" not in sys.argv:
-        wr = get_restarted()
-        del_restarted()
-
-        start_message = (
-            "✅ <b>GuardBot started!</b>\n\n"
-            f"🔖 <b>Version:</b> <code>v{eduu.__version__} (736)</code>\n"
-            f"🔖 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
-        )
-
-        try:
-            await client.send_message(chat_id=log_chat, text=start_message)
-            if wr:
-                await client.edit_message_text(wr[0], wr[1], "Bot has rebooted!")
-        except BadRequest:
-            logging.warning("Unable to send message to log_chat.")
-
-        await idle()
-
-    await client.stop()
+        if "test" not in sys.argv:
+            await idle()
+    except KeyboardInterrupt:
+        # exit gracefully
+        logger.warning("Forced stop, Bye!")
+    finally:
+        # close https connections and the DB if open
+        await eduu.stop()
+        await http.aclose()
+        if database.is_connected:
+            await database.close()
 
 
-event_policy = asyncio.get_event_loop_policy()
-event_loop = event_policy.new_event_loop()
-event_loop.run_until_complete(main())
+if __name__ == "__main__":
+    # open new asyncio event loop
+    add_event_loop = asyncio.get_event_loop_policy()
+    set_event_loop = add_event_loop.new_event_loop()
+    asyncio.set_event_loop(set_event_loop)
+
+    # start the bot
+    set_event_loop.run_until_complete(main())
+
+    # close asyncio event loop
+    set_event_loop.close()

@@ -1,28 +1,21 @@
 import re
-import time
 import math
 import httpx
-import atexit
 import os.path
 import asyncio
 import inspect
 
+from datetime import datetime, timedelta
 from string import Formatter
 from functools import partial, wraps
-from typing import Callable, List, Optional, Tuple, Union
+from typing import Callable, List, Optional, Union
 
 from pyrogram import Client, emoji, filters
+from pyrogram.enums import ChatMemberStatus, MessageEntityType
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, Message, User
 
 from eduu.config import sudoers
-from eduu.database import db, dbc
-from eduu.utils.consts import group_types
-from eduu.utils.localization import (
-    default_language,
-    get_lang,
-    get_locale_string,
-    langdict,
-)
+
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
@@ -62,51 +55,6 @@ def aiowrap(func: Callable) -> Callable:
     return run
 
 
-def add_chat(chat_id, chat_type):
-    if chat_type == "private":
-        dbc.execute("INSERT INTO users (user_id) values (?)", (chat_id,))
-        db.commit()
-    elif chat_type in group_types:  # groups and supergroups share the same table
-        dbc.execute(
-            "INSERT INTO groups (chat_id,welcome_enabled) values (?,?)", (chat_id, True)
-        )
-        db.commit()
-    elif chat_type == "channel":
-        dbc.execute("INSERT INTO channels (chat_id) values (?)", (chat_id,))
-        db.commit()
-    else:
-        raise TypeError("Unknown chat type '%s'." % chat_type)
-    return True
-
-
-def chat_exists(chat_id, chat_type):
-    if chat_type == "private":
-        dbc.execute("SELECT user_id FROM users where user_id = ?", (chat_id,))
-        return bool(dbc.fetchone())
-    if chat_type in group_types:  # groups and supergroups share the same table
-        dbc.execute("SELECT chat_id FROM groups where chat_id = ?", (chat_id,))
-        return bool(dbc.fetchone())
-    if chat_type == "channel":
-        dbc.execute("SELECT chat_id FROM channels where chat_id = ?", (chat_id,))
-        return bool(dbc.fetchone())
-    raise TypeError("Unknown chat type '%s'." % chat_type)
-
-
-def del_restarted():
-    dbc.execute("DELETE FROM was_restarted_at")
-    db.commit()
-
-
-def get_restarted() -> Tuple[int, int]:
-    dbc.execute("SELECT chat_id, message_id FROM was_restarted_at")
-    return dbc.fetchone()
-
-
-def set_restarted(chat_id: int, message_id: int):
-    dbc.execute("INSERT INTO was_restarted_at VALUES (?, ?)", (chat_id, message_id))
-    db.commit()
-
-
 async def check_perms(
     message: Union[CallbackQuery, Message],
     permissions: Optional[Union[list, str]],
@@ -121,15 +69,15 @@ async def check_perms(
         chat = message.chat
     # TODO: Cache all admin permissions in db.
     user = await chat.get_member(message.from_user.id)
-    if user.status == "creator":
+    if user.status == ChatMemberStatus.OWNER:
         return True
 
     missing_perms = []
 
     # No permissions specified, accept being an admin.
-    if not permissions and user.status == "administrator":
+    if not permissions and user.status == ChatMemberStatus.ADMINISTRATOR:
         return True
-    if user.status != "administrator":
+    if user.status != ChatMemberStatus.ADMINISTRATOR:
         if complain_missing_perms:
             await sender(strings("no_admin_error"))
         return False
@@ -138,7 +86,7 @@ async def check_perms(
         permissions = [permissions]
 
     for permission in permissions:
-        if not getattr(user, permission):
+        if not getattr(user.privileges, permission):
             missing_perms.append(permission)
 
     if not missing_perms:
@@ -150,75 +98,28 @@ async def check_perms(
     return False
 
 
-def require_admin(
-    permissions: Union[list, str] = None,
-    allow_in_private: bool = False,
-    complain_missing_perms: bool = True,
-):
-    def decorator(func):
-        @wraps(func)
-        async def wrapper(
-            client: Client, message: Union[CallbackQuery, Message], *args, **kwargs
-        ):
-            lang = get_lang(message)
-            strings = partial(
-                get_locale_string,
-                langdict[lang].get("admins", langdict[default_language]["admins"]),
-                lang,
-                "admins",
-            )
-
-            if isinstance(message, CallbackQuery):
-                sender = partial(message.answer, show_alert=True)
-                msg = message.message
-            elif isinstance(message, Message):
-                sender = message.reply_text
-                msg = message
-            else:
-                raise NotImplementedError(
-                    f"require_admin can't process updates with the type '{message.__name__}' yet."
-                )
-
-            # We don't actually check private and channel chats.
-            if msg.chat.type == "private":
-                if allow_in_private:
-                    return await func(client, message, *args, *kwargs)
-                return await sender(strings("private_not_allowed"))
-            if msg.chat.type == "channel":
-                return await func(client, message, *args, *kwargs)
-            has_perms = await check_perms(
-                message, permissions, complain_missing_perms, strings
-            )
-            if has_perms:
-                return await func(client, message, *args, *kwargs)
-
-        return wrapper
-
-    return decorator
-
-
 sudofilter = filters.user(sudoers)
 
 
-async def time_extract(m: Message, t: str) -> int:
+async def time_extract(m: Message, t: str) -> Optional[datetime]:
     if t[-1] in ["m", "h", "d"]:
-        print(True)
         unit = t[-1]
         num = t[:-1]
         if not num.isdigit():
-            return await m.reply_text("Invalid amount specified")
+            await m.reply_text("Invalid amount specified")
+            return None
 
         if unit == "m":
-            t_time = int(num) * 60
+            return datetime.now() + timedelta(minutes=int(num))
         elif unit == "h":
-            t_time = int(num) * 60 * 60
+            return datetime.now() + timedelta(hours=int(num))
         elif unit == "d":
-            t_time = int(num) * 24 * 60 * 60
+            return datetime.now() + timedelta(days=int(num))
         else:
-            return 0
-        return int(time.time() + t_time)
+            return None
+
     await m.reply_text("Invalid time format. Use 'h'/'m'/'d' ")
-    return 0
+    return None
 
 
 def remove_escapes(text: str) -> str:
@@ -380,7 +281,7 @@ async def get_target_user(c: Client, m: Message) -> User:
         msg_entities = m.entities[1] if m.text.startswith("/") else m.entities[0]
         target_user = await c.get_users(
             msg_entities.user.id
-            if msg_entities.type == "text_mention"
+            if msg_entities.type == MessageEntityType.TEXT_MENTION
             else int(m.command[1])
             if m.command[1].isdecimal()
             else m.command[1]
@@ -417,6 +318,3 @@ async def shell_exec(code, treat=True):
 def get_format_keys(string: str) -> List[str]:
     """Return a list of formatting keys present in string."""
     return [i[1] for i in Formatter().parse(string) if i[1] is not None]
-
-
-atexit.register(run_async, http.aclose)
