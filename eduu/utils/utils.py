@@ -1,17 +1,17 @@
 import re
-import time
 import math
 import httpx
 import os.path
 import asyncio
 import inspect
 
+from datetime import datetime, timedelta
 from string import Formatter
 from functools import partial, wraps
 from typing import Callable, List, Optional, Union
 
 from pyrogram import Client, emoji, filters
-from pyrogram.enums import ChatMemberStatus
+from pyrogram.enums import ChatMemberStatus, MessageEntityType
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, Message, User
 
 from eduu.config import sudoers
@@ -101,25 +101,25 @@ async def check_perms(
 sudofilter = filters.user(sudoers)
 
 
-async def time_extract(m: Message, t: str) -> int:
+async def time_extract(m: Message, t: str) -> Optional[datetime]:
     if t[-1] in ["m", "h", "d"]:
-        print(True)
         unit = t[-1]
         num = t[:-1]
         if not num.isdigit():
-            return await m.reply_text("Invalid amount specified")
+            await m.reply_text("Invalid amount specified")
+            return None
 
         if unit == "m":
-            t_time = int(num) * 60
+            return datetime.now() + timedelta(minutes=int(num))
         elif unit == "h":
-            t_time = int(num) * 60 * 60
+            return datetime.now() + timedelta(hours=int(num))
         elif unit == "d":
-            t_time = int(num) * 24 * 60 * 60
+            return datetime.now() + timedelta(days=int(num))
         else:
-            return 0
-        return int(time.time() + t_time)
+            return None
+
     await m.reply_text("Invalid time format. Use 'h'/'m'/'d' ")
-    return 0
+    return None
 
 
 def remove_escapes(text: str) -> str:
@@ -281,7 +281,7 @@ async def get_target_user(c: Client, m: Message) -> User:
         msg_entities = m.entities[1] if m.text.startswith("/") else m.entities[0]
         target_user = await c.get_users(
             msg_entities.user.id
-            if msg_entities.type == "text_mention"
+            if msg_entities.type == MessageEntityType.TEXT_MENTION
             else int(m.command[1])
             if m.command[1].isdecimal()
             else m.command[1]
