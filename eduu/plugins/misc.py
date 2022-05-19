@@ -143,10 +143,10 @@ async def bug_report_cmd(c: Client, m: Message, strings):
     if len(m.text.split()) > 1:
         try:
             bug_report = (
-                "<b>Bug Report</b>\n"
-                f"User: {m.from_user.mention}\n"
-                f"ID: <code>{m.from_user.id}</code>\n\n"
-                "The content of the report:\n"
+                "🐞 <b>Bug Report!</b>\n\n"
+                f"📮 : {m.from_user.mention}\n"
+                f"🆔 : <code>{m.from_user.id}</code>\n\n"
+                "📝 The content of the report:\n\n"
                 f"<code>{escape(m.text.split(None, 1)[1])}</code>"
             )
             await c.send_message(
