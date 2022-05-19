@@ -1,8 +1,9 @@
-git+https://github.com/AmanoTeam/pyrogram.git#egg=Pyrogram
 tgcrypto
+git+https://github.com/AmanoTeam/pyrogram.git#egg=Pyrogram
 
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
+aiosqlite==0.17.0
 python-ffmpeg==1.0.14
 gpytranslate==1.4.0
 meval==2.5
