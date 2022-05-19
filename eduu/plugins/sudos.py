@@ -110,7 +110,7 @@ async def execs(c: Client, m: Message):
     if strio.getvalue().strip():
         out = f"<code>{html.escape(strio.getvalue())}</code>"
     else:
-        out = "Command executed."
+        out = "command executed."
     await m.reply_text(out)
 
 
@@ -143,7 +143,6 @@ async def test_speed(c: Client, m: Message, strings):
 @Client.on_message(filters.command("sql", prefix) & sudofilter)
 async def execsql(c: Client, m: Message):
     command = m.text.split(maxsplit=1)[1]
-
     try:
         ex = await conn.execute(command)
     except (IntegrityError, OperationalError) as e:
@@ -162,9 +161,7 @@ async def execsql(c: Client, m: Message):
         if len(res) > 3500:
             bio = io.BytesIO()
             bio.name = "output.txt"
-
             bio.write(res.encode())
-
             await m.reply_document(bio)
         else:
             await m.reply_text(f"<code>{res}</code>")
@@ -273,7 +270,7 @@ async def getchatcmd(c: Client, m: Message):
         targetchat = await c.get_chat(m.command[1])
         if targetchat.type != ChatType.PRIVATE:
             await m.reply_text(
-                f"<b>Title:</b> {targetchat.title}\n<b>Username:</b> {targetchat.username}\n<b>Members:</b> {targetchat.members_count}"
+                f"<b>Title:</b> {targetchat.title}\n<b>Username:</b> {targetchat.username}\n<b>Members:</b> <code>{targetchat.members_count}</code>"
             )
         else:
             await m.reply_text("This is a private chat.")
