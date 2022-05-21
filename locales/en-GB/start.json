@@ -7,5 +7,8 @@
   "start_chat": "🤖 Contact Bot",
   "group": "Hello, i'm Guards Bot!\n\nTo discover my functions, please start a conversation with me.",
   "info_page": "• Groups Guard Bot\n\n🔖 Bot version: {version} (736)\n🧑🏼‍💻 Developer: @dlwrml\n\n<b>Groups Guard</b> is a bot developed in <b>Python3</b> and using Pyrogram as the framework with sql as the database.",
-  "start_description": "start the bot !"
+  "start_description": "start the bot !",
+  "support_info_text": "• The Bot support information.\n\nWe have an official Group & Channel for this bot support. You can ask for help/support of this bot there, and then the Group staff will guide you with your problem.\n\n💬 Group: @VeezSupportGroup\n📣 News: @levinachannel\n\nWe will be happy to assist you in using the available features or configuring this bot within your group.",
+  "support_info_btn": "🧑🏼‍🔧 Support",
+  "back_info_btn": "🔙 Back"
 }
