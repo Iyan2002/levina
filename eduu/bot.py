@@ -33,7 +33,7 @@ class Eduu(Client):
     async def start(self):
         await super().start()
 
-        self.version_code = int((await shell_exec("git rev-list --count HEAD"))[0])
+        # self.version_code = int((await shell_exec("git rev-list --count HEAD"))[0])
         self.me = await self.get_me()
         self.start_time = time.time()
 
@@ -51,7 +51,7 @@ class Eduu(Client):
 
         start_message = (
             "✅ <b>GuardBot started!</b>\n\n"
-            f"🔖 <b>Version:</b> <code>v{eduu.__version__} ({self.version_code})</code>\n"
+            f"🔖 <b>Version:</b> <code>v{eduu.__version__} (753)</code>\n"
             f"🔥 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
         )
 
