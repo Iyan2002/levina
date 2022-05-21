@@ -65,6 +65,22 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
         await method(strings("group"), reply_markup=keyboard, disable_web_page_preview=True)
 
 
+@Client.on_callback_query(filters.regex("^support_info$"))
+@use_chat_lang()
+async def support_info(c: Client, m: CallbackQuery, strings):
+    res = strings("support_info_text")
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    strings("back_info_btn", context="general"), callback_data="infos"
+                )
+            ]
+        ]
+    )
+    await m.message.edit_text(res, reply_markup=keyboard, disable_web_page_preview=True)
+
+
 @Client.on_callback_query(filters.regex("^infos$"))
 @use_chat_lang()
 async def infos(c: Client, m: CallbackQuery, strings):
@@ -76,6 +92,9 @@ async def infos(c: Client, m: CallbackQuery, strings):
             [
                 InlineKeyboardButton(
                     strings("back_btn", context="general"), callback_data="start_back"
+                ),
+                InlineKeyboardButton(
+                    strings("support_info_btn", context="general"), callback_data="support_info"
                 )
             ]
         ]
