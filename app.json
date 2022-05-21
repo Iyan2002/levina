@@ -5,8 +5,8 @@
   "keywords": [
     "telegram",
     "pyrogram",
-    "python",
-    "sql"
+    "python3",
+    "aiosqlite"
   ],
   "stack": "heroku-20",
   "repository": "https://github.com/levina-lab/guard-bot",
