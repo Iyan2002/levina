@@ -197,13 +197,13 @@ async def leave_chat(c: Client, m: Message):
 @Client.on_message(filters.command(["bot_stats", "stats"], prefix) & sudofilter)
 async def getbotstats(c: Client, m: Message):
     users_count = await conn.execute("select count() from users")
-    users_count = await users_count.fetchone()[0]
+    users_count = await users_count.fetchone()
     groups_count = await conn.execute("select count() from groups")
-    groups_count = await groups_count.fetchone()[0]
+    groups_count = await groups_count.fetchone()
     filters_count = await conn.execute("select count() from filters")
-    filters_count = await filters_count.fetchone()[0]
+    filters_count = await filters_count.fetchone()
     notes_count = await conn.execute("select count() from notes")
-    notes_count = await notes_count.fetchone()[0]
+    notes_count = await notes_count.fetchone()
     bot_uptime = round(time.time() - c.start_time)
     bot_uptime = humanfriendly.format_timespan(bot_uptime)
 
