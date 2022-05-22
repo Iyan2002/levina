@@ -1,6 +1,6 @@
 {
   "admins_description": "Show the chat administrators list.",
-  "admins_list": "<b>GROUP STAFF</b>\n{admins_list}",
+  "admins_list": "<b>GROUP STAFF</b>\n\n{admins_list}",
   "html_description": "Formats the provided text with the HTML syntax.",
   "html_usage": "<b>Usage:</b> <code>/html &lt;b&gt;text&lt;/b&gt; in &lt;i&gt;html&lt;/i&gt;</code> - Formats the provided text with the HTML syntax.",
   "mark_description": "Formats the provided text with the Markdown syntax.",
