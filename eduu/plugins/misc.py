@@ -52,7 +52,7 @@ async def mentionadmins(c: Client, m: Message, strings):
             mention += f"👮🏼 {i.user.mention}\n"
     await c.send_message(
         m.chat.id,
-        strings("admins_list").format(chat_title=m.chat.title, admins_list=mention),
+        strings("admins_list").format(admins_list=mention),
     )
 
 
