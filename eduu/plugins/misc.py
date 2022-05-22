@@ -67,7 +67,9 @@ async def reportadmins(c: Client, m: Message, strings):
         check_admin = await m.chat.get_member(m.reply_to_message.from_user.id)
         if check_admin.status not in admin_status:
             mention = ""
-            async for i in m.chat.get_members(filter="administrators"):
+            async for i in m.chat.get_members(
+                m.chat.id, filter=ChatMembersFilter.ADMINISTRATORS
+            ):
                 if not (
                     i.user.is_deleted or i.privileges.is_anonymous or i.user.is_bot
                 ):
