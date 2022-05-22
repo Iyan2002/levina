@@ -3,10 +3,10 @@
   "infos_btn": "ℹ️ About",
   "language_btn": "🏳️‍🌈 Languages",
   "add_chat_btn": "➕ Add me to a Group ➕",
-  "private": "👋🏻 Hi there!\n\n💭 <a href=\"https://t.me/GroupsGuardRobot\">Groups Guard</a> Bot is <b>the most complete</b> bot to help you manage your Groups <b>easily</b> and <b>safely</b>.\n\n❓ Just press the <b>📚 Commands</b> button below to see all the commands of the bot or hit /help",
+  "private": "👋🏻 Hi there!\n\n💭 <a href=\"https://t.me/GroupsGuardRobot\">Groups Guard</a> is <b>the most complete</b> bot to help you manage your Groups <b>easily</b> and <b>safely</b>.\n\n❓ Just press the <b>📚 Commands</b> button below to see all the commands of the bot or hit /help",
   "start_chat": "🤖 Contact Bot",
   "group": "Hello, i'm Guards Bot!\n\nTo discover my functions, please start a conversation with me.",
-  "info_page": "• Groups Guard Bot\n\n🔖 Bot version: {version} (736)\n🧑🏼‍💻 Developer: @vionite\n\n<b>Groups Guard</b> is a bot developed in <b>Python3</b> and using Pyrogram as the framework with sql as the database.",
+  "info_page": "• Groups Guard Bot\n\n🔖 Bot version: {version} (753)\n🧑🏼‍💻 Developer: @vionite\n\n<b>Groups Guard</b> is a bot developed in <b>Python3</b> and using Pyrogram as the framework with sql as the database.",
   "start_description": "start the bot !",
-  "support_info_text": "• The Bot support information.\n\nWe have an official Group & Channel for this bot support. You can ask for help/support of this bot there, and then the Group staff will guide you with your problem.\n\n💬 Chat: @VeezSupportGroup\n📣 News: @levinachannel\n\nWe will be happy to assist you in using the available features or configuring this bot within your group."
+  "support_info_text": "• The Bot support information.\n\nWe have an official Group & Channel for this bot support. You can ask for help/support of this bot there, and then the group staff will guide you with your problem.\n\n💬 Chat: @VeezSupportGroup\n📣 News: @levinachannel\n\nTo get direct support you can contact the admin of this bot.\n\n👮🏻 @vionite\n👮🏻 @reysiregarr\n\n⚠️ The bot staff cannot assist you in situations involving groups using this bot."
 }
