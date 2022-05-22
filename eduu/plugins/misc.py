@@ -41,7 +41,7 @@ async def html(c: Client, m: Message, strings):
     )
 
 
-@Client.on_message(filters.command("admins", prefix) & filters.group)
+@Client.on_message(filters.command(["admins", "staff"], prefix) & filters.group)
 @use_chat_lang()
 async def mentionadmins(c: Client, m: Message, strings):
     mention = ""
@@ -49,7 +49,7 @@ async def mentionadmins(c: Client, m: Message, strings):
         m.chat.id, filter=ChatMembersFilter.ADMINISTRATORS
     ):
         if not (i.user.is_deleted or i.privileges.is_anonymous):
-            mention += f"{i.user.mention}\n"
+            mention += f"👮🏼 {i.user.mention}\n"
     await c.send_message(
         m.chat.id,
         strings("admins_list").format(chat_title=m.chat.title, admins_list=mention),
