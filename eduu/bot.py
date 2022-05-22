@@ -1,5 +1,5 @@
-import logging
 import time
+import logging
 
 import pyrogram
 from pyrogram import Client, __version__
@@ -33,7 +33,6 @@ class Eduu(Client):
     async def start(self):
         await super().start()
 
-        # self.version_code = int((await shell_exec("git rev-list --count HEAD"))[0])
         self.me = await self.get_me()
         self.start_time = time.time()
 
