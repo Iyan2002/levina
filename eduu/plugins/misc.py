@@ -67,7 +67,7 @@ async def reportadmins(c: Client, m: Message, strings):
         check_admin = await m.chat.get_member(m.reply_to_message.from_user.id)
         if check_admin.status not in admin_status:
             mention = ""
-            async for i in m.chat.iter_members(filter="administrators"):
+            async for i in m.chat.get_members(filter="administrators"):
                 if not (
                     i.user.is_deleted or i.privileges.is_anonymous or i.user.is_bot
                 ):
@@ -147,7 +147,7 @@ async def bug_report_cmd(c: Client, m: Message, strings):
                 f"📮 : {m.from_user.mention}\n"
                 f"🆔 : <code>{m.from_user.id}</code>\n\n"
                 "📝 The content of the report:\n\n"
-                f"<code>{escape(m.text.split(None, 1)[1])}</code>"
+                f"#bug <code>{escape(m.text.split(None, 1)[1])}</code>"
             )
             await c.send_message(
                 chat_id=log_chat,
