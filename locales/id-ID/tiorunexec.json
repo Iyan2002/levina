@@ -1,1 +1,7 @@
-{}
+{
+  "code_exec_tio_res_string_no_err": "<b>Bahasa:</b> <code>{langformat}</code>\n\n<b>Code:</b>\n<code>{codeformat}</code>\n\n<b>Hasil:</b>\n<code>{resformat}</code>\n\n<b>Stats:</b><code>{statsformat}</code>",
+  "code_exec_tio_res_string_err": "<b>Bahasa:</b> <code>{langformat}</code>\n\n<b>Code:</b>\n<code>{codeformat}</code>\n\n<b>Hasil:</b>\n<code>{resformat}</code>\n\n<b>Error:</b>\n<code>{errformat}</code>",
+  "code_exec_err_string": "Error: Bahasa <b>{langformat}</b> tidak ditemukan. Daftar bahasa yang didukung: {langslistlink}",
+  "code_exec_inline_send": "Bahasa: {langformat}",
+  "code_exec_err_inline_send_string": "Bahasa {langformat} tidak ditemukan."
+}
