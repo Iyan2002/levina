@@ -1,6 +1,6 @@
 {
   "admins_description": "Menampilkan daftar administrator obrolan.",
-  "admins_list": "STAF GRUP\n{admins_list}",
+  "admins_list": "STAF GRUP\n\n{admins_list}",
   "html_description": "Format teks yang disediakan dengan sintaksis HTML.",
   "html_usage": "<b>Penggunaan:</b> <code>/html &lt;b&gt;teks&lt;/b&gt; dalam &lt;i&gt;html&lt;/i&gt;</code> - Format teks yang disediakan dengan sintaksis HTML.",
   "mark_description": "Format teks yang disediakan dengan sintaksis Markdown.",
