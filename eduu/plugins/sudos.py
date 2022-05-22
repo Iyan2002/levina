@@ -96,19 +96,19 @@ async def evals(c: Client, m: Message):
 
 @Client.on_message(filters.command("exec", prefix) & sudofilter)
 async def execs(c: Client, m: Message):
-    strio = io.StringIO()
+    stio = io.StringIO()
     code = m.text.split(maxsplit=1)[1]
     exec(
         "async def __ex(c, m): " + " ".join("\n " + l for l in code.split("\n"))
     )  # skipcq: PYL-W0122
-    with redirect_stdout(strio):
+    with redirect_stdout(stio):
         try:
             await locals()["__ex"](c, m)
         except BaseException:  # skipcq
             return await m.reply_text(html.escape(traceback.format_exc()))
 
-    if strio.getvalue().strip():
-        out = f"<code>{html.escape(strio.getvalue())}</code>"
+    if stio.getvalue().strip():
+        out = f"<code>{html.escape(stio.getvalue())}</code>"
     else:
         out = "command executed."
     await m.reply_text(out)
@@ -194,7 +194,7 @@ async def leave_chat(c: Client, m: Message):
             print(e)
 
 
-@Client.on_message(filters.command(["bot_stats", "stats"], prefix) & sudofilter)
+@Client.on_message(filters.command(["statistic", "stats"], prefix) & sudofilter)
 async def getbotstats(c: Client, m: Message):
     users_count = await conn.execute("select count() from users")
     users_count = await users_count.fetchone()
