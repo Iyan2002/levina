@@ -48,7 +48,9 @@ async def mentionadmins(c: Client, m: Message, strings):
     async for i in m.chat.get_members(
         m.chat.id, filter=ChatMembersFilter.ADMINISTRATORS
     ):
-        if not (i.user.is_deleted or i.privileges.is_anonymous):
+        if not (
+            i.user.is_deleted or i.privileges.is_anonymous or i.user.is_bot
+        ):
             mention += f"👮🏼 {i.user.mention}\n"
     await c.send_message(
         m.chat.id,
