@@ -218,6 +218,13 @@ async def get_chat_id(c: Client, m: Message, strings):
         await c.send_message(
             strings("string_id_user").format(name=b_data, data=a_data)
         )
+    elif len(m.text.split()) > 1:
+        c_data = m.text.split(None, 1)[1]
+        b_data = await c.get_users(c_data).first_name
+        a_data = await c.get_users(c_data).id
+        await c.send_message(
+            strings("string_id_user").format(name=b_data, data=a_data)
+        )
     else:
         i_data = m.chat.id
         if m.chat.type == ChatType.GROUP or ChatType.SUPERGROUP:
