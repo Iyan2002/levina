@@ -21,5 +21,6 @@
   "report_admns": "{admins_list}{reported_user} reported to admins",
   "string_id_user": "User {name} ID is <code>{data}</code>",
   "string_id_chat": "ID of this Group: <code>{data}</code>",
-  "string_id_inpm": "ID of this Chat: <code>{data}</code>"
+  "string_id_inpm": "ID of this Chat: <code>{data}</code>",
+  "report_description": "Report user in the group to admins."
 }
