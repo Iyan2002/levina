@@ -1,9 +1,9 @@
 import html
 
+from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import BadRequest, UserNotParticipant
-from pyrogram.types import Message
 
 from eduu.config import prefix
 from eduu.utils import commands
@@ -36,8 +36,11 @@ async def user_info(c: Client, m: Message, strings):
 
     if user.username:
         text += strings("info_username").format(username=html.escape(user.username))
+        
+    if user.language_code:
+        text += strings("info_user_lang").format(user_lang=html.escape(user.language_code))
 
-    text += strings("info_userlink").format(link=user.mention("link", style="html"))
+    text += strings("info_userlink").format(taps_here=user.mention("tap here", style="html"))
 
     try:
         member = await m.chat.get_member(user.id)
@@ -45,6 +48,12 @@ async def user_info(c: Client, m: Message, strings):
             text += strings("info_chat_admin")
         elif member.status == ChatMemberStatus.OWNER:
             text += strings("info_chat_owner")
+        elif member.status == ChatMemberStatus.LEFT:
+            text += strings("info_chat_left")
+        elif member.status == ChatMemberStatus.BANNED:
+            text += strings("info_chat_banned")
+        elif member.status == ChatMemberStatus.RESTRICTED:
+            text += strings("info_chat_restricted")
     except (UserNotParticipant, ValueError):
         pass
 
