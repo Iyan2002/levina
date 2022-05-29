@@ -1,4 +1,6 @@
 {
   "telegraph_err_no_reply": "Balas ke foto atau video.",
+  "telegraph_upload_load": "Mengunggah...",
+  "telegraph_upload_done": "📁 Diunggah ke <a href=\"{url}\">telegraph</a>",
   "telegraph_description": "Unggah foto atau video ke telegra.ph"
 }
