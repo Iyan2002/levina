@@ -56,7 +56,7 @@ def get_tr_lang(text):
     return lang
 
 
-@Client.on_message(filters.command(["tr", "translate"], prefix))
+@Client.on_message(filters.command(["tr", "trad", "translate"], prefix))
 @use_chat_lang()
 async def translate(c: Client, m: Message, strings):
     text = m.text[4:]
