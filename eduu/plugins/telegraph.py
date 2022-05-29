@@ -15,12 +15,17 @@ async def telegraph(c: Client, m: Message, strings):
             or m.reply_to_message.video
             or m.reply_to_message.animation
         ):
-            d_file = await m.reply_to_message.download()
+            msg = await c.send_message(
+                m.chat.id, strings("telegraph_upload_load")
+            )
+            tg_file = await m.reply_to_message.download()
             response = await http.post(
-                "https://telegra.ph/upload", files={"upload-file": open(d_file, "rb")}
+                "https://telegra.ph/upload", files={"upload-file": open(tg_file, "rb")}
             )
             tele_link = "https://telegra.ph" + response.json()[0]["src"]
-            await m.reply_text(tele_link)
+            await msg.edit_text(
+                strings("telegraph_upload_done").format(url=tele_link)
+            )
     else:
         await m.reply_text(strings("telegraph_err_no_reply"))
 
