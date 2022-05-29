@@ -12,5 +12,5 @@
   "user_not_found": "\n❌ The user <code>{user}</code> not found.",
   "info_chat_left": "\n\nThis user has left from this chat.",
   "info_chat_banned": "\n\nThis user has banned from this chat.",
-  "info_chat_restricted": "\n\nThis user has restricted by admin in this chat"
+  "info_chat_restricted": "\n\nThis user has restricted by admin in this chat."
 }
