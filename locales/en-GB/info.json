@@ -1,12 +1,16 @@
 {
-  "info_description": "Gets information about a user.",
-  "info_header": "<b>User info:</b>",
-  "info_id": "\nID: <code>{id}</code>",
-  "info_first_name": "\nFirst name: {first_name}",
-  "info_last_name": "\nLast name: {last_name}",
-  "info_username": "\nUsername: @{username}",
-  "info_userlink": "\nUser link: {link}",
-  "info_chat_admin": "\nThis user has '<b>admin rights</b>' in this chat.",
-  "info_chat_owner": "\nThis user is the '<b>owner</b>' of this chat.",
-  "user_not_found": "\nNo user was found for '<code>{user}</code>'."
+  "info_description": "Get information about a user.",
+  "info_header": "<b>• User informations</b>\n",
+  "info_id": "\n🆔 ID: <code>{id}</code>",
+  "info_first_name": "\n1️⃣ First name: {first_name}",
+  "info_last_name": "\n2️⃣ Last name: {last_name}",
+  "info_username": "\n🌐 Username: @{username}",
+  "info_userlink": "\n🧑🏻‍💼 User profile: {taps_here}",
+  "info_user_lang": "\n🏳️‍🌈 Language: {user_lang}",
+  "info_chat_admin": "\n\nThis user is the <b>admin</b> of this chat.",
+  "info_chat_owner": "\n\nThis user is the <b>owner</b> of this chat.",
+  "user_not_found": "\n❌ The user <code>{user}</code> not found.",
+  "info_chat_left": "\n\nThis user has left from this chat.",
+  "info_chat_banned": "\n\nThis user has banned from this chat.",
+  "info_chat_restricted": "\n\nThis user has restricted by admin in this chat"
 }
