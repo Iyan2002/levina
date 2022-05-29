@@ -1,4 +1,6 @@
 {
   "telegraph_err_no_reply": "Reply to a photo or video.",
+  "telegraph_upload_load": "Uploading...",
+  "telegraph_upload_done": "📁 Uploaded to <a href=\"{url}\">telegraph</a>",
   "telegraph_description": "Upload a photo or video to telegra.ph"
 }
