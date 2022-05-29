@@ -1,12 +1,16 @@
 {
-  "info_id": "\nID: <code>{id}</code>",
-  "info_description": "Dapatkan informasi tentang pengguna.",
-  "info_header": "<b>Info pengguna:</b>",
-  "info_first_name": "\nNama depan: {first_name}",
-  "info_last_name": "\nNama belakang: {last_name}",
-  "info_username": "\nUsername: @{username}",
-  "info_userlink": "\nTautan pengguna: {link}",
-  "info_chat_admin": "\nPengguna ini memiliki '<b>hak admin</b>' dalam obrolan ini.",
-  "info_chat_owner": "\nPengguna ini merupakan '<b>pemilik</b>' dari obrolan ini.",
-  "user_not_found": "\nTidak ada pengguna yang ditemukan untuk '<code>{user}</code>'."
+  "info_description": "Dapatkan informasi mengenai pengguna.",
+  "info_header": "<b>• Informasi pengguna</b>\n",
+  "info_id": "\n🆔 ID: <code>{id}</code>",
+  "info_first_name": "\n1️⃣ Nama depan: {first_name}",
+  "info_last_name": "\n2️⃣ Nama belakang: {last_name}",
+  "info_username": "\n🌐 Username: @{username}",
+  "info_userlink": "\n🧑🏻‍💼 Profil pengguna: {taps_here}",
+  "info_user_lang": "\n🏳️‍🌈 Bahasa: {user_lang}",
+  "info_chat_admin": "\n\nPengguna ini adalah <b>admin</b> di obrolan ini.",
+  "info_chat_owner": "\n\nPengguna ini adalah <b>pembuat</b> obrolan ini.",
+  "user_not_found": "\n❌ Pengguna <code>{user}</code> tidak ditemukan.",
+  "info_chat_left": "\n\nPengguna ini telah meninggalkan obrolan ini.",
+  "info_chat_banned": "\n\nPengguna ini telah diblokir dari obrolan ini.",
+  "info_chat_restricted": "\n\nPengguna ini dibatasi oleh admin di obrolan ini."
 }
