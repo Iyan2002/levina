@@ -6,7 +6,7 @@ from urllib.parse import quote, unquote
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
 from pyrogram.types import InlineKeyboardMarkup, Message
-from pyrogram.enums import ChatMembersFilter, ParseMode, ChatType
+from pyrogram.enums import ChatMembersFilter, ParseMode
 
 from eduu.config import log_chat, prefix
 from eduu.utils import button_parser, commands, http
@@ -209,36 +209,6 @@ async def donate_info(c: Client, m: Message, strings):
     )
 
 
-@Client.on_message(filters.command("id", prefix))
-@use_chat_lang()
-async def get_chat_id(c: Client, m: Message, strings):
-    if m.reply_to_message.from_user:
-        a_data = m.reply_to_message.from_user.id
-        b_data = m.reply_to_message.from_user.first_name
-        await c.send_message(
-            strings("string_id_user").format(name=b_data, data=a_data)
-        )
-    elif len(m.text.split()) > 1:
-        c_data = m.text.split(None, 1)[1]
-        b_data = await c.get_users(c_data).first_name
-        a_data = await c.get_users(c_data).id
-        await c.send_message(
-            strings("string_id_user").format(name=b_data, data=a_data)
-        )
-    else:
-        i_data = m.chat.id
-        if m.chat.type == ChatType.GROUP or ChatType.SUPERGROUP:
-            await c.send_message(
-                strings("string_id_chat").format(data=i_data)
-            )
-        else:
-            if m.chat.type == ChatType.PRIVATE:
-                await c.send_message(
-                    strings("string_id_inpm").format(data=i_data)
-                )
-
-
-commands.add_command("id", "general")
 commands.add_command("mark", "general")
 commands.add_command("html", "general")
 commands.add_command("admins", "general")
