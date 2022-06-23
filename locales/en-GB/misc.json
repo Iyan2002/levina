@@ -19,8 +19,5 @@
   "donate_description": "Get information on how to donate.",
   "donatecmdstring": "If you like this project and want the bot to keep it running properly, please show your support by making a donation to the developer of this bot by clicking on the link below. Any value is appreciated. Thanks!\n\nhttps://trakteer.id/levina-crqid/tip",
   "report_admns": "{admins_list}{reported_user} reported to admins",
-  "string_id_user": "User {name} ID is <code>{data}</code>",
-  "string_id_chat": "ID of this Group: <code>{data}</code>",
-  "string_id_inpm": "ID of this Chat: <code>{data}</code>",
   "report_description": "Report user in the group to admins."
 }

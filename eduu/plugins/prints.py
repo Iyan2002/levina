@@ -1,3 +1,5 @@
+import uuid
+
 from httpx import HTTPError
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -7,7 +9,7 @@ from eduu.utils import commands, http
 from eduu.utils.localization import use_chat_lang
 
 
-@Client.on_message(filters.command(["print", "webs"], prefix))
+@Client.on_message(filters.command(["print", "webs", "ss"], prefix))
 @use_chat_lang()
 async def prints(c: Client, message: Message, strings):
     msg = message.text
@@ -67,6 +69,8 @@ async def cssworker_url(target_url: str):
 
     data = {
         "url": target_url,
+        # Sending a random CSS to make the API to generate a new screenshot.
+        "css": f"random-tag: {uuid.uuid4()}",
         "render_when_ready": False,
         "viewport_width": 1280,
         "viewport_height": 720,

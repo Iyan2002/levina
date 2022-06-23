@@ -34,7 +34,7 @@ conn = database.get_conn()
 
 @Client.on_message(filters.command("sudos", prefix) & sudofilter)
 async def sudos(c: Client, m: Message):
-    await m.reply_text("unavailable !")
+    await m.reply_text("Bot sudo:\n\n> @vionite\n> @reysiregarr")
 
 
 @Client.on_message(filters.command("cmd", prefix) & sudofilter)

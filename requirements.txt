@@ -3,15 +3,18 @@ git+https://github.com/AmanoTeam/pyrogram.git#egg=Pyrogram
 
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
+# Database
 aiosqlite==0.17.0
+
+# Plugins Deps
 python-ffmpeg==1.0.14
 gpytranslate==1.4.0
 meval==2.5
 speedtest-cli
 httpx[http2]>=0.18.1,<1.0.0
-regex
-Pillow>=8.4.0,<10.0.0
-pytio
 yt-dlp==2022.6.22.1
 humanfriendly
+Pillow>=8.4.0,<10.0.0
+pytio
+regex
 yarl

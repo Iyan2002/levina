@@ -19,8 +19,5 @@
   "donate_description": "Dapatkan informasi mengenai cara berdonasi.",
   "donatecmdstring": "Jika anda menyukai proyek ini dan ingin bot tetap berjalan dengan semestinya, silakan tunjukkan dukungan anda dengan melakukan donasi kepada pengembang bot ini dengan mengklik tautan dibawah ini. Berapapun nilainya sangat dihargai. Terima kasih!\n\nhttps://trakteer.id/levina-crqid/tip",
   "report_admns": "{admins_list}{reported_user} dilaporkan ke admin",
-  "string_id_user": "ID pengguna {name} adalah <code>{data}</code>",
-  "string_id_chat": "ID Grup ini : <code>{data}</code>",
-  "string_id_inpm": "ID Chat ini : <code>{data}</code>",
   "report_description": "Laporkan pengguna di grup ke admin."
 }
