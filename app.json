@@ -8,7 +8,7 @@
     "python3",
     "aiosqlite"
   ],
-  "stack": "heroku-20",
+  "stack": "heroku-22",
   "repository": "https://github.com/levina-lab/guard-bot",
   "env": {
     "API_ID": {
