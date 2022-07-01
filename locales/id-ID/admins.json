@@ -38,5 +38,22 @@
   "reason_string": "Alasan: {reason_text}",
   "i_cant_ban_admins": "Saya tidak bisa memblokir admin.",
   "i_cant_mute_admins": "Saya tidak bisa membisukan admin.",
-  "i_cant_kick_admins": "Saya tidak bisa menendang admin."
+  "i_cant_kick_admins": "Saya tidak bisa menendang admin.",
+  "rep_messageto_delete": "Balas ke pesan yang ingin dihapus!",
+  "clean_ghost_process": "Mendeteksi akun terhapus...",
+  "banned_ghost_acc": "✅ {total} akun terhapus diblokir.",
+  "no_ghost_exist": "Akun terhapus tidak ditemukan, obrolan bersih.",
+  "user_is_null": "Tidak dapat menemukan pengguna tersebut!",
+  "cant_promote_self": "Saya tidak bisa mempromosikan diri sendiri!",
+  "cant_promote_mems": "Saya tidak memiliki izin yang cukup!",
+  "full_promote_done": "✅ {user} dipromosikan dengan izin penuh!",
+  "regular_promote_done": "✅ {user} dipromosikan sebagai admin!",
+  "cant_demote_self": "Saya tidak bisa menurunkan diri sendiri!",
+  "sudo_is_special": "Kamu tidak bisa menurunkan staf bot!",
+  "demote_done": "✅ {user} diturunkan!",
+  "del_description": "Hapus pesan tertentu.",
+  "wipe_description": "Blokir akun terhapus di obrolan.",
+  "promote_description": "Promosikan pengguna menjadi admin.",
+  "fullpromote_description": "Promosikan pengguna menjadi admin dengan izin penuh.",
+  "demote_description": "Turunkan pengguna dari jabatan admin."
 }

@@ -38,5 +38,22 @@
   "reason_string": "Reason: {reason_text}",
   "i_cant_ban_admins": "I can't ban admins.",
   "i_cant_mute_admins": "I can't mute admins.",
-  "i_cant_kick_admins": "I can't kick admins."
+  "i_cant_kick_admins": "I can't kick admins.",
+  "rep_messageto_delete": "Reply to the message you want to delete!",
+  "clean_ghost_process": "Detecting ghost account...",
+  "banned_ghost_acc": "✅ banned {total} ghost account.",
+  "no_ghost_exist": "Ghost account not found!, Group is clean.",
+  "user_is_null": "I can't find that user!",
+  "cant_promote_self": "I can't promote myself!",
+  "cant_promote_mems": "I don't have enough permissions",
+  "full_promote_done": "✅ {user} promoted with full permission!",
+  "regular_promote_done": "✅ {user} promoted as admin!",
+  "cant_demote_self": "I can't demote myself!",
+  "sudo_is_special": "You can't demote bot staff!",
+  "demote_done": "✅ {user} demoted!",
+  "del_description": "Delete specific message.",
+  "wipe_description": "Ban ghost account in Group.",
+  "promote_description": "Promote user as admin.",
+  "fullpromote_description": "Promote user as admin with full permission.",
+  "demote_description": "Demote user from admin rights."
 }

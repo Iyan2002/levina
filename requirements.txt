@@ -15,6 +15,9 @@ httpx[http2]>=0.18.1,<1.0.0
 yt-dlp==2022.6.29
 humanfriendly
 Pillow>=8.4.0,<10.0.0
+telegraph
+aiohttp
+aiofiles
 pytio
 regex
 yarl

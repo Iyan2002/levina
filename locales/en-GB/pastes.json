@@ -1,5 +1,10 @@
 {
-  "nekobin_description": "Paste the replied text/document to nekobin.com.",
-  "hastebin_description": "Paste the replied text/document to hastebin.com.",
-  "reply_to_document_or_text": "Please reply to a text or document to paste its content."
+  "nekobin_description": "Paste the replied text/document to batbin.me",
+  "hastebin_description": "Paste the replied text/document to hastebin.com",
+  "reply_to_document_or_text": "Please reply to a text or document to paste it's content.",
+  "supported_text_document": "Only text & document are supported!",
+  "paste_upload_process": "Pasting to batbin...",
+  "paste_file_limit": "You can only paste file smaller than 40KB!",
+  "paste_text_only": "Only text file can be pasted!",
+  "haste_upload_process": "Pasting to hastebin..."
 }

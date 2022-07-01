@@ -1,4 +1,10 @@
 {
-  "nekobin_description": "Balasan teks/dokumen ditempel ke nekobin.com.",
-  "hastebin_description": "Balasan teks/dokumen ditempel ke hastebin.com."
+  "nekobin_description": "Tempel teks/dokumen ke batbin.me",
+  "hastebin_description": "Tempel teks/dokumen ke hastebin.com",
+  "reply_to_document_or_text": "Balas ke teks atau dokumen untuk ditempel.",
+  "supported_text_document": "Hanya teks & dokumen yang didukung!",
+  "paste_upload_process": "Menempelkan ke batbin...",
+  "paste_file_limit": "Kamu hanya bisa menempel dokumen dibawah 40KB!",
+  "paste_text_only": "Hanya dokumen teks yang didukung!",
+  "haste_upload_process": "Pasting to hastebin..."
 }

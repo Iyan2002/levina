@@ -25,7 +25,7 @@ async def check_for_filters(chat_id, trigger):
     return False
 
 
-@Client.on_message(filters.command(["filter", "savefilter"], prefix))
+@Client.on_message(filters.command(["filter", "addfilter"], prefix))
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def save_filter(c: Client, m: Message, strings):
@@ -97,7 +97,7 @@ async def save_filter(c: Client, m: Message, strings):
     )
 
 
-@Client.on_message(filters.command(["delfilter", "rmfilter", "stop"], prefix))
+@Client.on_message(filters.command(["delfilter", "stop"], prefix))
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def delete_filter(c: Client, m: Message, strings):
@@ -215,6 +215,6 @@ async def serve_filter(c: Client, m: Message):
                 )
 
 
-commands.add_command("delfilter", "admin")
+commands.add_command("stop", "admin")
 commands.add_command("filter", "admin")
 commands.add_command("filters", "general")
