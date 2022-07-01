@@ -70,11 +70,11 @@ async def nekobin(c: Client, m: Message, strings):
             await m.reply_photo(
                 photo=url,
                 quote=False,
-                caption=f"🔗 {link}",
+                caption=f"🔗 {url}",
             )
         await msg.delete()
     except Exception:
-        await msg.edit_text(f"🔗 {link}")
+        await msg.edit_text(f"🔗 {url}")
 
 
 commands.add_command("paste", "tools", "nekobin_description", context_location="pastes")

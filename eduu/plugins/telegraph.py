@@ -1,15 +1,10 @@
-from telegraph import Telegraph
-
 from pyrogram.types import Message
 from pyrogram import Client, filters
 
+from eduu import telegraph
 from eduu.config import prefix
 from eduu.utils import commands, http
 from eduu.utils.localization import use_chat_lang
-
-
-telegraph = Telegraph()
-telegraph.create_account(short_name="GroupsGuardRobot")
 
 
 @Client.on_message(filters.command(["telegraph", "tgm"], prefix))
