@@ -1,4 +1,4 @@
-import telegraph.Telegraph
+from telegraph import Telegraph
 
 from pyrogram.types import Message
 from pyrogram import Client, filters

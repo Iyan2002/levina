@@ -1,8 +1,8 @@
 import os
 import re
 import aiofiles
-import aiohttp.ClientSession
 
+from aiohttp import ClientSession
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
