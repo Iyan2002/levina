@@ -121,7 +121,7 @@ async def FuncPromoteMember(c: Client, message: Message, strings):
     user_tg = (await c.get_users(user_id)).mention
     if not user_id:
         return await message.reply_text(strings("user_is_null"))
-    bot = await app.get_chat_member(message.chat.id, "5200427414")
+    bot = await c.get_chat_member(message.chat.id, "5200427414")
     if user_id == "5200427414":
         return await message.reply_text(strings("cant_promote_self"))
     if not bot.can_promote_members:
