@@ -49,12 +49,12 @@ async def FuncDelGhost(c: Client, m: Message, strings):
 async def FuncPromoteMember(c: Client, m: Message, strings):
     target_user = await get_target_user(c, m)
     check_admin = await m.chat.get_member(target_user.id)
-    self = await c.get_chat_member(m.chat.id, "5200427414")
 
     if target_user.id == "5200427414":
         return await m.reply_text(strings("cant_promote_self"))
-    if not self.can_promote_members:
+    if not c.can_promote_members:
         return await m.reply_text(strings("cant_promote_mems"))
+
     if check_admin.status not in admin_status:
         try:
             if m.command[0][0] == "f":
@@ -62,14 +62,14 @@ async def FuncPromoteMember(c: Client, m: Message, strings):
                     m.chat.id,
                     user_id=target_user.id,
                     privileges=ChatPrivileges(
-                        can_change_info=self.can_change_info,
-                        can_invite_users=self.can_invite_users,
-                        can_delete_messages=self.can_delete_messages,
-                        can_restrict_members=self.can_restrict_members,
-                        can_pin_messages=self.can_pin_messages,
-                        can_promote_members=self.can_promote_members,
-                        can_manage_chat=self.can_manage_chat,
-                        can_manage_video_chats=self.can_manage_video_chats,
+                        can_change_info=True,
+                        can_invite_users=True,
+                        can_delete_messages=True,
+                        can_restrict_members=True,
+                        can_pin_messages=True,
+                        can_promote_members=True,
+                        can_manage_chat=True,
+                        can_manage_video_chats=True,
                     ),
                 )
                 return await m.reply_text(strings("full_promote_done").format(user=user_tg))
@@ -79,12 +79,12 @@ async def FuncPromoteMember(c: Client, m: Message, strings):
                     user_id=target_user.id,
                     privileges=ChatPrivileges(
                         can_change_info=False,
-                        can_invite_users=self.can_invite_users,
-                        can_delete_messages=self.can_delete_messages,
-                        can_restrict_members=self.can_restrict_members,
+                        can_invite_users=True,
+                        can_delete_messages=True,
+                        can_restrict_members=True,
                         can_pin_messages=False,
                         can_promote_members=False,
-                        can_manage_chat=self.can_manage_chat,
+                        can_manage_chat=True,
                         can_manage_video_chats=False,
                     ),
                 )
@@ -106,6 +106,8 @@ async def FuncDemoteMember(c: Client, m: Message, strings):
         return await m.reply_text(strings("cant_demote_self"))
     if target_user.id in sudoers:
         return await m.reply_text(strings("sudo_is_special"))
+    if not c.can_promote_members:
+        return await m.reply_text(strings("cant_promote_mems"))
     
     if check_admin.status in admin_status:
         try:
