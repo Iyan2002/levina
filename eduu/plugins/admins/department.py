@@ -58,7 +58,8 @@ async def FuncPromoteMember(c: Client, m: Message, strings):
     if check_admin.status not in admin_status:
         try:
             if m.command[0][0] == "f":
-                await m.chat.promote_member(
+                await c.promote_chat_member(
+                    m.chat.id,
                     user_id=target_user.id,
                     privileges=ChatPrivileges(
                         can_change_info=self.can_change_info,
@@ -73,7 +74,8 @@ async def FuncPromoteMember(c: Client, m: Message, strings):
                 )
                 return await m.reply_text(strings("full_promote_done").format(user=user_tg))
             else:
-                await m.chat.promote_member(
+                await c.promote_chat_member(
+                    m.chat.id,
                     user_id=target_user.id,
                     privileges=ChatPrivileges(
                         can_change_info=False,
@@ -107,8 +109,9 @@ async def FuncDemoteMember(c: Client, m: Message, strings):
     
     if check_admin.status in admin_status:
         try:
-            await m.chat.promote_member(
-                user_id=user_id,
+            await c.promote_chat_member(
+                m.chat.id,
+                user_id=target_user.id,
                 privileges=ChatPrivileges(
                     can_change_info=False,
                     can_invite_users=False,
