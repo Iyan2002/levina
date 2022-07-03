@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from pyrogram.errors import UsernameNotOccupied
 
 from eduu.config import prefix
 from eduu.utils import commands, get_reason_text, get_target_user, time_extract
@@ -16,17 +17,20 @@ async def ban(c: Client, m: Message, strings):
     reason = await get_reason_text(c, m)
     check_admin = await m.chat.get_member(target_user.id)
     if check_admin.status not in admin_status:
-        await m.chat.ban_member(target_user.id)
-        text = strings("ban_success").format(
-            user=target_user.mention,
-            admin=m.from_user.mention,
-        )
-        if reason:
-            await m.reply_text(
-                text + "\n" + strings("reason_string").format(reason_text=reason)
+        try:
+            await m.chat.ban_member(target_user.id)
+            text = strings("ban_success").format(
+                user=target_user.mention,
+                admin=m.from_user.mention,
             )
-        else:
-            await m.reply_text(text)
+            if reason:
+                await m.reply_text(
+                    text + "\n" + strings("reason_string").format(reason_text=reason)
+                )
+            else:
+                await m.reply_text(text)
+        except UsernameNotOccupied:
+            await m.reply_text(strings("user_is_null"))
     else:
         await m.reply_text(strings("i_cant_ban_admins"))
 

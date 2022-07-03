@@ -55,5 +55,7 @@
   "wipe_description": "Ban ghost account in Group.",
   "promote_description": "Promote user as admin.",
   "fullpromote_description": "Promote user as admin with full permission.",
-  "demote_description": "Demote user from admin rights."
+  "demote_description": "Demote user from admin rights.",
+  "user_is_author": "User is already an admin.",
+  "user_isnot_author": "User is no longer an admin."
 }
