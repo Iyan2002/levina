@@ -12,7 +12,7 @@ gpytranslate==1.4.0
 meval==2.5
 speedtest-cli
 httpx[http2]>=0.18.1,<1.0.0
-yt-dlp==2022.8.14
+yt-dlp==2022.8.8
 humanfriendly
 Pillow>=8.4.0,<10.0.0
 telegraph
