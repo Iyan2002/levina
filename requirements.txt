@@ -1,5 +1,5 @@
 tgcrypto
-git+https://github.com/levina-lab/pyrogram.git
+git+https://github.com/AmanoTeam/pyrogram.git
 
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
