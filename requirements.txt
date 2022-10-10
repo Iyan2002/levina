@@ -1,23 +1,25 @@
+# System
 tgcrypto
 git+https://github.com/AmanoTeam/pyrogram.git
-
 uvloop>=0.4.0,<0.17.0; platform_system != "Windows"
 
 # Database
 aiosqlite==0.17.0
 
 # Plugins Deps
-python-ffmpeg==1.0.14
-gpytranslate==1.4.0
 meval==2.5
 speedtest-cli
+humanfriendly
+python-ffmpeg==1.0.14
+gpytranslate==1.4.0
 httpx[http2]>=0.18.1,<1.0.0
 yt-dlp==2022.10.4
-humanfriendly
 Pillow>=8.4.0,<10.0.0
-telegraph
-aiohttp
-aiofiles
+
+# Others
 pytio
 regex
 yarl
+telegraph
+aiohttp
+aiofiles
