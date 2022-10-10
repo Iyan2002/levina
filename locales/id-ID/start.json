@@ -6,7 +6,7 @@
   "private": "👋🏻 Hai yang di sana!\n\n💭 <a href=\"https://t.me/GroupsGuardRobot\">Groups Guard</a> adalah <b>bot terlengkap</b> untuk membantu anda mengelola Grup <b>dengan mudah</b> dan <b>aman</b>.\n\n❓ Cukup tekan tombol <b>📚 Perintah</b> di bawah ini untuk melihat semua perintah bot atau tekan /help",
   "start_chat": "🤖 Hubungi Bot",
   "group": "Halo, saya Guards Bot!\n\nUntuk menemukan fungsi saya, silakan mulai percakapan dengan saya.",
-  "info_page": "• Groups Guard Bot\n\n🔖 Versi bot: {version} (753)\n🧑🏼‍💻 Developer: @vionite\n\n<b>Groups Guard</b> adalah bot yang dikembangkan di <b>Python3</b> dan menggunakan Pyrogram sebagai framework dengan sql sebagai database.",
+  "info_page": "• Groups Guard Bot\n\n🔖 Versi bot: {version} ({version_code})\n🧑🏼‍💻 Developer: @vionite\n\n<b>Groups Guard</b> adalah bot yang dikembangkan di <b>Python3</b> dan menggunakan Pyrogram sebagai framework dengan sql sebagai database.",
   "start_description": "mulai bot !",
   "support_info_text": "• Informasi dukungan Bot.\n\nKami memiliki Grup & Saluran resmi untuk dukungan bot ini. Anda dapat meminta bantuan/dukungan bot ini di sana, dan kemudian staf grup akan memandu anda dengan masalah anda.\n\n💬 Grup: @VeezSupportGroup\n📣 Berita: @levinachannel\n\nUntuk mendapatkan dukungan langsung, anda dapat menghubungi admin bot ini:\n\n» 👮🏻 @vionite\n» 👮🏻 @reysiregarr\n\n⚠️ Staf bot tidak dapat membantu anda dalam situasi yang melibatkan grup yang menggunakan bot ini."
 }
