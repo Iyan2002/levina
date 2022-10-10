@@ -2,11 +2,11 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import UsernameNotOccupied
 
-from ..config import prefix
-from ..utils import commands, get_reason_text, get_target_user, time_extract
-from ..utils.consts import admin_status
-from ..utils.decorators import require_admin
-from ..utils.localization import use_chat_lang
+from ...config import prefix
+from ...utils import commands, get_reason_text, get_target_user, time_extract
+from ...utils.consts import admin_status
+from ...utils.decorators import require_admin
+from ...utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command("ban", prefix))
