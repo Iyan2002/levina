@@ -2,14 +2,13 @@ import time
 import logging
 
 import pyrogram
-from pyrogram import Client, __version__
+from pyrogram import Client
 from pyrogram.enums import ParseMode
 from pyrogram.errors import BadRequest
 from pyrogram.raw.all import layer
 
-import eduu
-from eduu.config import API_HASH, API_ID, disabled_plugins, log_chat, TOKEN, WORKERS
-from eduu.utils.utils import shell_exec
+from . import __version__, __version_code__
+from .config import API_HASH, API_ID, disabled_plugins, log_chat, TOKEN, WORKERS
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +19,7 @@ class Eduu(Client):
 
         super().__init__(
             name=name,
-            app_version=f"GuardBot v{eduu.__version__}",
+            app_version=f"GuardBot v{__version__}",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=TOKEN,
@@ -33,24 +32,23 @@ class Eduu(Client):
     async def start(self):
         await super().start()
 
-        self.me = await self.get_me()
         self.start_time = time.time()
 
         logger.info(
             "GuardBot running with Pyrogram v%s (Layer %s) started on @%s. Hi!",
-            __version__,
+            pyrogram.__version__,
             layer,
             self.me.username,
         )
 
-        from eduu.database.restarted import del_restarted, get_restarted
+        from .database.restarted import del_restarted, get_restarted
 
         wr = await get_restarted()
         await del_restarted()
 
         start_message = (
             "✅ <b>GuardBot started!</b>\n\n"
-            f"🔖 <b>Version:</b> <code>v{eduu.__version__} (753)</code>\n"
+            f"🔖 <b>Version:</b> <code>v{__version__} ({__version_code__})</code>\n"
             f"🔥 <b>Pyrogram:</b> <code>v{pyrogram.__version__}</code>"
         )
 

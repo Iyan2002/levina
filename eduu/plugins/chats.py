@@ -3,7 +3,7 @@
 from pyrogram import Client
 from pyrogram.types import Message
 
-from eduu.database.chats import add_chat, chat_exists
+from ..database.chats import add_chat, chat_exists
 
 
 @Client.on_message(group=-1)

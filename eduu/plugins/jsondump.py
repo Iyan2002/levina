@@ -5,8 +5,8 @@ import json
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from eduu.config import prefix
-from eduu.utils import commands
+from ..config import prefix
+from ..utils import commands
 
 
 @Client.on_message(filters.command("jsondump", prefix))

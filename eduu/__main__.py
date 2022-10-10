@@ -5,9 +5,9 @@ import platform
 
 from pyrogram import idle
 
-from eduu.bot import Eduu
-from eduu.utils import http
-from eduu.database import database
+from .bot import Eduu
+from .utils import http
+from .database import database
 
 
 logging.basicConfig(

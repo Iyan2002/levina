@@ -1,11 +1,11 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, Message
 
-from eduu.config import prefix
-from eduu.database.rules import get_rules, set_rules
-from eduu.utils import button_parser, commands
-from eduu.utils.decorators import require_admin
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..database.rules import get_rules, set_rules
+from ..utils import button_parser, commands
+from ..utils.decorators import require_admin
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command("setrules", prefix) & filters.group)

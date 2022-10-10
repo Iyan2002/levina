@@ -17,9 +17,9 @@ from pyrogram.raw.types import (
 )
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from eduu.config import log_chat, prefix
-from eduu.utils import EMOJI_PATTERN, http, commands
-from eduu.utils.localization import use_chat_lang
+from ..config import log_chat, prefix
+from ..utils import EMOJI_PATTERN, http, commands
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command(["kang", "sticker", "steal"], prefix))

@@ -1,6 +1,6 @@
 from pyrogram.enums import ChatType
 
-from eduu.utils.consts import group_types
+from ..utils.consts import group_types
 
 from .core import database
 

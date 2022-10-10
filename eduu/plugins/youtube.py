@@ -11,9 +11,9 @@ from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
 from pyrogram.types import CallbackQuery, Message
 
-from eduu.config import prefix
-from eduu.utils.localization import use_chat_lang
-from eduu.utils import aiowrap, http, pretty_size, commands
+from ..config import prefix
+from ..utils.localization import use_chat_lang
+from ..utils import aiowrap, http, pretty_size, commands
 
 
 YOUTUBE_REGEX = re.compile(

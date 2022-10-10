@@ -9,10 +9,10 @@ from pyrogram.types import (
     Message,
 )
 
-import eduu
-from eduu.config import prefix
-from eduu.utils import commands
-from eduu.utils.localization import use_chat_lang
+from .. import __version__, __version_code__
+from ..config import prefix
+from ..utils import commands
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command("start", prefix), group=2)
@@ -85,7 +85,8 @@ async def support_info(c: Client, m: CallbackQuery, strings):
 @use_chat_lang()
 async def infos(c: Client, m: CallbackQuery, strings):
     res = strings("info_page").format(
-        version=eduu.__version__
+        version=__version__,
+        version_code=__version_code__,
     )
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[

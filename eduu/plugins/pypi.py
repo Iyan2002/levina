@@ -4,9 +4,9 @@ import html
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from eduu.config import prefix
-from eduu.utils import commands, http
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..utils import commands, http
+from ..utils.localization import use_chat_lang
 
 
 def cleanhtml(raw_html):

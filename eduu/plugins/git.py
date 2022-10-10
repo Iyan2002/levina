@@ -3,9 +3,9 @@ from urllib.parse import quote_plus
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from eduu.config import prefix
-from eduu.utils import commands, http
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..utils import commands, http
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command(["git", "github"], prefix))

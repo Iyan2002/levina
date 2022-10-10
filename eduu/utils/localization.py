@@ -9,7 +9,7 @@ from functools import partial, wraps
 from pyrogram.enums import ChatType
 from pyrogram.types import CallbackQuery, InlineQuery, Message
 
-from eduu.database.localization import get_db_lang
+from ..database.localization import get_db_lang
 
 
 enabled_locales: List[str] = [

@@ -7,9 +7,9 @@ from pyrogram.types import (
 )
 from yarl import URL
 
-from eduu.config import prefix
-from eduu.utils import http
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..utils import http
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command("ip", prefix))

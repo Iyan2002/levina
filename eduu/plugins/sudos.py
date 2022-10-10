@@ -19,12 +19,12 @@ from pyrogram.enums import ChatType
 from pyrogram import Client, filters
 from pyrogram.errors import RPCError
 
-from eduu.config import DATABASE_PATH
-from eduu.database import database
-from eduu.database.restarted import set_restarted
-from eduu.utils import sudofilter
-from eduu.utils.utils import shell_exec
-from eduu.utils.localization import use_chat_lang
+from ..config import DATABASE_PATH
+from ..database import database
+from ..database.restarted import set_restarted
+from ..utils import sudofilter
+from ..utils.utils import shell_exec
+from ..utils.localization import use_chat_lang
 
 
 prefix: Union[list, str] = "!"
@@ -73,7 +73,7 @@ async def upgrade(c: Client, m: Message, strings):
             os.execv(sys.executable, args)  # skipcq: BAN-B606
     else:
         await sm.edit_text(
-            f"Upgrade failed (process exited with {proc.returncode}):\n{stdout.decode()}"
+            f"Upgrade failed (process exited with {proc.returncode}):\n{stdout}"
         )
         proc = await asyncio.create_subprocess_shell("git merge --abort")
         await proc.communicate()

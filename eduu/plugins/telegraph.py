@@ -1,10 +1,9 @@
 from pyrogram.types import Message
 from pyrogram import Client, filters
 
-from eduu import telegraph
-from eduu.config import prefix
-from eduu.utils import commands, http
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..utils import commands, http
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command(["telegraph", "tgm"], prefix))
@@ -26,19 +25,6 @@ async def telegraph(c: Client, m: Message, strings):
             tele_link = "https://telegra.ph" + response.json()[0]["src"]
             return await msg.edit_text(
                 strings("telegraph_upload_done").format(url=tele_link)
-            )
-        if m.reply_to_message.text:
-            if len(m.command) < 2:
-                return await m.reply_text(strings("telegraph_text_example"))
-            msg = await c.send_message(
-                m.chat.id, strings("telegraph_upload_load")
-            )
-            name = m.text.split(None, 1)[1]
-            page = telegraph.create_page(
-                name, html_content=m.reply_to_message.text.html.replace("\n", "<br>")
-            )
-            return await msg.edit_text(
-                strings("telegraph_upload_done").format(url={page['url']})
             )
     else:
         await m.reply_text(strings("telegraph_err_no_reply"))

@@ -3,9 +3,9 @@ import logging
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from eduu.config import TENOR_API_KEY, prefix
-from eduu.utils import commands, http
-from eduu.utils.localization import use_chat_lang
+from ..config import TENOR_API_KEY, prefix
+from ..utils import commands, http
+from ..utils.localization import use_chat_lang
 
 
 logger = logging.getLogger(__name__)

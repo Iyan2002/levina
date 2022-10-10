@@ -6,8 +6,8 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     Message,
 )
-from eduu.utils import commands
-from eduu.utils.localization import use_chat_lang
+from ..utils import commands
+from ..utils.localization import use_chat_lang
 
 
 def gen_categories_kb(strings_manager):

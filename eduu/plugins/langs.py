@@ -10,11 +10,11 @@ from pyrogram.types import (
     Message,
 )
 
-from eduu.config import prefix
-from eduu.database.localization import set_db_lang
-from eduu.utils.decorators import require_admin
-from eduu.utils import commands
-from eduu.utils.localization import (
+from ..config import prefix
+from ..database.localization import set_db_lang
+from ..utils.decorators import require_admin
+from ..utils import commands
+from ..utils.localization import (
     default_language,
     get_locale_string,
     langdict,

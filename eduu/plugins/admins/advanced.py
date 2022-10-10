@@ -2,11 +2,11 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ChatPrivileges
 from pyrogram.errors import UsernameNotOccupied
 
-from eduu.config import prefix, sudoers
-from eduu.utils import commands, get_target_user
-from eduu.utils.consts import admin_status
-from eduu.utils.decorators import require_admin
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix, sudoers
+from ..utils import commands, get_target_user
+from ..utils.consts import admin_status
+from ..utils.decorators import require_admin
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command("del", prefix))

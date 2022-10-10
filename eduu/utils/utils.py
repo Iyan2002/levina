@@ -14,7 +14,7 @@ from pyrogram import Client, emoji, filters
 from pyrogram.enums import ChatMemberStatus, MessageEntityType
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, Message, User
 
-from eduu.config import sudoers
+from ..config import sudoers
 
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
@@ -304,14 +304,12 @@ async def get_reason_text(c: Client, m: Message) -> Message:
 EMOJI_PATTERN = get_emoji_regex()
 
 
-async def shell_exec(code, treat=True):
+async def shell_exec(code):
     process = await asyncio.create_subprocess_shell(
         code, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT
     )
 
-    stdout = (await process.communicate())[0]
-    if treat:
-        stdout = stdout.decode().strip()
+    stdout = (await process.communicate())[0].decode().strip()
     return stdout, process
 
 

@@ -1,9 +1,9 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from eduu.config import prefix
-from eduu.utils import commands
-from eduu.utils.localization import use_chat_lang
+from ..config import prefix
+from ..utils import commands
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message(filters.command(["dice", "dados"], prefix))
