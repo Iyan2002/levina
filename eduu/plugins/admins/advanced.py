@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ChatPrivileges
 from pyrogram.errors import UsernameNotOccupied
 
-from ..config import prefix, sudoers
+from ...config import prefix, sudoers
 from ..utils import commands, get_target_user
 from ..utils.consts import admin_status
 from ..utils.decorators import require_admin
