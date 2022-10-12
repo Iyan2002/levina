@@ -6,6 +6,7 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     Message,
 )
+from ..config import prefix
 from ..utils import commands
 from ..utils.localization import use_chat_lang
 
@@ -32,6 +33,7 @@ def gen_categories_kb(strings_manager):
 @Client.on_callback_query(filters.regex("^commands$"))
 @use_chat_lang()
 async def cmds_list(c: Client, m: CallbackQuery, strings):
+    await m.answer(strings("list_commands_panel"))
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             *gen_categories_kb(strings),
@@ -45,7 +47,7 @@ async def cmds_list(c: Client, m: CallbackQuery, strings):
     await m.message.edit_text(strings("select_command_category"), reply_markup=keyboard)
 
 
-@Client.on_message(filters.command(["help", "config"]))
+@Client.on_message(filters.command(["help", "config"], prefix))
 @use_chat_lang()
 async def show_help(c: Client, m: Message, strings):
     if m.chat.type == ChatType.PRIVATE:
@@ -78,6 +80,7 @@ async def show_help(c: Client, m: Message, strings):
 @Client.on_callback_query(filters.regex("^view_category .+"))
 @use_chat_lang()
 async def get_category(c: Client, m: CallbackQuery, strings):
+    await m.answer("available commands")
     msg = commands.get_commands_message(strings, m.data.split(maxsplit=1)[1])
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[

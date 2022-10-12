@@ -20,6 +20,7 @@ from ..utils.localization import use_chat_lang
 @use_chat_lang()
 async def start(c: Client, m: Union[Message, CallbackQuery], strings):
     if isinstance(m, CallbackQuery):
+        await m.answer(strings("start_back_panel"))
         msg = m.message
         method = msg.edit_text
     else:
@@ -68,6 +69,7 @@ async def start(c: Client, m: Union[Message, CallbackQuery], strings):
 @Client.on_callback_query(filters.regex("^support_info$"))
 @use_chat_lang()
 async def support_info(c: Client, m: CallbackQuery, strings):
+    await m.answer(strings("support_panel"))
     res = strings("support_info_text")
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -84,6 +86,7 @@ async def support_info(c: Client, m: CallbackQuery, strings):
 @Client.on_callback_query(filters.regex("^infos$"))
 @use_chat_lang()
 async def infos(c: Client, m: CallbackQuery, strings):
+    await m.answer(strings("info_panel"))
     res = strings("info_page").format(
         version=__version__,
         version_code=__version_code__,

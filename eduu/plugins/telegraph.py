@@ -9,6 +9,11 @@ from ..utils.localization import use_chat_lang
 @Client.on_message(filters.command(["telegraph", "tgm"], prefix))
 @use_chat_lang()
 async def telegraph(c: Client, m: Message, strings):
+    if m.reply_to_message.text:
+        await c.send_message(
+            m.chat.id, strings("text_not_supported")
+            )
+        return
     if m.reply_to_message:
         if (
             m.reply_to_message.photo

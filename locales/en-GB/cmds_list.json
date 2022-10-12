@@ -1,8 +1,9 @@
 {
+  "list_commands_panel": "bot command menu",
   "admin": "👮🏻 Administration",
   "command_category_title": "List of commands in <b>{category}</b>:",
   "general": "✨ General",
-  "select_command_category": "Select one of the category below to see the available commands.\n\nAll commands can be used with the handler: <code>[! . / $]</code>",
+  "select_command_category": "Choose one of the category below to see the available commands.\n\n» Useable handler: <code>($ / . !)</code>",
   "tools": "🔧 Tools",
   "group_help": "Hai, please use the command in the bot's private chat or click the button below to see the available commands."
 }

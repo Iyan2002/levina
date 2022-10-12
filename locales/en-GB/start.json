@@ -1,4 +1,7 @@
 {
+  "start_back_panel": "let's explore me!",
+  "support_panel": "bot support menu",
+  "info_panel": "bot information menu",
   "commands_btn": "📚 Commands",
   "infos_btn": "ℹ️ About",
   "language_btn": "🏳️‍🌈 Languages",

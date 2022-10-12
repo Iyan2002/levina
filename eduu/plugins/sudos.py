@@ -57,23 +57,23 @@ async def run_cmd(c: Client, m: Message, strings):
     await m.reply_text(res)
 
 
-@Client.on_message(filters.command("upgrade", prefix) & sudofilter)
+@Client.on_message(filters.command(["upgrade", "update"], prefix) & sudofilter)
 @use_chat_lang()
 async def upgrade(c: Client, m: Message, strings):
     sm = await m.reply_text("Upgrading sources...")
     stdout, proc = await shell_exec("git pull --no-edit")
     if proc.returncode == 0:
         if "Already up to date." in stdout:
-            await sm.edit_text("There's nothing to upgrade.")
+            await sm.edit_text("There's no available update.")
         else:
-            await sm.edit_text(strings("restarting"))
+            await sm.edit_text(strings("restarting..."))
             await set_restarted(sm.chat.id, sm.id)
             await conn.commit()
             args = [sys.executable, "-m", "eduu"]
             os.execv(sys.executable, args)  # skipcq: BAN-B606
     else:
         await sm.edit_text(
-            f"Upgrade failed (process exited with {proc.returncode}):\n{stdout}"
+            f"Update failed (process exited with {proc.returncode}):\n{stdout}"
         )
         proc = await asyncio.create_subprocess_shell("git merge --abort")
         await proc.communicate()

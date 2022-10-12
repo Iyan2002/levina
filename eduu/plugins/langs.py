@@ -64,6 +64,7 @@ async def chlang(c: Client, m: Union[CallbackQuery, Message], strings):
     )
 
     if isinstance(m, CallbackQuery):
+        await m.answer(strings("language_panel"))
         msg = m.message
         sender = msg.edit_text
     else:

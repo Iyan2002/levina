@@ -2,5 +2,6 @@
   "language_changed_successfully": "Ok, now on I'll speak English 🇬🇧",
   "language_changer_chat": "🇬🇧 Choose your language\n🇮🇩 Tetapkan bahasa anda",
   "language_changer_private": "🇬🇧 Choose your language\n🇮🇩 Tetapkan bahasa anda",
-  "language_description": "Change the bot language."
+  "language_description": "Change the bot language.",
+  "language_panel": "bot language menu"
 }
