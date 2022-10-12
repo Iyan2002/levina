@@ -40,7 +40,7 @@ async def user_info(c: Client, m: Message, strings):
     if user.language_code:
         text += strings("info_user_lang").format(user_lang=html.escape(user.language_code))
 
-    text += strings("info_userlink").format(taps_here=user.mention("tap here", style="html"))
+    text += strings("info_userlink").format(tap_here=user.mention("tap_here", style="html"))
 
     try:
         member = await m.chat.get_member(user.id)

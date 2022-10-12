@@ -5,7 +5,7 @@
   "info_first_name": "\n1️⃣ Nama depan: {first_name}",
   "info_last_name": "\n2️⃣ Nama belakang: {last_name}",
   "info_username": "\n🌐 Username: @{username}",
-  "info_userlink": "\n🧑🏻‍💼 Profil pengguna: {taps_here}",
+  "info_userlink": "\n🧑🏻‍💼 Profil pengguna: {tap_here}",
   "info_user_lang": "\n🏳️‍🌈 Bahasa: {user_lang}",
   "info_chat_admin": "\n\nPengguna ini adalah <b>admin</b> di obrolan ini.",
   "info_chat_owner": "\n\nPengguna ini adalah <b>pembuat</b> obrolan ini.",
