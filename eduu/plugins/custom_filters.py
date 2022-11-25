@@ -159,7 +159,7 @@ async def serve_filter(c: Client, m: Message):
                 await targeted_message.reply_photo(
                     filter_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -169,7 +169,7 @@ async def serve_filter(c: Client, m: Message):
                 await targeted_message.reply_document(
                     filter_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -179,7 +179,7 @@ async def serve_filter(c: Client, m: Message):
                 await targeted_message.reply_video(
                     filter_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -189,7 +189,7 @@ async def serve_filter(c: Client, m: Message):
                 await targeted_message.reply_audio(
                     filter_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -199,7 +199,7 @@ async def serve_filter(c: Client, m: Message):
                 await targeted_message.reply_animation(
                     filter_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0

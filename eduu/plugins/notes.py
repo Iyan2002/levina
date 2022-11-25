@@ -20,7 +20,7 @@ async def check_for_notes(chat_id, trigger):
     return False
 
 
-@Client.on_message(filters.command(["note", "savenote", "save"], prefix))
+@Client.on_message(filters.command(["savenote", "save"], prefix))
 @require_admin(allow_in_private=True)
 @use_chat_lang()
 async def save_note(c: Client, m: Message, strings):
@@ -153,7 +153,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_photo(
                     note_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -163,7 +163,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_document(
                     note_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -173,7 +173,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_video(
                     note_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -183,7 +183,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_audio(
                     note_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0
@@ -193,7 +193,7 @@ async def serve_note(c: Client, m: Message, txt):
                 await m.reply_animation(
                     note_s[3],
                     quote=True,
-                    caption=data if not None else None,
+                    caption=data,
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup(button)
                     if len(button) != 0

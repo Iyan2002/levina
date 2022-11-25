@@ -47,13 +47,8 @@ async def run_cmd(c: Client, m: Message, strings):
         stdout, stderr = await shell_exec(cmd)
 
         res = (
-            "<b>Output:</b>\n<code>{}</code>".format(html.escape(stdout)
-            )
-            if stdout
-            else ""
-        ) + (
-            "\n<b>Errors:</b>\n<code>{}</code>".format(stderr) if stderr else ""
-        )
+            f"<b>Output:</b>\n<code>{html.escape(stdout)}</code>" if stdout else ""
+        ) + (f"\n<b>Errors:</b>\n<code>{stderr}</code>" if stderr else "")
     await m.reply_text(res)
 
 
@@ -155,9 +150,7 @@ async def execsql(c: Client, m: Message):
 
     if ret:
         res = "|".join([name[0] for name in ex.description]) + "\n"
-        res += "\n".join(
-            ["|".join(str(s) for i, s in enumerate(items)) for items in ret]
-        )
+        res += "\n".join(["|".join(str(s) for s in items) for items in ret])
         if len(res) > 3500:
             bio = io.BytesIO()
             bio.name = "output.txt"
