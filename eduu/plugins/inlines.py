@@ -11,6 +11,7 @@ from pyrogram.types import (
 )
 
 from ..utils import button_parser
+from ..utils import commands
 from ..utils.localization import use_chat_lang
 
 faces_list: Iterable[str] = (
