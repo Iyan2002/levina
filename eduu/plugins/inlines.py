@@ -144,3 +144,9 @@ async def info_inline(c: Client, q: InlineQuery, strings):
             )
         ]
     )
+
+
+commands.add_command("face", "Inlines")
+commands.add_command("info", "Inlines")
+commands.add_command("html", "Inlines")
+commands.add_command("markdown", "Inlines")

@@ -1,7 +1,11 @@
 {
   "markdown_send_inline": "Click here to send the text in markdown format.",
   "html_send_inline": "Click here to send the text in html format.",
-  "user_info_inline_cant_found_user": "User not found.",
+  "user_info_inline_cant_found_user": "User not found!",
   "user_info_inline_send": "Click here for user information.",
-  "user_info_inline_string": "Username: {usernameformat}\nID: {useridformat}\nDC: {userdcformat}\nUser link: {usermentionformat}"
+  "user_info_inline_string": "Username: {usernameformat}\nID: <code>{useridformat}</code>\nDC: {userdcformat}\nUser link: {usermentionformat}",
+  "markdown_cmd": "Type any text to send it in markdown format.\n\nUsage: type <code>@GroupsGuardRobot</code> in chat and use all of these available inline commands above without the (/) symbol.",
+  "html_cmd": "Type any text to send it in html format.",
+  "face_cmd": "Type face, it will show you a list of face made with random symbol.",
+  "info_cmd": "Type info @username, it will send the user information."
 }
