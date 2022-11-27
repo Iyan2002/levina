@@ -3,8 +3,8 @@
   "html_send_inline": "Klik ini untuk mengirim teks dalam format html.",
   "user_info_inline_cant_found_user": "Pengguna tidak ditemukan!",
   "user_info_inline_string": "Username: {usernameformat}\nID: <code>{useridformat}</code>\nDC: {userdcformat}\nTautan pengguna: {usermentionformat}",
-  "markdown_cmd": "Ketik teks apa pun untuk mengirimkannya dalam format markdown.\n\nPenggunaan: ketik <code>@GroupsGuardRobot</code> di chat dan gunakan semua perintah inline yang tersedia di atas tanpa simbol (/).",
-  "html_cmd": "Ketik teks apa pun untuk mengirimkannya dalam format html.",
-  "face_cmd": "Ketik wajah, itu akan menampilkan daftar wajah yang dibuat dengan simbol acak.",
-  "info_cmd": "Ketik info @username, itu akan mengirimkan informasi pengguna."
+  "markdown_description": "Ketik teks apa pun untuk mengirimkannya dalam format markdown.\n\nPenggunaan: ketik <code>@GroupsGuardRobot</code> di chat dan gunakan semua perintah inline yang tersedia di atas tanpa simbol (/).",
+  "html_description": "Ketik teks apa pun untuk mengirimkannya dalam format html.",
+  "face_description": "Ketik wajah, itu akan menampilkan daftar wajah yang dibuat dengan simbol acak.",
+  "info_description": "Ketik info @username, itu akan mengirimkan informasi pengguna."
 }
