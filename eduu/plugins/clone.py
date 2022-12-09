@@ -5,18 +5,26 @@ from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 
 from ..config import API_ID, API_HASH
+from ..utils.localization import use_chat_lang
 
 
 @Client.on_message((filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}')) & filters.private)
-async def on_clone(self, message):
+@use_chat_lang
+async def on_clone(self, message, strings):
     user_id = message.from_user.id
     bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
     bot_token = bot_token[0] if bot_token else None
     bot_id = re.findall(r'\d[0-9]{8,10}', message.text)
     if not str(message.forward_from.id) != "93372553":
-        msg = await message.reply_text(f"🔑 <code>{bot_token}</code>\n\nCopying system...")
+        msg = await message.reply_text(
+            strings("clone_running").format(token=bot_token),
+        )
         try:
-            ai = Client(f"{bot_token}", API_ID, API_HASH, bot_token=bot_token, plugins={"root": "eduu.plugins"})
+            ai = Client(
+                f"{bot_token}", API_ID, API_HASH,
+                bot_token=bot_token,
+                plugins={"root": "eduu.plugins"},
+            )
             await ai.start()
             idle()
             bot = await ai.get_me()
@@ -28,6 +36,10 @@ async def on_clone(self, message):
                 'token': bot_token,
                 'username': bot.username
             }
-            await msg.edit_text(f"✅ @{bot.username}\n\nHas been cloned successfully!")
+            await msg.edit_text(
+                strings("clone_success").format(username=bot.username),
+            )
         except BaseException as e:
-            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
+            await msg.edit_text(
+                strings("clone_trouble").format(err=e),
+            )
