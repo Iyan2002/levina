@@ -1,5 +1,0 @@
-{
-    "clone_running": "🔑 <code>{token}</code>\n\nMenyalin sistem...",
-    "clone_success": "✅ @{username}\n\nTelah berhasil dikloning! jangan berikan token bot kepada siapa pun, karena mereka dapat mengontrol bot anda melalui klien Telegram pihak ketiga.",
-    "clone_trouble": "⚠️ <b>BOT ERROR:</b>\n\n<code>{err}</code>\n\n❔ Teruskan pesan ini ke @vionite untuk diperbaiki."
-}

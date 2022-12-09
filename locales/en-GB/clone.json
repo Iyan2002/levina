@@ -1,5 +1,0 @@
-{
-    "clone_running": "🔑 <code>{token}</code>\n\nCopying system...",
-    "clone_success": "✅ @{username}\n\nHas been cloned successfully! don't give the bot token to anyone, because they can control your bot through the third party of Telegram client.",
-    "clone_trouble": "⚠️ <b>BOT ERROR:</b>\n\n<code>{err}</code>\n\n❔ Forward this message to @vionite to be fixed."
-}
