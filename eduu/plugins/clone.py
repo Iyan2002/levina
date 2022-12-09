@@ -17,7 +17,7 @@ async def on_clone(self, message):
         msg = await message.reply_text(f"🔑 <code>{bot_token}</code>\n\nCopying system...")
         try:
             ai = Client(f"{bot_token}", API_ID, API_HASH, bot_token=bot_token, plugins={"root": "eduu.plugins"})
-            await client.start()
+            await ai.start()
             idle()
             bot = await ai.get_me()
             details = {
@@ -30,4 +30,4 @@ async def on_clone(self, message):
             }
             await msg.edit_text(f"✅ @{bot.username}\n\nHas been cloned successfully!")
         except BaseException as e:
-            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n`{e}`\n\n❔ Forward this message to @vionite to be fixed.")
+            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
