@@ -1,6 +1,6 @@
 import re
 
-from pyrogram import Client, filters, idle
+from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 
@@ -10,6 +10,7 @@ from ..config import API_ID, API_HASH
 @Client.on_message((filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}')) & filters.private)
 async def on_clone(self, message):
     user_id = message.from_user.id
+    user_name = message.from_user.first_name
     bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
     bot_token = bot_token[0] if bot_token else None
     bot_id = re.findall(r'\d[0-9]{8,10}', message.text)
@@ -23,7 +24,6 @@ async def on_clone(self, message):
                 plugins={"root": "eduu.plugins"},
             )
             await ai.start()
-            idle()
             bot = await ai.get_me()
             details = {
                 'bot_id': bot.id,
@@ -33,6 +33,10 @@ async def on_clone(self, message):
                 'token': bot_token,
                 'username': bot.username
             }
-            await msg.edit_text(f"✅ @{bot.username}\n\nHas been cloned successfully! don't give the bot token to anyone, because they can control your bot through the third party of Telegram client.")
+            await Client.send_message(
+                chat_id=log_chat,
+                text=f"{user_name}[<code>{user_id}</code>] cloned @{}",
+            )
+            await msg.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
             await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{err}</code>\n\n❔ Forward this message to @vionite to be fixed.")
