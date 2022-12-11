@@ -35,7 +35,7 @@ async def on_clone(self, message):
             }
             await Client.send_message(
                 chat_id=log_chat,
-                text=f"{user_name}[<code>{user_id}</code>] cloned @{}",
+                text=(f"{user_name}[<code>{user_id}</code>] cloned @{}"),
             )
             await msg.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
