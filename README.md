@@ -4,7 +4,10 @@ To build the bot using this source-code, setup all vars and fill it at eduu/conf
 
 ### Deploy on VPS/Linux
 
-clone the repo first
+Clone the repo first
+```bash
+git clone https://github.com/levina-lab/guard-bot
+```
 
 ```bash
 # install python3-venv
@@ -13,12 +16,15 @@ sudo apt install python3-venv
 python3 -m venv venv
 . ./venv/bin/activate
 # install requirements
-pip install -r requirements.txt
+pip install -Ur requirements.txt
+# setup config
+cd eduu
+nano config.py (type CTRL + s to save change & CTRL + x to exit)
 # run the bot
 python3 -m eduu
 ```
 
-or if you using systemd take a look at [this](https://gist.github.com/Zxce3/584309dade0a72e4eb8423f6fc44e594)
+Or if you using systemd take a look at [this](https://gist.github.com/Zxce3/584309dade0a72e4eb8423f6fc44e594)
 
 make a file named `eduubot.service` and fill it with one of there
 
@@ -41,7 +47,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-then run this command
+Then run this command
 
 ```bash
 sudo cp eduubot.service /etc/systemd/system/
