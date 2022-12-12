@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 
-from ..config import API_ID, API_HASH
+from ..config import API_ID, API_HASH, log_chat
 
 
 @Client.on_message((filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}')) & filters.private)
@@ -39,4 +39,4 @@ async def on_clone(self, message):
             )
             await msg.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
-            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{err}</code>\n\n❔ Forward this message to @vionite to be fixed.")
+            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
