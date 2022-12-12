@@ -20,6 +20,7 @@ pip install -Ur requirements.txt
 # setup config
 cd eduu
 nano config.py (type CTRL + s to save change & CTRL + x to exit)
+cd .. (exit from eduu directory)
 # run the bot
 python3 -m eduu
 ```
