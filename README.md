@@ -1,6 +1,16 @@
 ## Environment
 
-To build the bot using this source-code, setup all vars and fill it at eduu/config.py file.
+To build the bot using this source-code, setup all vars manually and fill it at eduu/config.py file.
+
+### Deploy on Heroku (PAID)
+1. Fork this repo
+2. Visit heroku.com
+3. Create new App -> Enter the App Name -> Choose App Country
+4. Click on Deploy Tab
+5. Click on GitHub Tab -> Connect the App to Your GitHub account
+6. Enter the Repo name You've forked before -> Tap Connect
+7. Click on Deploy Branch button
+8. After build done -> Click on Resources Tab -> Switch Toggle On
 
 ### Deploy on VPS/Linux
 
