@@ -1,0 +1,8 @@
+{
+  "package_details": "<b>{package_name}</b> দ্বারা <i>{author_name} {author_email}</i>\nপ্ল্যাটফর্ম: <b>{প্ল্যাটফর্ম}</b>\nসংস্করণ: <b>{সংস্করণ }</b>\nলাইসেন্স: <b>{license}</b>\nসারাংশ: <b>{summary}</b>",
+  "package_home_page": "প্যাকেজ হোম পেজ",
+  "package_not_found": "PyPI তে <b>{package_name}</b> খুঁজে পাওয়া যাচ্ছে না (ফেরত কোড ছিল {http_status})।",
+  "not_specified": "নির্দিষ্ট নয়",
+  "pypi_description": "পাইথন প্যাকেজ ইনডেক্সে (PyPI) একটি প্যাকেজ অনুসন্ধান করে।",
+  "pypi_usage": "<b>ব্যবহার:</b> <code>/pypi package_name</code> - পাইথন প্যাকেজ ইনডেক্সে (PyPI) একটি প্যাকেজ অনুসন্ধান করে।"
+}

@@ -1,0 +1,20 @@
+{
+  "get_sticker_id_string": "এই স্টিকারের আইডি হল: <code>{stickerid}</code>",
+  "animated_not_supported": "অ্যানিমেটেড স্টিকার সমর্থিত নয়।",
+  "sticker_info": "<b>ইমোজি:</b> {emoji}\n<b>স্টিকার আইডি:</b> <code>{id}</code>",
+  "not_sticker": "এটি একটি স্টিকার নয়।",
+  "kanging_sticker_msg": "<code>স্টিকার তৈরি করা হচ্ছে...</code>",
+  "sticker_kanged_string": "স্টিকার <b>সফলভাবে</b> প্যাকে যোগ করা হয়েছে\nইমোজি: {sticker_emoji}",
+  "use_existing_pack": "<code>বিদ্যমান স্টিকার প্যাক ব্যবহার করা হচ্ছে...</code>",
+  "err_sticker_no_file_name": "<b>ত্রুটি</b>: <code>এই স্টিকারটির কোনো ফাইলের নাম নেই!</code>",
+  "view_sticker_pack_btn": "দেখুন",
+  "create_new_pack_string": "একটি নতুন স্টিকার প্যাক তৈরি করা হচ্ছে...",
+  "invalid_media_string": "<b>ত্রুটি:</b> <code>অবৈধ মিডিয়া<code>",
+  "cant_create_sticker_pack_string": "ওহো, মনে হচ্ছে আপনার জন্য স্টিকার প্যাক তৈরি করার জন্য আমার কাছে পর্যাপ্ত অনুমতি নেই!\n<b>আপনাকে প্রথমে এই বটটি শুরু করতে হবে।</b>",
+  "fetch_sticker_id": "একটি স্টিকারের উত্তর দিন!",
+  "fetch_sticker_data": "একটি স্টিকারের উত্তর দিন!",
+  "kang_description": "মানুষের স্টিকার চুরি করুন/নতুন স্টিকার তৈরি করুন এবং আপনার স্টিকার প্যাকে যোগ করুন।",
+  "getsticker_description": "স্টিকারের তথ্য পেতে একটি স্টিকারের উত্তর দিন।",
+  "stickerid_description": "স্টিকার আইডি পেতে একটি স্টিকারের উত্তর দিন।",
+  "give_sticker_to_kang": "আপনি কাং করতে চান এমন স্টিকারের উত্তর দিন।"
+}

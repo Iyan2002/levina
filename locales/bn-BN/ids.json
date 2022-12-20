@@ -1,0 +1,8 @@
+{
+  "id_description": "চ্যাট সম্পর্কে তথ্য পায়।",
+  "info_private": "<b>তথ্য:</b>\n<b>নাম:</b> <code>{first_name} {last_name}</code>\n<b>ব্যবহারকারীর নাম:</b> { username}\n<b>ID:</b> <code>{user_id}</code>\n<b>ডেটাসেন্টার:</b> <code>{user_dc}</code>\n<b>ভাষা :</b> <code>{lang}</code>\n<b>চ্যাটের ধরন:</b> <code>{chat_type}</code>",
+  "info_group": "<b>ব্যবহারকারীর তথ্য:</b>\n<b>নাম:</b> <code>{first_name} {last_name}</code>\n<b>ব্যবহারকারীর নাম:</b> {username}\n<b>ID:</b> <code>{user_id}</code>\n<b>ডেটাসেন্টার:</b> <code>{user_dc}</code>\n<b> ভাষা:</b> <code>{lang}</code>\n\n<b>চ্যাটের তথ্য:</b>\n<b>চ্যাটের নাম:</b> <code>{chat_title}</ code>\n<b>চ্যাট ব্যবহারকারীর নাম:</b> {chat_username}\n<b>চ্যাট আইডি:</b> <code>{chat_id}</code>\n<b>চ্যাট ডেটাসেন্টার:</b > <code>{chat_dc}</code>\n<b>চ্যাটের ধরন:</b> <code>{chat_type}</code>\n<b>বার্তা:</b> <code>{message_id} </code>",
+  "none": "কিছুই না",
+  "unknown": "অজানা",
+  "user_not_found": "'<code>{user}</code>'-এর জন্য কোনো ব্যবহারকারী পাওয়া যায়নি।"
+}

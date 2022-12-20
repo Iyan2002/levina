@@ -1,0 +1,7 @@
+{
+  "tr_description": "টেক্সটটিকে প্রদত্ত ভাষায় অনুবাদ করে (চ্যাটের ডিফল্ট ভাষায় ডিফল্ট)।",
+  "translate_usage": "<b>ব্যবহার:</b> <code>/tr &lt;ভাষা&gt; অনুবাদের জন্য পাঠ্য</code> (একটি বার্তার উত্তরেও ব্যবহার করা যেতে পারে)।",
+  "translating": "অনুবাদ করা হচ্ছে...",
+  "translation": "<b>ভাষা:</b> {from_lang} -> {to_lang}\n<b>অনুবাদ:</b> <code>{translation}</code>",
+  "translate_inline_send": "{srclangformat} থেকে {tolangformat} তে অনুবাদ করুন"
+}

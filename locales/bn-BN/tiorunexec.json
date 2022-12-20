@@ -1,0 +1,7 @@
+{
+  "code_exec_tio_res_string_no_err": "<b>ভাষা:</b> <code>{langformat}</code>\n\n<b>কোড:</b>\n<code>{codeformat}</code>\n\n<b>ফলাফল:</b>\n<code>{resformat}</code>\n\n<b>পরিসংখ্যান:</b><code>{statsformat}</code>",
+  "code_exec_tio_res_string_err": "<b>ভাষা:</b> <code>{langformat}</code>\n\n<b>কোড:</b>\n<code>{codeformat}</code>\n\n<b>ফলাফল:</b>\n<code>{resformat}</code>\n\n<b>ত্রুটি:</b>\n<code>{errformat}</code>",
+  "code_exec_err_string": "ত্রুটি: ভাষা <b>{langformat}</b> পাওয়া যায়নি। সমর্থিত ভাষার তালিকা: {langslistlink}",
+  "code_exec_inline_send": "ভাষা: {langformat}",
+  "code_exec_err_inline_send_string": "ভাষা {langformat} পাওয়া যায়নি।"
+}

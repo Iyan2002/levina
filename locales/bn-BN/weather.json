@@ -1,0 +1,8 @@
+{
+  "details": "<b>{location}</b>:\n\nতাপমাত্রা: <code>{temperature} °C</code>\nতাপমাত্রা অনুভূত হয়: <code>{feels_like} °C</code> \nবাতাসের আর্দ্রতা: <code>{air_humidity}%</code>\nবাতাসের গতি: <code>{wind_speed} কিমি/ঘন্টা</code>\n\n- <i>{ওভারভিউ</i>",
+  "location_not_found": "অবস্থান পাওয়া যায়নি।",
+  "measurement_unit": "মি",
+  "weather_language": "bn-BN",
+  "weather_description": "প্রদত্ত অবস্থান বা শহরের আবহাওয়ার তথ্য পান।",
+  "weather_usage": "<b>ব্যবহার:</b> <code>/আবহাওয়ার অবস্থান বা শহর</code> - <i>অবস্থান বা শহরের</i> আবহাওয়া সম্পর্কে তথ্য পান।"
+}

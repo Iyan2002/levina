@@ -1,0 +1,11 @@
+{
+  "markdown_send_inline": "মার্কডাউন বিন্যাসে পাঠ্য পাঠাতে এখানে ক্লিক করুন।",
+  "html_send_inline": "এইচটিএমএল ফরম্যাটে লেখা পাঠাতে এখানে ক্লিক করুন।",
+  "user_info_inline_cant_found_user": "ব্যবহারকারী পাওয়া যায়নি!",
+  "user_info_inline_send": "ব্যবহারকারীর তথ্যের জন্য এখানে ক্লিক করুন।",
+  "user_info_inline_string": "ব্যবহারকারীর নাম: {usernameformat}\nID: <code>{useridformat}</code>\nDC: {userdcformat}\nব্যবহারকারী লিঙ্ক: {usermentionformat}",
+  "markdown_description": "মার্কডাউন ফরম্যাটে পাঠাতে যেকোনো টেক্সট টাইপ করুন।\n\nব্যবহার: চ্যাটে <code>@GroupsGuardRobot</code> টাইপ করুন এবং (/) চিহ্ন ছাড়াই উপরের এই সমস্ত উপলব্ধ ইনলাইন কমান্ডগুলি ব্যবহার করুন।",
+  "html_description": "এইচটিএমএল ফরম্যাটে পাঠাতে যেকোনো লেখা টাইপ করুন।",
+  "face_description": "মুখ টাইপ করুন, এটি আপনাকে এলোমেলো প্রতীক দিয়ে তৈরি মুখের একটি তালিকা দেখাবে।",
+  "info_description": "info @username টাইপ করুন, এটি ব্যবহারকারীর তথ্য পাঠাবে।"
+}

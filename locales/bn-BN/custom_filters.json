@@ -1,0 +1,12 @@
+{
+  "add_filter_success": "সংরক্ষিত ফিল্টার <b>{trigger}</b>।",
+  "add_filter_empty": "ফিল্টারের জন্য একটি বিষয়বস্তু দিন।",
+  "delfilter_description": "চ্যাট থেকে একটি ফিল্টার সরান।",
+  "filter_description": "চ্যাটের জন্য একটি ফিল্টার তৈরি করুন।",
+  "filters_description": "চ্যাটে বর্তমান ফিল্টার দেখান।",
+  "filters_list": "এই চ্যাটে ফিল্টার:\n\n",
+  "filters_list_empty": "বর্তমানে এই চ্যাটে কোনো ফিল্টার নেই।",
+  "no_filter_with_name": "<b>{trigger}</b> নামের কোনো ফিল্টার নেই।",
+  "remove_filter_success": "ফিল্টার থেকে <b>{trigger}</b> সরানো হয়েছে।",
+  "stop_description": "চ্যাটে একটি নির্দিষ্ট ফিল্টার মুছুন।"
+}

@@ -1,0 +1,10 @@
+{
+  "nekobin_description": "উত্তর দেওয়া টেক্সট/ডকুমেন্টটি batbin.me এ আটকান",
+  "hastebin_description": "উত্তর দেওয়া টেক্সট/ডকুমেন্ট hastebin.com এ আটকান",
+  "reply_to_document_or_text": "একটি টেক্সট বা নথির বিষয়বস্তু পেস্ট করতে অনুগ্রহ করে উত্তর দিন।",
+  "supported_text_document": "শুধুমাত্র পাঠ্য ও নথি সমর্থিত!",
+  "paste_upload_process": "ব্যাটবিনে আটকানো হচ্ছে...",
+  "paste_file_limit": "আপনি শুধুমাত্র 40KB এর চেয়ে ছোট ফাইল পেস্ট করতে পারবেন!",
+  "paste_text_only": "শুধুমাত্র টেক্সট ফাইল পেস্ট করা যায়!",
+  "haste_upload_process": "হস্টবিনে আটকানো হচ্ছে..."
+}

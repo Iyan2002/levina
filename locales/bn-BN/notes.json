@@ -1,0 +1,15 @@
+{
+  "add_note_success": "সংরক্ষিত নোট <b>{trigger}</b>।\nএটি <code>/get {trigger}</code> অথবা <code>#{trigger}</code> দিয়ে পান",
+  "add_note_empty": "আপনাকে নোটের জন্য একটি বিষয়বস্তু নির্দিষ্ট করতে হবে।",
+  "delnote_description": "চ্যাট থেকে একটি নোট সরান।",
+  "note_description": "চ্যাটের জন্য একটি নোট সংরক্ষণ করুন।",
+  "notes_description": "চ্যাটে সংরক্ষিত নোট দেখান।",
+  "notes_list": "এই চ্যাটে নোট:\n\n",
+  "notes_list_empty": "এই চ্যাটে কোনো নোট নেই!",
+  "no_note_with_name": "<b>{trigger}</b> নামের কোনো নোট নেই।",
+  "remove_note_success": "নোট থেকে <b>{trigger}</b> সরানো হয়েছে।",
+  "clear_note_usage": "মুছে ফেলার জন্য আপনাকে অবশ্যই নোটের নাম উল্লেখ করতে হবে।",
+  "saving_note_usage": "সংরক্ষণ করতে নোট দিন!",
+  "clear_description": "তালিকা থেকে একটি নোট সরান।",
+  "save_description": "চ্যাটের জন্য একটি নোট সংরক্ষণ করুন।"
+}

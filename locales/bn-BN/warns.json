@@ -1,0 +1,22 @@
+{
+  "resetwarns_description": "ব্যবহারকারী সতর্কতা পুনরায় সেট করে।",
+  "setwarnslimit_description": "চ্যাট সতর্কতা সীমা নির্ধারণ করে।",
+  "user_warned": "ব্যবহারকারী {target_user}-এর {warn_limit} সতর্কতার মধ্যে {warn_count} আছে।",
+  "warn_banned": "ব্যবহারকারী {target_user}কে নিষিদ্ধ করা হয়েছে কারণ তাদেরকে {warn_count} বার সতর্ক করা হয়েছে।",
+  "warn_kicked": "ব্যবহারকারী {target_user} কে কিক করা হয়েছে কারণ তাদেরকে {warn_count} বার সতর্ক করা হয়েছে।",
+  "warn_muted": "ব্যবহারকারী {target_user} নিঃশব্দ করা হয়েছে কারণ তাদের {warn_count} বার সতর্ক করা হয়েছে।",
+  "warn_cant_admin": "আমি প্রশাসকদের সতর্ক করতে পারি না।",
+  "warn_description": "একজন ব্যবহারকারীকে সতর্ক করুন।",
+  "warn_limit_changed": "সতর্কতা সীমা সফলভাবে {warn_limit} এ পরিবর্তিত হয়েছে।",
+  "warn_limit_help": "আপনাকে অবশ্যই সতর্কতার সংখ্যা উল্লেখ করতে হবে, যেমন: <code>/setwarnslimit 5</code>।",
+  "warn_limit_invalid": "প্রদত্ত নম্বরটি বৈধ নয়।",
+  "warn_reason_text": "সতর্কতার কারণ: {reason_text}",
+  "warn_reset": "{target_user} সতর্কতা সফলভাবে মুছে ফেলা হয়েছে।",
+  "warns_description": "ব্যবহারকারীর সতর্কবার্তা পান।",
+  "warns_count_string": "ব্যবহারকারী {target_user}-এর {warns_count}টি সতর্কতা রয়েছে।",
+  "warns_action_set_string": "সতর্কতামূলক পদক্ষেপটি {action}-এ সেট করা হয়েছে।",
+  "warns_action_set_invlaid": "অবৈধ যুক্তি। <code>/setwarnsaction ban/mute/kick</code> ব্যবহার করুন।",
+  "warn_action_status": "এই চ্যাটের জন্য সতর্কতামূলক পদক্ষেপ হল {ক্রিয়া}।",
+  "setwarnaction_description": "চ্যাটের জন্য সতর্কীকরণ ক্রিয়া সেট করুন। আপনি <code>ban/mute/kick</code> আর্গুমেন্ট ব্যবহার করতে পারেন।",
+  "setwarns_description": "ব্যবহারকারীর জন্য সতর্কতার সংখ্যা উল্লেখ করুন।"
+}

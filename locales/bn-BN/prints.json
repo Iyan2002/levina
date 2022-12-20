@@ -1,0 +1,5 @@
+{
+  "print_description": "নির্দিষ্ট ওয়েবসাইটের একটি স্ক্রিনশট নিন।",
+  "print_usage": "<b>ব্যবহার:</b> <code>/print https://example.com</code> - নির্দিষ্ট ওয়েবসাইটের একটি স্ক্রিনশট নিন।",
+  "taking_screenshot": "স্ক্রিনশট নেওয়া হচ্ছে..."
+}

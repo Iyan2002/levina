@@ -1,0 +1,6 @@
+{
+  "ip_err_no_ip": "আপনাকে অবশ্যই url উল্লেখ করতে হবে, যেমন: <code>/ip example.com</code>",
+  "ip_info_inline": "{domain} এর IP তথ্য দেখতে এখানে ক্লিক করুন।",
+  "ip_no_url": "আপনাকে অবশ্যই url নির্দিষ্ট করতে হবে।",
+  "ip_no_url_example": "আপনাকে অবশ্যই url নির্দিষ্ট করতে হবে, যেমন: <code>@{bot_username} ip example.com</code>।"
+}

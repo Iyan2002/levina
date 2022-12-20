@@ -1,0 +1,6 @@
+{
+  "git_description": "একটি GitHub প্রোফাইল থেকে তথ্য পায়।",
+  "info_git_user": "<b>নাম</b>: <code>{name}</code>\n<b>ব্যবহারকারীর নাম</b>: <code>{username}</code>\n<b> অবস্থান</b>: <code>{location}</code>\n<b>প্রকার</b>: <code>{type}</code>\n<b>বায়ো</b>: <code >{বায়ো}</code>",
+  "not_found_user": "ব্যবহারকারী পাওয়া যায়নি।",
+  "no_username_err": "অনুগ্রহ করে একটি ব্যবহারকারীর নাম উল্লেখ করুন।"
+}
