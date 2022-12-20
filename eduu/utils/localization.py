@@ -15,6 +15,7 @@ from ..database.localization import get_db_lang
 enabled_locales: List[str] = [
     "en-GB",  # English
     "id-ID",  # Indonesian
+    "bn-BN",  # Bangladesh
 ]
 
 default_language: str = "en-GB"
